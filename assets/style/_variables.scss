@@ -1,0 +1,133 @@
+$desktopWidth: 1440px;
+$mobileWidth: 768px;
+
+$border-radius-1: 1.5rem;
+$border-radius-2: .6rem;
+$border-radius-3: 2.5rem;
+
+$fontColorDefault: #222222;
+$black: #000;
+$white: #ffffff;
+$gray: #EBEBEB;
+$gray2: #E6E6E6;
+$gray3: #F5F5F5;
+$orange: #FF4F02;
+$orange2: #FF5000;
+$yellow: #F6DA65;
+$yellow2: #FADD66;
+$pink: #FFC8C8;
+$pink2: #C83F8E;
+$blue: #BBD6FF;
+$blue2: #5289C5;
+$activeLink: #699b69;
+$blueBlack: #3E5366;
+$blueBlack2: #2F2E4D;
+$blueBlack3: #2E3E4D;
+$green: #73CA55;
+$headerHeight: 8.8rem;
+$footerHeight: 13.3rem;
+$bgWidth: 570px;
+$paddingTopLog: 2rem;
+$animationTiming1: cubic-bezier(.71,.01,.15,1);
+
+:root {
+  --mobile-width: #{$mobileWidth};
+  --footer-height: 13.3rem;
+  --header-height: #{$headerHeight};
+  --padding-top-logo: #{$paddingTopLog};
+  --header-z-index: 100;
+  --logo-z-index: 50;
+  --vh: 10rem;
+}
+
+@mixin montserratSemiBold {
+  font-family: 'Montserrat-SemiBold', sans-serif;
+  font-weight: normal;
+}
+@mixin montserratBold {
+  font-family: 'Montserrat-Bold', sans-serif;
+  font-weight: normal;
+}
+
+@mixin Bankir-Retro {
+  font-family: 'Bankir-Retro', sans-serif;
+  font-weight: normal;
+}
+@mixin paddings {
+  padding: 0 1.5rem;
+}
+
+@mixin container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  max-width: $desktopWidth;
+  margin: 0 auto;
+}
+
+@mixin title-sm {
+  font-size: 2.6rem;
+  line-height: 1.2188461538;
+}
+@mixin subtitle {
+  font-size: 2.2rem;
+  line-height: 1.2190909091;
+}
+
+@mixin subtitle-sm {
+  font-size: 2rem;
+  line-height: 1.219;
+}
+
+
+@mixin regular-text-small {
+  font-family: 'Montserrat-Medium', sans-serif;
+  font-weight: normal;
+  font-size: 1.2rem;
+}
+
+@mixin uppercase {
+  text-transform: uppercase;
+}
+
+@mixin garamond-narrow {
+  font-family: 'Garamond Narrow';
+}
+
+@mixin regular-text-bold {
+  font-family: 'Montserrat-Bold', sans-serif;
+  font-weight: normal;
+  font-size: 1.4rem;
+}
+
+@mixin regular-text {
+  font-family: 'Object Sans', sans-serif;
+  font-weight: normal;
+  font-size: 1.4rem;
+}
+
+@mixin button {
+  font-family: 'Montserrat-Medium', sans-serif;
+  font-weight: normal;
+  font-size: 1.8rem;
+}
+
+@mixin text-style-h2 {
+  font-family: 'Montserrat-Bold', sans-serif;
+  font-weight: normal;
+  font-size: 2.1rem;
+}
+
+@mixin text-style-h1 {
+  font-family: 'Montserrat-Black', sans-serif;
+  font-weight: normal;
+  font-size: 4.8rem;
+}
+
+
+@mixin styleBottomSheetStepper {
+  @include paddings;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+  height: 100%;
+  overflow-y: auto;
+}

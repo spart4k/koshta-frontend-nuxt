@@ -1,0 +1,14 @@
+.cookies {
+  @include uppercase;
+  width: 20rem;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(50px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 20px;
+  padding: 1.5rem;
+  button {
+    display: inline-flex;
+    @include uppercase;
+  }
+}

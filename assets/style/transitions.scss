@@ -1,0 +1,281 @@
+// .fade-enter-active, .fade-leave-active {
+//   transition: opacity .3s ease;
+// }
+// .fade-enter, .fade-leave-to {
+//   opacity: 0;
+// }
+
+// .home-enter-active, .home-leave-active { transition: opacity .5s; }
+// .home-enter, .home-leave-active { opacity: 0; }
+// .list-enter-active,
+// .list-leave-active {
+//   transition: all 1s ease;
+// }
+// .list-enter,
+// .list-leave-to {
+//   opacity: 0;
+//   transform: translateX(30px);
+// }
+// .fade-up-enter-active, .fade-up-leave-active {
+//   transition: opacity .2s ease, transform .2s ease;
+// }
+// .fade-up-enter, .fade-up-leave-to {
+//   opacity: 0;
+//   transform: translateY(-4rem);
+// }
+
+// .fade-fast-enter-active, .fade-fast-leave-active {
+//   transition: opacity .5s ease, transform .5s ease;
+// }
+// .fade-fast-enter, .fade-fast-leave-to {
+//   opacity: 0;
+// }
+
+// .scale-down-enter-active, .scale-down-leave-active {
+//   transition: opacity .4s ease, transform .4s ease;
+// }
+// .scale-down-enter, .scale-down-leave-to {
+//   opacity: 0;
+//   transform: scale(0.8);
+// }
+
+
+// .scale-down-fast-enter-active, .scale-down-fast-leave-active {
+//   transition: opacity .2s ease, transform .2s ease;
+// }
+// .scale-down-fast-enter, .scale-down-fast-leave-to {
+//   opacity: 0;
+//   transform: scale(0.9);
+// }
+
+// .quiz-card-enter-active, .quiz-card-leave-active {
+//   transition: opacity .8s ease, transform .8s ease;
+// }
+// .quiz-card-leave-to {
+//   opacity: 0;
+//   transform: translate(-50%, 0);
+// }
+
+// .quiz-card-enter {
+//   opacity: 0;
+//   transform: translate(50%, 0);
+// }
+
+// .v-application{
+//   .fade-slide-enter-active, .fade-slide-leave-active {
+//     transition: opacity .2s ease, transform .2s ease;
+//     transform: translateX(0);
+//   }
+//   .fade-slide-enter, .fade-slide-leave-to {
+//     opacity: 0;
+//     transform: translateX(4rem);
+//   }
+// }
+
+// .slide-enter-active, .slide-leave-active {
+//   transition: transform .6s;
+//   transform: translateX(0);
+// }
+// .slide-enter, .slide-leave-to {
+//   transform: translateX(100%);
+// }
+
+// .slide-left-fast-active, .slide-left-fast-leave-active {
+//   transition: transform .3s, opacity .3s ease;
+//   transform: translateX(0);
+// }
+// .slide-left-fast-enter, .slide-left-fast-leave-to {
+//   transform: translateX(-10%);
+//   opacity: 0;
+// }
+
+// //list
+// .v-application{ //list-complete
+//   .list-complete-move{
+//     transition: all .6s;
+//   }
+//   .list-complete-enter, .list-complete-leave-to{
+//     opacity: 0;
+//     transform: translateX(8rem)!important;
+//   }
+//   .list-complete-leave-active {
+//     position: absolute;
+//     z-index: 4;
+//   }
+// }
+
+//expand
+.expand-enter-active, .expand-leave-active {
+  transition: max-height .8s;
+  max-height: 100rem;
+  overflow-y: hidden;
+}
+.expand-enter, .expand-leave-to {
+  max-height: 0;
+  transition: max-height .2s;
+}
+
+
+// //notification-fade
+// .notification-fade-enter-active, .notification-fade-leave-active {
+//   max-height: 50rem;
+//   overflow-y: hidden;
+//   transition: max-height .8s, opacity .4s ease;
+// }
+// .notification-fade-enter, .notification-fade-leave-to {
+//   max-height: 0;
+//   opacity: 0!important;
+//   transition: max-height .4s, opacity .8s ease;
+// }
+
+// //course-move
+// .flip-list-move {
+//   transition: transform 0.8s ease;
+// }
+// .no-move {
+//   transition: transform 0s;
+// }
+
+// .show-next-enter-active,
+// .show-next-leave-enter {
+//   transform: translateX(0);
+//   transition: all .3s linear;
+// }
+// .show-next-enter,
+// .show-next-leave-to {
+//   transform: translateX(100%);
+// }
+
+// .show-prev-enter-active,
+// .show-prev-leave-enter {
+//   transform: translateX(100%);
+//   transition: all .3s linear;
+// }
+// .show-prev-enter,
+// .show-prev-leave-to {
+//   transform: translateX(0);
+// }
+
+// .component-fade-enter-active, .component-fade-leave-active {
+//   transition: opacity .3s ease;
+// }
+// .component-fade-enter, .component-fade-leave-to
+// /* .component-fade-leave-active до версии 2.1.8 */ {
+//   opacity: 0;
+// }
+
+// //card comments hide
+// // .fadeHeight-enter-active,
+// // .fadeHeight-leave-active {
+// //   transition: all .4s;
+// //   max-height: 469px;
+// // }
+// // .fadeHeight-enter,
+// // .fadeHeight-leave-to
+// // {
+// //   opacity: 0;
+// //   max-height: 0px;
+// // }
+
+// .slide-up-enter-active,
+// .slide-up-leave-active {
+//   transition: all 0.25s ease-out;
+// }
+
+// .slide-up-enter-from {
+//   opacity: 0;
+//   transform: translateY(30px);
+// }
+
+// .slide-up-leave-to {
+//   opacity: 0;
+//   transform: translateY(-30px);
+// }
+
+// .fadeHeight-enter-active,
+// .fadeHeight-leave-active {
+//   transition: all 0.2s;
+//   max-height: 230px;
+// }
+// .fadeHeight-enter,
+// .fadeHeight-leave-to
+// {
+//   opacity: 0;
+//   max-height: 0px;
+// }
+// .accordion {
+//   transition: .3s;
+// }
+
+// .comments-leave-to {
+//   transition: .2s;
+//   opacity: 0;
+// }
+
+
+// .slideShow-enter-active,
+// .slideShow-leave-active {
+//   transition: all .25s $animationTiming1;
+//   width: 100%;
+//   height: 100%;
+// }
+
+// .slideShow-enter {
+//   position: absolute;
+//   left: calc(-100% - 1.5rem);
+// }
+
+// .slideShow-enter-to {
+//   position: absolute;
+//   left: 0;
+// }
+
+// .slideShow-leave {
+//   position: absolute;
+//   right: 0;
+// }
+
+// .slideShow-leave-to {
+//   position: absolute;
+//   right: calc(-100% - 1.5rem);
+// }
+
+// .slideback-leave-active,
+// .slideback-enter-active {
+//   transition: all .25s $animationTiming1;
+//   width: 100%;
+//   height: 100%;
+//   //width: calc(100% - 3rem);
+//   overflow: hidden;
+// }
+
+// .slideback-enter {
+//   position: absolute;
+// right: calc(-100% - 1.5rem);
+// }
+
+// .slideback-enter-to {
+//   position: absolute;
+//   right: 0;
+// }
+
+// .slideback-leave {
+//   position: absolute;
+//   left: 0;
+// }
+
+// .slideback-leave-to {
+//   position: absolute;
+//   left: calc(-100% - 1.5rem);
+// }
+
+// .expand-enter-active,
+// .expand-leave-active {
+//   transition: height 1s ease-in-out;
+//   overflow: hidden;
+// }
+
+// .expand-enter,
+// .expand-leave-to {
+//   height: 0;
+// }

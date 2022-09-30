@@ -1,0 +1,8 @@
+.provided {
+  @include uppercase;
+  @include regular-text;
+  span {
+    @include garamond-narrow;
+    font-size: 1.5rem;
+  }
+}
