@@ -9,6 +9,7 @@
         <p class="part-3">fullpage-vue</p>
         <p class="part-3">fullpage-vue</p>
         <p class="part-3">fullpage-vue</p>
+        <p class="part-3">fullpage-vue</p>
       </div>
     </div>
   </div>
