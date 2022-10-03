@@ -58,6 +58,13 @@ body {
 }
 
 button {
+  &.link {
+    display: inline-block;
+    a {
+      color: $fontColorDefault;
+      text-decoration: underline;
+    }
+  }
   &.active {
     text-decoration: underline;
     &:hover {

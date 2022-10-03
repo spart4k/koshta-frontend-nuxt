@@ -1,4 +1,5 @@
 .footer {
+  position: relative;
   width: 100%;
   height: 100vh;
   text-align: center;
@@ -11,10 +12,42 @@
     padding: 1rem;
     z-index: 1;
     font-size: 3.8rem;
+    margin-bottom: 9.5rem;
+  }
+  .contacts {
+    margin-bottom: 6rem;
+    button {
+      margin-top: 1rem;
+    }
+  }
+  .feedback {
+    margin-bottom: 6rem;
   }
   .matter {
     position: absolute;
     width: 100%;
     height: 100%;
+  }
+  .subtitle {
+    font-size: 1.6rem;
+    @include garamond-narrow;
+    margin-bottom: 1.5rem;
+    @include uppercase;
+  }
+  .text {
+    @include regular-text;
+  }
+  .bottom {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 4rem;
+    bottom: 4.2rem;
+    span {
+      @include garamond-narrow;
+      @include uppercase;
+      font-size: 1.5rem;
+    }
   }
 }

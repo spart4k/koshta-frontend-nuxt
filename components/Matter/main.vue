@@ -25,7 +25,6 @@ export default {
     })
     onMounted(() => {
       setTimeout(() => {
-        console.log(centerOptions.value)
         initMatter()
       }, 300)
       
@@ -151,7 +150,6 @@ export default {
       World.add(world, [
         ground,wallLeft, wallRight, ...bounes
       ]);
-      console.log(container.offsetWidth)
       if (container.offsetWidth >= 768) {
         World.add(world, [
           textBlock
@@ -171,14 +169,10 @@ export default {
           }
         });
       World.add(world, mouseConstraint);
-      console.log(Matter.Events)
-      console.log(1)
       Events.on(mouseConstraint, "startdrag", () => {
         store.commit('matter/changeState', true)
-        console.log('start')
       })
       Events.on(mouseConstraint, "enddrag", () => {
-        console.log('end')
         store.commit('matter/changeState', false)
       })
       // keep the mouse in sync with rendering

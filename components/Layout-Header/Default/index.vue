@@ -1,7 +1,7 @@
 <template>
   <header :class="$style.header">
-    <HeaderLogotype/>
-    <HeaderNav/>
+    <LayoutHeaderLogotype/>
+    <LayoutHeaderNav/>
   </header>
 </template>
 

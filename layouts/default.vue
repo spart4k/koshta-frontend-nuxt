@@ -1,30 +1,42 @@
 <template>
   <div>
     <!-- <HeaderDefault/> -->
-    <HeaderLogotype
-    :style="{
-      'pointer-events': noClickedMatter ? 'none' : 'unset'
-    }"
-    :class="$style.logotype"
-    />
-    <HeaderNav
-    :class="$style.nav"
-    :style="{
-      'pointer-events': noClickedMatter ? 'none' : 'unset'
-    }"
-    />
-    <FooterLayoutProvided
-    :style="{
-      'pointer-events': noClickedMatter ? 'none' : 'unset'
-    }"
-    :class="$style.provided"
-    />
-    <FooterLayoutCookies
-    :style="{
-      'pointer-events': noClickedMatter ? 'none' : 'unset'
-    }"
-    :class="$style.cookies"
-    />
+    <transition name="fade">
+      <LayoutHeaderLogotype
+      v-if="isShowInterface"
+      :style="{
+        'pointer-events': noClickedMatter ? 'none' : 'unset'
+      }"
+      :class="$style.logotype"
+      />
+    </transition>
+    <transition name="fade">
+      <LayoutHeaderNav
+      v-if="isShowInterface"
+      :class="$style.nav"
+      :style="{
+        'pointer-events': noClickedMatter ? 'none' : 'unset'
+      }"
+      />
+    </transition>
+    <transition name="fade">
+      <LayoutFooterProvided
+      v-if="isShowInterface"
+      :style="{
+        'pointer-events': noClickedMatter ? 'none' : 'unset'
+      }"
+      :class="$style.provided"
+      />
+    </transition>
+    <transition name="fade">
+      <LayoutFooterCookies
+      v-if="isShowInterface"
+      :style="{
+        'pointer-events': noClickedMatter ? 'none' : 'unset'
+      }"
+      :class="$style.cookies"
+      />
+    </transition>
     <Nuxt />
   </div>  
 </template>
@@ -66,8 +78,12 @@
       const noClickedMatter = computed(() => {
         return store.state?.matter?.matterClicked
       })
+      const isShowInterface = computed(() => {
+        return store.state?.layout?.isShow
+      })
       return {
-        noClickedMatter
+        noClickedMatter,
+        isShowInterface
       }
     }
   }
