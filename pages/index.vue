@@ -5,14 +5,17 @@
       <div class="page-2 page">
         <main-video ref="mainVideo"></main-video>
       </div>
-      <div class="page-3 page">
+      <div ref="projects" class="page-3 page">
         <ui-container>
           <main-projects ref=""></main-projects>
         </ui-container>
       </div>
+      <div class="page">
+        <main-footer></main-footer>
+      </div>
     </div>
   </div>
-  
+
 </template>
 
 <script src="./setup.js"></script>

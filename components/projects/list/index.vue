@@ -3,6 +3,9 @@
     <projects-item></projects-item>
     <projects-item></projects-item>
     <projects-item></projects-item>
+    <projects-item></projects-item>
+    <projects-item></projects-item>
+    <projects-item></projects-item>
   </div>
 </template>
 <script src="./setup.js"></script>
