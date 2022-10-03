@@ -7,6 +7,7 @@ export default {
       start: 0,
         dir: 'v',
         duration: 500,
+        start: 0,
         beforeChange: function (currentSlideEl,currenIndex,nextIndex) {
           if (nextIndex === 1) {
             startMainVideo()

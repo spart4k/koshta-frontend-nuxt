@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <ui-page-title-default/>
+    <ui-page-title-default :class="$style.header" />
     <projects-list></projects-list>
   </div>
 </template>
