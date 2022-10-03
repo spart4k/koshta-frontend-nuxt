@@ -13,13 +13,13 @@
       'pointer-events': noClickedMatter ? 'none' : 'unset'
     }"
     />
-    <FooterProvided
+    <FooterLayoutProvided
     :style="{
       'pointer-events': noClickedMatter ? 'none' : 'unset'
     }"
     :class="$style.provided"
     />
-    <FooterCookies
+    <FooterLayoutCookies
     :style="{
       'pointer-events': noClickedMatter ? 'none' : 'unset'
     }"
