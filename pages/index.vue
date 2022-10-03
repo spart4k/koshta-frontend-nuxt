@@ -7,11 +7,12 @@
       </div>
       <div class="page-3 page">
         <ui-container>
-          <main-projects></main-projects>
+          <main-projects ref=""></main-projects>
         </ui-container>
       </div>
     </div>
   </div>
+  
 </template>
 
 <script src="./setup.js"></script>
