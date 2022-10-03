@@ -19,11 +19,12 @@ export default {
           console.log(currenIndex)
         }
     })
-    const startMainVideo = async () => {
-      await mainVideo.value.play()
+    const startMainVideo = () => {
+      console.log(mainVideo.value)
+      mainVideo.value.$el.play()
     }
-    const stopMainVideo = async () => {
-      await mainVideo.value.pause()
+    const stopMainVideo = () => {
+      mainVideo.value.$el.pause()
     }
     
     onMounted(() => {
