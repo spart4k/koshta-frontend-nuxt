@@ -7,6 +7,7 @@ export default {
       start: 0,
         dir: 'v',
         duration: 500,
+        start: 0,
         beforeChange: function (currentSlideEl,currenIndex,nextIndex) {
           if (nextIndex === 1) {
             startMainVideo()
@@ -19,11 +20,12 @@ export default {
           console.log(currenIndex)
         }
     })
-    const startMainVideo = async () => {
-      await mainVideo.value.play()
+    const startMainVideo = () => {
+      console.log(mainVideo.value)
+      mainVideo.value.$el.play()
     }
-    const stopMainVideo = async () => {
-      await mainVideo.value.pause()
+    const stopMainVideo = () => {
+      mainVideo.value.$el.pause()
     }
     
     onMounted(() => {
