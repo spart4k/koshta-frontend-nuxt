@@ -1,11 +1,10 @@
 <template>
   <div :class="$style.header">
     <div :class="$style.title">
-      All projects
+      {{ $props.options.title }}
     </div>
     <div :class="$style.subtitle">
-      «I can't explain muself. I'm afraid. Sir»<br>
-      said Alice, because I am not myself, you see»
+      {{ $props.options.subtitle }}
     </div>
   </div>
 </template>

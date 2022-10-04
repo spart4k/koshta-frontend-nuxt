@@ -5,6 +5,10 @@ export default {
     const { store } = useContext()
     const mainVideo = ref(null) 
     const projects = ref(null)
+    const headerOptions = ref({
+      title: "All projects",
+      subtitle: "«I can't explain muself. I'm afraid. Sir», said Alice, because I am not myself, you see»"
+    })
     const fullpageOptions = ref({
       start: 0,
       dir: 'v',
@@ -65,7 +69,8 @@ export default {
       projects,
       setOverflowBlock,
       stopMainVideo,
-      startMainVideo
+      startMainVideo,
+      headerOptions
     }
   }
   
