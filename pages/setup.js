@@ -1,7 +1,8 @@
-import { ref, onMounted } from '@nuxtjs/composition-api'
+import { ref, onMounted, useContext } from '@nuxtjs/composition-api'
 export default {
   name: 'IndexPage',
   setup() {
+    const { store } = useContext()
     const mainVideo = ref(null) 
     const projects = ref(null)
     const fullpageOptions = ref({
@@ -18,31 +19,38 @@ export default {
         if (currenIndex === 1) {
           stopMainVideo()
         }
+        if (currenIndex === 3) {
+          store.commit('layout/showInterface')
+        }
+        if (nextIndex === 3 ) {
+          console.log('3')
+          store.commit('layout/hideInterface')
+        }
       },
       afterChange: function (currentSlideEl,currenIndex) {
         if (currenIndex === 2) {
-          const blockHeight = projects.value.scrollHeight - projects.value.offsetHeight
-          projects.value.onwheel = e => {
-            console.log(e.deltaY)
-            if (projects.value.scrollTop <= 0 || projects.value.scrollTop === blockHeight) {
-              if (e.deltaY > 85 || e.deltaY < -85) {
-                console.log(e.deltaY)
-                return
-              }
-              else {
-                e.stopPropagation()
-              }
-            }
-            else {        
-              e.stopPropagation()
-            }
-          };
-          projects.value.style.overflow = 'auto'
+          setOverflowBlock()
         }
       }
     })
+    const setOverflowBlock = () => {
+      const blockHeight = projects.value.scrollHeight - projects.value.offsetHeight
+        projects.value.onwheel = e => {
+          if (projects.value.scrollTop <= 0 || projects.value.scrollTop === blockHeight) {
+            if (e.deltaY > 85 || e.deltaY < -85) {
+              return
+            }
+            else {
+              e.stopPropagation()
+            }
+          }
+          else {        
+            e.stopPropagation()
+          }
+        };
+        projects.value.style.overflow = 'auto'
+    }
     const startMainVideo = () => {
-      console.log(mainVideo.value)
       mainVideo.value.$el.play()
     }
     const stopMainVideo = () => {
@@ -55,6 +63,7 @@ export default {
       fullpageOptions,
       mainVideo,
       projects,
+      setOverflowBlock,
       stopMainVideo,
       startMainVideo
     }

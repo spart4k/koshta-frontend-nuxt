@@ -4,7 +4,6 @@ export const state = () => ({
 
 export const mutations = {
   changeState(state, param) {
-    console.log(param)
     state.matterClicked = param
   }
 }

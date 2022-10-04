@@ -10,7 +10,7 @@
           <main-projects ref=""></main-projects>
         </ui-container>
       </div>
-      <div class="page">
+      <div class="page no-layout">
         <main-footer></main-footer>
       </div>
     </div>

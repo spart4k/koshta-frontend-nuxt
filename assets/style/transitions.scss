@@ -1,9 +1,9 @@
-// .fade-enter-active, .fade-leave-active {
-//   transition: opacity .3s ease;
-// }
-// .fade-enter, .fade-leave-to {
-//   opacity: 0;
-// }
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s ease;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 
 // .home-enter-active, .home-leave-active { transition: opacity .5s; }
 // .home-enter, .home-leave-active { opacity: 0; }
