@@ -9,10 +9,10 @@
       </button>
       <transition name="expand">
         <div v-if="isOpenProjectsDrop" :class="[$style.projectsDrop]">
-          <p>Spaces & Instalation</p>
-          <p>Art-direction</p>
-          <p>NFT & Metaverse</p>
-          <p>Video & CGI</p>
+          <button @click.prevent="openSection()">Spaces & Instalation</button>
+          <button @click.prevent="openSection()">Art-direction</button>
+          <button @click.prevent="openSection()">NFT & Metaverse</button>
+          <button @click.prevent="openSection()">Video & CGI</button>
         </div>
       </transition>
       

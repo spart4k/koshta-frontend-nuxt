@@ -1,10 +1,20 @@
 <template>
   <div :class="$style.footer">
-    <div class="">
-      <div ref="center" :class="$style.center">
+    <div :class="$style.footerContent">
+      <div ref="center" 
+      :class="$style.title"
+      :style="{
+        'pointer-events': noClickedMatter ? 'none' : 'unset'
+      }"
+      >
         We collaborate with ambitious brands and people. Are you with us?
       </div>
-      <div class="">
+      <div 
+      :class="$style.center"
+      :style="{
+        'pointer-events': noClickedMatter ? 'none' : 'unset'
+      }"
+      >
         <div :class="$style.contacts">
           <p :class="$style.subtitle">Headquarters</p>
           <div class="">
@@ -14,11 +24,11 @@
           </div>
           <div class="">
             <button class="link" :class="$style.text">
-              <a href="">8 800 773 3445</a>
+              <a href="tel:8 800 773 3445">8 800 773 3445</a>
             </button>
             <br>
             <button class="link" :class="$style.text">
-              <a href="">HELLO@KOSHTA.STUDIO</a>
+              <a href="mailto:HELLO@KOSHTA.STUDIO">HELLO@KOSHTA.STUDIO</a>
             </button>
             <p></p>
           </div>
@@ -26,23 +36,39 @@
         <div :class="$style.feedback">
           <p :class="$style.subtitle">NEW BUSINESS</p>
           <button class="link" :class="$style.text">
-            <a href="">NEWBIZAMS@KOSHTA.STUDIO</a>
+            <a href="mailto:NEWBIZAMS@KOSHTA.STUDIO">NEWBIZAMS@KOSHTA.STUDIO</a>
           </button>
         </div>
         <div :class="$style.join">
           <p :class="$style.subtitle">JOIN US</p>
           <button class="link" :class="$style.text">
-            <a href="">CAREERS@KOSHTA.STUDIOS</a>
+            <a href="mailto:CAREERS@KOSHTA.STUDIOS">CAREERS@KOSHTA.STUDIOS</a>
           </button>
         </div>
       </div>
       <div :class="$style.bottom">
-        <p>KOSHTA ©2022</p>
-        <p>PROVIDED BY OUR <span>DREAMS</span></p>
-        <p>PRIVACY POLICY </p>
+        <p 
+        :class="$style.name"
+        :style="{
+          'pointer-events': noClickedMatter ? 'none' : 'unset'
+        }"
+        >KOSHTA ©2022</p>
+        <p 
+        :class="$style.provide"
+        :style="{
+          'pointer-events': noClickedMatter ? 'none' : 'unset'
+        }"
+        >PROVIDED BY OUR <span>DREAMS</span></p>
+        <p 
+        :class="$style.policy"
+        :style="{
+          'pointer-events': noClickedMatter ? 'none' : 'unset'
+        }"
+        >PRIVACY POLICY </p>
       </div>
+      <matter-footer :class="$style.matter"></matter-footer>
     </div>
   </div>
-</template>
+</template> 
 <script src="./setup.js"></script>
 <style lang="scss" module src="./style.scss"></style>

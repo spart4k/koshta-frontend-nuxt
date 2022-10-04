@@ -3,6 +3,7 @@
 }
 
 .subtitle {
+  max-width: 50rem;
   @include subtitle;
   @include garamond-narrow;
 }

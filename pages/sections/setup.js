@@ -1,6 +1,6 @@
 import { ref } from '@nuxtjs/composition-api'
 export default {
-  name: 'main-projects',
+  name: 'section-detail',
   setup() {
     const headerOptions = ref({
       title: "NFT & Metaverse",

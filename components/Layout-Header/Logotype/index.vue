@@ -1,7 +1,9 @@
 <template>
-  <Logotype
-  :class="$style.logotype"
-  />
+  <nuxt-link to="/">
+    <Logotype
+    :class="$style.logotype"
+    />
+  </nuxt-link>
 </template>
 
 <script>

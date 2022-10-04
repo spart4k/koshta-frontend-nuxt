@@ -7,7 +7,7 @@
       </div>
       <div ref="projects" class="page-3 page">
         <ui-container>
-          <main-projects ref=""></main-projects>
+          <main-projects :headerOptions="headerOptions" ref=""></main-projects>
         </ui-container>
       </div>
       <div class="page no-layout">
