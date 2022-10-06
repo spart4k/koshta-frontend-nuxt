@@ -4,7 +4,7 @@
       NFT & Metavers
     </div>
     <div :class="$style.info">
-      <div :class="$style.title">
+      <div @click="openProject()" :class="$style.title">
         S7 × Koshta × Charobai
       </div>
       <div :class="$style.author">

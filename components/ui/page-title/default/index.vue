@@ -1,9 +1,9 @@
 <template>
   <div :class="$style.header">
-    <div :class="$style.title">
+    <div v-if="$props.options.title" :class="$style.title">
       {{ $props.options.title }}
     </div>
-    <div :class="$style.subtitle">
+    <div v-if="$props.options.subtitle" :class="$style.subtitle">
       {{ $props.options.subtitle }}
     </div>
   </div>

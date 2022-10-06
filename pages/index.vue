@@ -9,13 +9,16 @@
         <ui-container>
           <main-projects :headerOptions="headerOptions" ref=""></main-projects>
         </ui-container>
+        <div :class="$style.footer">
+          <main-footer></main-footer>
+        </div>
       </div>
-      <div class="page no-layout">
-        <main-footer></main-footer>
-      </div>
+      <!-- <div class="page no-layout">
+        
+      </div> -->
     </div>
   </div>
 
 </template>
-
+<style lang="scss" module src="./style.scss"></style>
 <script src="./setup.js"></script>

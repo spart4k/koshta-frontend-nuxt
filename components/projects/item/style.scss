@@ -15,6 +15,9 @@
     width: 50%;
     .title {
       @include title;
+      &:hover {
+        cursor: pointer;
+      }
     }
     .author {
       @include subtitle;
