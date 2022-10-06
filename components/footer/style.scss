@@ -24,10 +24,14 @@
     margin: 4.7rem auto 0 auto;
     text-align: center;
     width: calc(100%/2);
-    color: #000;
+    color: $fontColorDefault;
     padding: 1rem;
-    font-size: 3.8rem;
     margin-bottom: 9.5rem;
+    @include title-h1;
+    @media (max-width: $mobileWidth) {
+      width: calc(100% - 12rem);
+      margin: 6.7rem auto 0 auto;
+    }
   }
   .center {
     position: absolute;
@@ -35,15 +39,24 @@
     z-index: 10;
     left: 50%;
     transform: translate3d(-50%,0%, 0);
+    @media (max-width: $mobileWidth) {
+      top: 19.8rem;
+    }
   }
   .contacts {
     margin-bottom: 6rem;
+    @media (max-width: $mobileWidth) {
+      margin-bottom: 3rem;
+    }
     button {
       margin-top: 1rem;
     }
   }
   .feedback {
     margin-bottom: 6rem;
+    @media (max-width: $mobileWidth) {
+      margin-bottom: 3rem;
+    }
   }
   .matter {
     position: absolute;
@@ -70,16 +83,29 @@
       position: absolute;
       bottom: 4rem;
       z-index: 10;
+      @media (max-width: $mobileWidth) {
+        bottom: 2rem;
+        font-size: 1.2rem;
+      }
     }
     .name {
       left: 4rem;
+      @media (max-width: $mobileWidth) {
+        left: 2rem;
+      }
     }
     .provide {
       left: 50%;
       transform: translate3d(-50%,0%, 0);
+      @media (max-width: $mobileWidth) {
+        display: none;
+      }
     }
     .policy {
       right: 4rem;
+      @media (max-width: $mobileWidth) {
+        right: 2rem;
+      }
     }
     span {
       @include garamond-narrow;

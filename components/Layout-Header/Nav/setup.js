@@ -4,8 +4,8 @@ export default {
   name: 'Nav',
   setup() {
     const router = useRouter()
-    console.log(router)
     const isOpenProjectsDrop = ref(false)
+    const isShowWrap = ref(false)
     const openProjectsDrop = () => {
       isOpenProjectsDrop.value = !isOpenProjectsDrop.value
     }
@@ -14,11 +14,44 @@ export default {
         path: `/sections`
       })
       isOpenProjectsDrop.value = false
+      if (isShowWrap) {
+        closeNav()
+      }
+    }
+    const openNav = () => {
+      isShowWrap.value = true
+      console.log('open')
+    }
+    const closeNav = () => {
+      isShowWrap.value = false
+      console.log('close')
+    }
+    const openAbout = () => {
+      return 
+      router.push({
+        path: `/about`
+      })
+      if (isShowWrap) {
+        closeNav()
+      }
+    }
+    const openContacts = () => {
+      router.push({
+        path: `/contacts`
+      })
+      if (isShowWrap) {
+        closeNav()
+      }
     }
     return {
       isOpenProjectsDrop,
       openProjectsDrop,
-      openSection
+      openSection,
+      openNav,
+      closeNav,
+      isShowWrap,
+      openAbout,
+      openContacts
     }
   }
 }

@@ -8,7 +8,6 @@ export default {
     }
   },
   setup(props,_) {
-    console.log(props)
     return {
       
     }

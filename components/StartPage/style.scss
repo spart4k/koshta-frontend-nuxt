@@ -11,7 +11,12 @@
     color: #000;
     padding: 1rem;
     z-index: 1;
-    font-size: 3.8rem;
+    @include title-h1;
+    @media (max-width: $mobileWidth) {
+      top: 10.4rem;
+      transform: translate3d(-50%,0%, 0);
+      width: calc(39rem - 12rem);
+    }
   }
   .matter {
     position: absolute;
