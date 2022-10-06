@@ -85,12 +85,11 @@
 </style>
 
 <script>
-  import { useContext, useRouter, computed } from '@nuxtjs/composition-api'
+  import { useContext, computed } from '@nuxtjs/composition-api'
   export default {
     name: 'layout-default',
     setup() {
       const { store, route } = useContext()
-      console.log(route.value)
       const noClickedMatter = computed(() => {
         return store.state?.matter?.matterClicked
       })

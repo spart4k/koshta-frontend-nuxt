@@ -20,11 +20,9 @@ export default {
     }
     const openNav = () => {
       isShowWrap.value = true
-      console.log('open')
     }
     const closeNav = () => {
       isShowWrap.value = false
-      console.log('close')
     }
     const openAbout = () => {
       return 

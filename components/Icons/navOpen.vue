@@ -12,7 +12,6 @@
     name: 'nav-open',
     setup(props, ctx) {
       const { emit } = ctx
-      console.log(emit)
       const emitClick = () => {
         emit('click')
       }
