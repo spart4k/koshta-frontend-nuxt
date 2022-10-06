@@ -1,0 +1,22 @@
+.header {
+  margin-bottom: 3rem;
+}
+.authorInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid $fontColorDefault;
+  margin-bottom: 3rem;
+  .author {
+    
+  }
+  .date {
+    display: flex;
+    p {
+      &:last-child {
+        margin-left: 3rem;
+      }
+    }
+  }
+}
