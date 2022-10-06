@@ -4,7 +4,6 @@ export const state = () => ({
 
 export const mutations = {
   hideInterface(state) {
-    console.log('hide')
     state.isShow = false
   },
   showInterface(state) {

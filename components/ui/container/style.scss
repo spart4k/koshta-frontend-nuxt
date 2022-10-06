@@ -1,3 +1,6 @@
 .container {
   padding: 15.5rem 4rem 0 4rem;
+  @media (max-width: $mobileWidth) {
+    padding: 10.2rem 1.5rem 0 1.5rem;
+  }
 }

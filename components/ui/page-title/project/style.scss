@@ -8,15 +8,28 @@
   padding-bottom: 2rem;
   border-bottom: 1px solid $fontColorDefault;
   margin-bottom: 3rem;
+  @media (max-width: $mobileWidth) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .author {
-    
+    @media (max-width: $mobileWidth) {
+      margin-bottom: 1.5rem;
+    }
   }
   .date {
     display: flex;
     p {
       &:last-child {
         margin-left: 3rem;
+        @media (max-width: $mobileWidth) {
+          margin-left: unset;
+          margin-top: 1.5rem;
+        }
       }
+    }
+    @media (max-width: $mobileWidth) {
+      flex-direction: column;
     }
   }
 }

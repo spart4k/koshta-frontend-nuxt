@@ -30,7 +30,7 @@
     </transition>
     <transition name="fade">
       <LayoutFooterCookies
-      v-if="isShowInterface"
+      v-if="isShowInterface && route.name === 'index'"
       :style="{
         'pointer-events': noClickedMatter ? 'none' : 'unset'
       }"
@@ -42,30 +42,45 @@
 </template>
 
 <style lang="scss" module>
-  $zIndexHeader: 10;
+  $zIndexHeader: 100;
   .logotype {
     position: fixed;
     left: 4rem;
     top: 4rem;
     z-index: $zIndexHeader;
+    @media (max-width: $mobileWidth) {
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
   .nav {
     position: fixed;
     right: 4rem;
     top: 5.4rem;
     z-index: $zIndexHeader;
+    z-index: 10;
   }
   .provided {
     position: fixed;
     bottom: 4rem;
     left: 4rem;
     z-index: $zIndexHeader;
+    @media (max-width: $mobileWidth) {
+      display: none;
+    }
   }
   .cookies {
     position: fixed;
     bottom: 4rem;
     right: 4rem;
     z-index: $zIndexHeader;
+    @media (max-width: $mobileWidth) {
+      left: 50%;
+      transform: translate(-50%, 0);
+      bottom: 2rem;
+      z-index: 1;
+    }
   }
 </style>
 
@@ -74,7 +89,7 @@
   export default {
     name: 'layout-default',
     setup() {
-      const { store } = useContext()
+      const { store, route } = useContext()
       const noClickedMatter = computed(() => {
         return store.state?.matter?.matterClicked
       })
@@ -83,7 +98,8 @@
       })
       return {
         noClickedMatter,
-        isShowInterface
+        isShowInterface,
+        route
       }
     }
   }

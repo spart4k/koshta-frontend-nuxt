@@ -15,10 +15,10 @@ export default {
   props: {
     centerOptions: {
       type: Object,
-      default: () => {}
+      default: () => { }
     }
   },
-  setup(props,_) {
+  setup(props, _) {
     const { store } = useContext()
     const centerOptions = computed(() => {
       return props.centerOptions
@@ -27,7 +27,7 @@ export default {
       setTimeout(() => {
         initMatter()
       }, 300)
-      
+
     })
     const initMatter = () => {
       const el = document.getElementById('footer-matter')
@@ -44,7 +44,7 @@ export default {
       // create engine
       var engine = Engine.create(),
         world = engine.world;
-        // const { width, height } = this.$el.getBoundingClientRect();
+      // const { width, height } = this.$el.getBoundingClientRect();
       // create renderer
       var container = el
       var render = Render.create({
@@ -60,11 +60,11 @@ export default {
       });
       canvas.width = container.offsetWidth;
       canvas.height = container.offsetHeight;
-      
+
 
 
       Render.run(render);
-      
+
       // create runner
       var runner = Runner.create();
       Runner.run(runner, engine);
@@ -85,24 +85,25 @@ export default {
       ]
       const maxSize = 3200
       let scaleParams = container.offsetWidth
-      let procent = scaleParams/maxSize
+      let procent = scaleParams / maxSize
       let bounes = []
       sprites.forEach((item, index) => {
         const getImage = (path) => {
           return require(`@/assets/images/${path}`)
         }
-        var bounce = Bodies.circle((canvas.width/2 - (canvas.width/12.5 * 2)) + index * 100, canvas.height - 150,canvas.width/12.5, {
+        var bounce = Bodies.circle((canvas.width / 2 - (canvas.width / 12.5 * 2)) + index * 100, canvas.height - 150, canvas.width / 12.5, {
           label: `Bounce`,
           density: .8,
           restitution: .8,
           render: {
-              sprite: {
-                  // texture: require('@/assets/images/Group 3.png'),
-                  texture: getImage(item.path),
-                  xScale: procent,
-                  yScale: procent
-              }
-          }}
+            sprite: {
+              // texture: require('@/assets/images/Group 3.png'),
+              texture: getImage(item.path),
+              xScale: procent,
+              yScale: procent
+            }
+          }
+        }
         )
         bounes.push(bounce)
       })
@@ -119,7 +120,7 @@ export default {
         isStatic: true, label: "Wall Right", density: 1.4,
       });
       World.add(world, [
-        ground,wallLeft,roof, wallRight, ...bounes
+        ground, wallLeft, roof, wallRight, ...bounes
       ]);
       var mouse = Mouse.create(render.canvas),
         mouseConstraint = MouseConstraint.create(engine, {
@@ -142,27 +143,28 @@ export default {
       render.mouse = mouse;
 
       window.addEventListener("resize", function () {
-          canvas.width = container.offsetWidth;
-          canvas.height = container.offsetHeight
-          Matter.Body.setPosition(ground, {x: canvas.width / 2, y: canvas.height + 30})
-          Matter.Body.setPosition(wallRight, {x: canvas.width + 30, y: canvas.height / 2})
-          // Matter.Body.scale( textBlock, 1.005, 1.005);
+        canvas.width = container.offsetWidth;
+        canvas.height = container.offsetHeight
+        Matter.Body.setPosition(ground, { x: canvas.width / 2, y: canvas.height + 30 })
+        Matter.Body.setPosition(wallRight, { x: canvas.width + 30, y: canvas.height / 2 })
+        // Matter.Body.scale( textBlock, 1.005, 1.005);
       });
       const shakeBodies = () => {
         bounes.forEach((item) => {
-          console.log(item)
           // Matter.Body.translate(item, {x: 0, y: -100})
           Matter.Body.setStatic(item, true);
           let i = 0;
           while (i < 10) { // выводит 0, затем 1, затем 2
             i++;
-            console.log(item.position.y)
-            Matter.Body.setPosition(item, {x : item.position.x, y : item.position.y - i});
+            Matter.Body.setPosition(item, { x: item.position.x, y: item.position.y - i });
             // Matter.Body.setVelocity(item, {x : 0, y : 1});
           }
           Matter.Body.setStatic(item, false);
         })
       }
+      canvas.addEventListener("wheel", (e) => {
+        e.stopPropagation()
+      })
       // setTimeout(() => {
       //   shakeBodies()
       // }, 3000)
@@ -183,9 +185,11 @@ export default {
   color: #929292;
   height: 100vh;
 }
+
 svg {
   display: none;
 }
+
 * {
   padding: 0;
   margin: 0;

@@ -6,7 +6,6 @@ export default {
       title: "NFT & Metaverse",
       subtitle: "«I can't explain muself. I'm afraid. Sir», said Alice, because I am not myself, you see»"
     })
-    console.log(headerOptions.value)
     return {
       headerOptions
     }

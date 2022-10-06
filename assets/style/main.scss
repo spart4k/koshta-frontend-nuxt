@@ -41,7 +41,7 @@ html {
     font-size: calc((10 / 1440) * 100vw);
   }
   @media (max-width: $mobileWidth) {
-    font-size: calc((10 / 768) * 100vw);
+    font-size: calc((10 / 390) * 100vw);
   }
 }
 
@@ -110,3 +110,62 @@ h1,h2,h3,h4,h5,h6,p {
 // .page {
 //   overflow: unset !important;
 // }
+.slick-slider {
+  position: relative;
+  .slick-list {
+    overflow: hidden;
+    .slick-track {
+      display: flex;
+      .slick-slide {
+        width: 100%;
+      }
+    }
+  }
+  .slick-arrow {
+    &.slick-next, &.slick-prev {
+      width: 5rem;
+      height: 5rem;
+      z-index: 10;
+      background-image: url('@/assets/images/icons/arrow.svg');
+      background-size: contain;
+      backdrop-filter: blur(50px);
+      -webkit-backdrop-filter: blur(50px);
+      border-radius: 50%;
+      &:after, &:before {
+        display: none;
+      }
+    }
+    &.slick-next {
+      right: 4rem;
+      transform: translate3d(0, -50%, 10px) rotateY(180deg);
+    }
+    &.slick-prev {
+      left: 4rem;
+    }
+    @media (max-width: $mobileWidth) {
+      display: none !important;
+    }
+  }
+  .slick-dots {
+    display: none !important;
+    @media (max-width: $mobileWidth) {
+      display: flex !important;
+      justify-content: center;
+      z-index: 20;
+      li {
+        margin: 0 0;
+        button {
+          &:before {
+            transition: .2s;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}
+.icon {
+  &:hover {
+    cursor: pointer;
+  }
+}

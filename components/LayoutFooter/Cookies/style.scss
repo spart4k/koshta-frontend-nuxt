@@ -12,4 +12,10 @@
     display: inline-flex;
     @include uppercase;
   }
+  @media (max-width: $mobileWidth) {
+    width: calc(100% - 4rem);
+    > p:last-child {
+      margin-top: 7.2rem;
+    }
+  }
 }

@@ -1,0 +1,16 @@
+.description {
+  margin: 13rem auto 8.5rem auto;
+  text-align: center;
+  width: calc(100%/1.8);
+  color: #000;
+  z-index: 1;
+  @include title-h1;
+  font-weight: 400;
+  @media (max-width: $mobileWidth) {
+    margin: 0rem auto 8.5rem auto;
+    width: calc(100% - 9rem);
+  }
+}
+.footer {
+  position: relative;
+}

@@ -27,7 +27,6 @@ export default {
           store.commit('layout/showInterface')
         }
         if (nextIndex === 3 ) {
-          console.log('3')
           store.commit('layout/hideInterface')
         }
       },
