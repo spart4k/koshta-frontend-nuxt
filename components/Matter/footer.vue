@@ -183,7 +183,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #929292;
-  height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 svg {
