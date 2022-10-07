@@ -5,7 +5,7 @@
       <div class="page-2 page">
         <main-video ref="mainVideo"></main-video>
       </div>
-      <div ref="projects" class="page-3 page">
+      <div ref="projects" class="page-3">
         <ui-container>
           <main-projects :headerOptions="headerOptions" ref=""></main-projects>
         </ui-container>
