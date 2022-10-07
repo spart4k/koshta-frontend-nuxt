@@ -9,9 +9,7 @@
         <ui-container>
           <main-projects :headerOptions="headerOptions" ref=""></main-projects>
         </ui-container>
-        <div :class="$style.footer">
-          <main-footer></main-footer>
-        </div>
+        <main-footer :class="$style.footer"></main-footer>
       </div>
       <!-- <div class="page no-layout">
         

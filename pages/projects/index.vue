@@ -21,9 +21,7 @@
         <projects-list/>
       </div>
     </ui-container>
-    <div>
-      <main-footer :class="$style.footer"></main-footer>
-    </div>
+    <main-footer :class="$style.footer"></main-footer>
   </div>
 </template>
 <script src="./setup.js"></script>

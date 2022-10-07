@@ -8,9 +8,7 @@
     <VueSlickCarousel :class="$style.slider" :arrows="true" :dots="true">
       <img v-for="item in 5" src="@/assets/images/projects/slide.png" alt="">
     </VueSlickCarousel>
-    <div :class="$style.footer">
-      <main-footer></main-footer>
-    </div>
+    <main-footer/>
   </div>
 </template>
 <script src="./setup.js"></script>
