@@ -31,7 +31,7 @@
     @media (max-width: $mobileWidth) {
       width: calc(100% - 12rem);
       margin: 0rem auto 0 auto;
-      top: 15.7rem;
+      top: 12.7rem;
     }
   }
   .center {
@@ -41,7 +41,7 @@
     left: 50%;
     transform: translate3d(-50%,0%, 0);
     @media (max-width: $mobileWidth) {
-      top: 30.8rem;
+      top: 32.8rem;
     }
   }
   .contacts {
