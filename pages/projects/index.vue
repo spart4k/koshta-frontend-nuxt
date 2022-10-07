@@ -21,8 +21,8 @@
         <projects-list/>
       </div>
     </ui-container>
-    <div :class="$style.footer">
-      <main-footer></main-footer>
+    <div>
+      <main-footer :class="$style.footer"></main-footer>
     </div>
   </div>
 </template>
