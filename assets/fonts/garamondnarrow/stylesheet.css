@@ -1,8 +1,10 @@
 @font-face {
   font-family: 'Garamond Narrow';
-  src: url('garamondnarrow.ttf');
-  font-weight: normal;
   font-style: normal;
+  font-weight: 400;
+  src: local('Garamond Narrow'), local('GaramondNarrow-Regular'),
+      url('./garamondnarrow.woff') format('woff'),
+      url('./garamondnarrow.ttf') format('truetype');
 }
 
 

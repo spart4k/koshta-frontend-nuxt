@@ -2,6 +2,7 @@
   width: 12.6rem;
   height: 3.2rem;
   color: $fontColorDefault;
+  mix-blend-mode: difference;
   // -webkit-filter:invert(100%);
   // filter:progid:DXImageTransform.Microsoft.BasicImage(invert='1');
   path {

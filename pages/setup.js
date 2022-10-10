@@ -5,6 +5,7 @@ export default {
     const { store } = useContext()
     const mainVideo = ref(null) 
     const projects = ref(null)
+    const example = ref(null)
     const headerOptions = ref({
       title: "All projects",
       subtitle: "«I can't explain muself. I'm afraid. Sir», said Alice, because I am not myself, you see»"
@@ -24,6 +25,7 @@ export default {
           stopMainVideo()
         }
         if (currenIndex === 3) {
+          // fullpageOptions.value.setAutoScrolling = false
           store.commit('layout/showInterface')
         }
         if (nextIndex === 3 ) {
@@ -59,8 +61,34 @@ export default {
     const stopMainVideo = () => {
       mainVideo.value.$el.pause()
     }
-    
+    const moveNext = () => {
+      document.addEventListener("wheel", (e) => {
+        console.log('move')
+        e.stopPropagation()
+      })
+      document.addEventListener('swiped', e => {
+        console.log('swiped')
+        alert('swiped-up')
+        e.stopPropagation()
+      })
+      document.addEventListener('swiped-up', function(e) {
+        alert('swiped-up')
+        console.log('swiped-up'); // the element that was swiped
+        e.stopPropagation()
+      })
+      document.addEventListener('touchstart', function(e) {
+        // alert('touchstart')
+        console.log('swiped-up'); // the element that was swiped
+        // e.stopPropagation()
+      })
+      document.addEventListener('scroll', function(e) {
+        alert('scroll')
+        console.log('swiped-up'); // the element that was swiped
+        e.stopPropagation()
+      })
+    }
     onMounted(() => {
+      // moveNext()
     })
     return {
       fullpageOptions,
@@ -69,7 +97,9 @@ export default {
       setOverflowBlock,
       stopMainVideo,
       startMainVideo,
-      headerOptions
+      headerOptions,
+      moveNext,
+      example
     }
   }
   

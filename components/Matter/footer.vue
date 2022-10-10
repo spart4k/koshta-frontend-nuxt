@@ -163,8 +163,19 @@ export default {
         })
       }
       canvas.addEventListener("wheel", (e) => {
+        console.log('move')
         e.stopPropagation()
       })
+      container.addEventListener('swiped', e => {
+        console.log('swiped')
+        alert('swiped-up')
+        e.stopPropagation()
+      })
+      document.addEventListener('swiped-up', function(e) {
+        alert('swiped-up')
+        console.log('swiped-up'); // the element that was swiped
+        e.stopPropagation()
+    });
       // setTimeout(() => {
       //   shakeBodies()
       // }, 3000)

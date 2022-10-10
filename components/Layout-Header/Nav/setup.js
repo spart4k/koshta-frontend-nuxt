@@ -24,8 +24,7 @@ export default {
     const closeNav = () => {
       isShowWrap.value = false
     }
-    const openAbout = () => {
-      return 
+    const openAbout = () => { 
       router.push({
         path: `/about`
       })

@@ -29,7 +29,7 @@
     margin-bottom: 9.5rem;
     @include title-h1;
     @media (max-width: $mobileWidth) {
-      width: calc(100% - 12rem);
+      width: calc(100% - 3rem);
       margin: 0rem auto 0 auto;
       top: 10.4rem;
     }
