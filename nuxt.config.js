@@ -41,7 +41,8 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // '@nuxtjs/eslint-module',
-    '@nuxtjs/composition-api/module'
+    '@nuxtjs/composition-api/module',
+    '@fullpage/nuxt-fullpage'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -49,7 +50,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
-    'fullpage-nuxt'
+    'fullpage-nuxt',
+    '@fullpage/nuxt-fullpage'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

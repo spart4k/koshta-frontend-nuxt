@@ -197,10 +197,12 @@ export default {
           }
         });
       World.add(world, mouseConstraint);
-      Events.on(mouseConstraint, "startdrag", () => {
+      Events.on(mouseConstraint, "startdrag", (e) => {
+        store.commit('fullpage/changeState', true)
         store.commit('matter/changeState', true)
       })
-      Events.on(mouseConstraint, "enddrag", () => {
+      Events.on(mouseConstraint, "enddrag", (e) => {
+        store.commit('fullpage/changeState', false)
         store.commit('matter/changeState', false)
       })
       // keep the mouse in sync with rendering
