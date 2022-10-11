@@ -1,8 +1,8 @@
 .project {
   display: flex;
   padding-bottom: 4rem;
-  border-bottom: 1px solid $fontColorDefault;
   &:not(:last-child) {
+    border-bottom: 1px solid $fontColorDefault;
     margin-bottom: 4rem;
   }
   .section {

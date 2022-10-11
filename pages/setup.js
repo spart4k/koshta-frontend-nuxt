@@ -4,7 +4,6 @@ export default {
   components: {
   },
   setup(props, ctx) {
-    console.log(useContext())
     const { store } = useContext()
     const mainVideo = ref(null) 
     const projects = ref(null)
@@ -18,7 +17,6 @@ export default {
       duration: 500,
       disabled: false,
       beforeChange: function (currentSlideEl,currenIndex,nextIndex) {
-        console.log(currenIndex)
         if (nextIndex === 1) {
           startMainVideo()
         }
@@ -26,15 +24,12 @@ export default {
           stopMainVideo()
           fullpageOptions.value.disabled = true
         }
-        if (currenIndex === 3) {
-          // fullpageOptions.value.setAutoScrolling = false
-          store.commit('layout/showInterface')
-        }
-        if (nextIndex === 3 ) {
-          store.commit('layout/hideInterface')
-        }
         if (currenIndex === 2) {
-          console.log(this.$refs)
+          // fullpageOptions.value.setAutoScrolling = false
+          // store.commit('layout/showInterface')
+        }
+        if (nextIndex === 2 ) {
+          // store.commit('layout/hideInterface')
         }
       },
       afterChange: function (currentSlideEl,currenIndex) {
@@ -44,43 +39,39 @@ export default {
       }
     })
     const setOverflowBlock = () => {
-      const blockHeight = projects.value.scrollHeight - projects.value.offsetHeight
-        
-        if (projects.value.scrollTop === 0 || projects.value.scrollTop < 0) {
-          console.log('ON FILLPAGE')
-          store.commit('fullpage/changeState', false)
+      const blockHeight = projects.value.scrollHeight - projects.value.offsetHeight; 
+      manageStateFullpage()
+      projects.value.onwheel = e => {
+        console.log(blockHeight)
+        console.log(projects.value.scrollTop)
+        if (projects.value.scrollTop >= blockHeight) {
+          store.commit('layout/hideInterface')
         }
         else {
-          console.log('OFF FILLPAGE')
-          store.commit('fullpage/changeState', true)
+          store.commit('layout/showInterface')
         }
-        projects.value.onwheel = e => {
-          console.log(projects.value.scrollTop)
-          console.log(store.state.fullpage.disabled)
-          if (projects.value.scrollTop === 0 || projects.value.scrollTop < 0) {
-            console.log('ON FILLPAGE')
-            store.commit('fullpage/changeState', false)
+        manageStateFullpage()
+        if (projects.value.scrollTop <= 0 || projects.value.scrollTop === blockHeight) {
+          if (e.deltaY > 100 || e.deltaY < -100) {
+            return
           }
           else {
-            console.log('OFF FILLPAGE')
-            store.commit('fullpage/changeState', true)
-          }
-          if (projects.value.scrollTop <= 0 || projects.value.scrollTop === blockHeight) {
-            if (e.deltaY > 85 || e.deltaY < -85) {
-              return
-            }
-            else {
-              e.stopPropagation()
-            }
-          }
-          else {        
             e.stopPropagation()
           }
-        };
-        projects.value.style.overflow = 'auto'
-        projects.value.touchstart = e => {
-          console.log('touch')
         }
+        else {        
+          e.stopPropagation()
+        }
+      };
+      projects.value.style.overflow = 'auto'
+    }
+    const manageStateFullpage = () => {
+      if (projects.value.scrollTop === 0 || projects.value.scrollTop < 0) {
+        store.commit('fullpage/changeState', false)
+      }
+      else {
+        store.commit('fullpage/changeState', true)
+      }
     }
     const startMainVideo = () => {
       mainVideo.value.$el.play()
@@ -88,37 +79,7 @@ export default {
     const stopMainVideo = () => {
       mainVideo.value.$el.pause()
     }
-    const moveNext = () => {
-      document.addEventListener("wheel", (e) => {
-        e.stopPropagation()
-      })
-      document.addEventListener("touchend", (e) => {
-        console.log('end')
-        e.stopPropagation()
-      })
-      // document.addEventListener('swiped', e => {
-      //   console.log('swiped')
-      //   alert('swiped-up')
-      //   e.stopPropagation()
-      // })
-      // document.addEventListener('swiped-up', function(e) {
-      //   alert('swiped-up')
-      //   console.log('swiped-up'); // the element that was swiped
-      //   e.stopPropagation()
-      // })
-      // document.addEventListener('touchstart', function(e) {
-      //   // alert('touchstart')
-      //   console.log('swiped-up'); // the element that was swiped
-      //   // e.stopPropagation()
-      // })
-      document.addEventListener('scroll', function(e) {
-        // console.log('scroll'); // the element that was swiped
-        // e.stopPropagation()
-      })
-    }
     onMounted(() => {
-      console.log(example.value)
-      // moveNext()
     })
     return {
       fullpageOptions,
@@ -128,22 +89,14 @@ export default {
       stopMainVideo,
       startMainVideo,
       headerOptions,
-      moveNext,
       example
     }
   },
   methods: {
-    initLog() {
-      console.log('init')
-      // this.$refs.example.$fullpage.setDisabled(true);
-      setTimeout(() => {
-        // this.$refs.example.$fullpage.setDisabled(false);
-      },3000)
-    }
+
   },
   watch: {
     disabledFullpage(newVal,oldVar) {
-      console.log(oldVar,newVal)
       if (newVal) {
         this.$refs.example.$fullpage.setDisabled(true);
       }
@@ -158,9 +111,6 @@ export default {
     }
   },
   mounted() {
-    this.initLog()
-    console.log()
-    
     // this.$refs.example.$fullpage.$update();
   }
   

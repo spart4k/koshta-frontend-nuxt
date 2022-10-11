@@ -28,15 +28,12 @@
       :class="$style.provided"
       />
     </transition>
-    <transition name="fade">
-      <LayoutFooterCookies
-      v-if="isShowInterface && route.name === 'index'"
-      :style="{
-        'pointer-events': noClickedMatter ? 'none' : 'unset'
-      }"
-      :class="$style.cookies"
-      />
-    </transition>
+    <LayoutFooterCookies
+    :style="{
+      'pointer-events': noClickedMatter ? 'none' : 'unset'
+    }"
+    :class="$style.cookies"
+    />
     <Nuxt />
   </div>  
 </template>

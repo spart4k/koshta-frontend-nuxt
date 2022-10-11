@@ -5,7 +5,6 @@ export const state = () => ({
 export const mutations = {
   changeState(state, param) {
     state.disabled = param
-    console.log(state.disabled)
   }
 }
 

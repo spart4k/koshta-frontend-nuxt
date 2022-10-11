@@ -24,6 +24,7 @@ export default {
       return props.centerOptions
     })
     onMounted(() => {
+      console.log(window.devicePixelRatio)
       setTimeout(() => {
         initMatter()
       }, 300)
@@ -59,7 +60,7 @@ export default {
       //Create canvas with the device resolution.
       // createHiDPICanvas(2000, 1000);
       //Create canvas with a custom resolution.
-      createHiDPICanvas(1900, 1000, 4);
+      // createHiDPICanvas(1900, 1000, 4);
       var Engine = Matter.Engine,
         Render = Matter.Render,
         Runner = Matter.Runner,
@@ -83,7 +84,8 @@ export default {
           background: '#ffffff',
           width: container.offsetWidth,
           height: container.offsetHeight,
-          wireframes: false
+          wireframes: false,
+          pixelRatio: 1
         }
       });
       canvas.width = container.offsetWidth;
@@ -148,15 +150,17 @@ export default {
         }
         var bounce = Bodies.circle(canvas.width/2, -300 - index * 900,canvas.width/12.5, {
           label: `bounce_${index}`,
-          density: .8,
+          density: 2,
           restitution: .8,
           render: {
-              sprite: {
-                  // texture: require('@/assets/images/Group 3.png'),
-                  texture: getImage(item.path),
-                  xScale: procent,
-                  yScale: procent
-              }
+            pixelRatio: 2,
+            sprite: {
+                // texture: require('@/assets/images/Group 3.png'),
+                texture: getImage(item.path),
+                pixelRatio: 2,
+                xScale: procent,
+                yScale: procent
+            }
           }}
         )
         bounes.push(bounce)
@@ -183,6 +187,9 @@ export default {
           textBlock
         ]);
       }
+      // bounes.forEach((item) => {
+      //   item.
+      // })
       
       
       // add mouse control

@@ -55,7 +55,8 @@ export default {
           background: '#ffffff',
           width: container.offsetWidth,
           height: container.offsetHeight,
-          wireframes: false
+          wireframes: false,
+          pixelRatio: 1
         }
       });
       canvas.width = container.offsetWidth;
@@ -93,9 +94,10 @@ export default {
         }
         var bounce = Bodies.circle((canvas.width / 2 - (canvas.width / 12.5 * 2)) + index * 100, canvas.height - 150, canvas.width / 12.5, {
           label: `Bounce`,
-          density: .8,
+          density: 2,
           restitution: .8,
           render: {
+            pixelRatio: 2,
             sprite: {
               // texture: require('@/assets/images/Group 3.png'),
               texture: getImage(item.path),
@@ -108,7 +110,9 @@ export default {
         bounes.push(bounce)
       })
       var ground = Bodies.rectangle(canvas.width / 2, canvas.height + 30, canvas.width, 60, {
-        isStatic: true, label: "Ground", density: 1.4,
+        isStatic: true, label: "Ground", density: 1.4, render: {
+          fillStyle: 'white'
+        }
       });
       var roof = Bodies.rectangle(canvas.width / 2, 0 - 60, canvas.width, 60, {
         isStatic: true, label: "Roof", density: 1.4,
@@ -164,18 +168,8 @@ export default {
       }
       canvas.addEventListener("wheel", (e) => {
         console.log('move')
-        e.stopPropagation()
+        // e.stopPropagation()
       })
-      container.addEventListener('swiped', e => {
-        console.log('swiped')
-        alert('swiped-up')
-        e.stopPropagation()
-      })
-      document.addEventListener('swiped-up', function(e) {
-        alert('swiped-up')
-        console.log('swiped-up'); // the element that was swiped
-        e.stopPropagation()
-    });
       // setTimeout(() => {
       //   shakeBodies()
       // }, 3000)

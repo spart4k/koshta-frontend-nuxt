@@ -3,11 +3,10 @@
     <div class="fullpage-wp" v-fullpage="fullpageOptions" ref="example">
       <start-page/>
       <div class="page-2 page">
-        {{ disabledFullpage }}
         <main-video ref="mainVideo"></main-video>
       </div>
       <div ref="projects" class="page-3 projects">
-        <ui-container>
+        <ui-container :class="$style.projectsContent">
           <main-projects :headerOptions="headerOptions" ref=""></main-projects>
         </ui-container>
         <main-footer :class="$style.footer"></main-footer>

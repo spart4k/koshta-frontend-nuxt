@@ -1,6 +1,6 @@
 <template>
-  <transition name="expand">
-    <div v-if="isShow" :class="$style.cookies">
+  <transition :name="transition">
+    <div v-if="isShow && isShowInterface" :class="$style.cookies">
       <p>
         This site uses third-party website tracking technologies to provide and continually improve your experience.
         <button class="active">
@@ -15,7 +15,7 @@
         </button>
       </p>
     </div>
-  </transition>  
+</transition>
 </template>
 <style lang="scss" module src="./style.scss"></style>
 <script src="./setup.js"></script>
