@@ -33,29 +33,29 @@ export default {
     const initMatter = () => {
       const el = document.getElementById('start-matter')
       var canvas = document.getElementById('wrap')
-      var PIXEL_RATIO = (function () {
-      var ctx = canvas.getContext("2d"),
-          dpr = window.devicePixelRatio || 1,
-          bsr = ctx.webkitBackingStorePixelRatio ||
-                ctx.mozBackingStorePixelRatio ||
-                ctx.msBackingStorePixelRatio ||
-                ctx.oBackingStorePixelRatio ||
-                ctx.backingStorePixelRatio || 1;
+      // var PIXEL_RATIO = (function () {
+      // var ctx = canvas.getContext("2d"),
+      //     dpr = window.devicePixelRatio || 1,
+      //     bsr = ctx.webkitBackingStorePixelRatio ||
+      //           ctx.mozBackingStorePixelRatio ||
+      //           ctx.msBackingStorePixelRatio ||
+      //           ctx.oBackingStorePixelRatio ||
+      //           ctx.backingStorePixelRatio || 1;
 
-      return dpr / bsr;
-      })();
+      // return dpr / bsr;
+      // })();
 
 
-      var createHiDPICanvas = function(w, h, ratio) {
-          if (!ratio) { ratio = PIXEL_RATIO; }
-          var can = document.createElement("canvas");
-          can.width = w * ratio;
-          can.height = h * ratio;
-          can.style.width = w + "px";
-          can.style.height = h + "px";
-          can.getContext("2d").setTransform(ratio, 0, 0, ratio, 0, 0);
-          return can;
-      }
+      // var createHiDPICanvas = function(w, h, ratio) {
+      //     if (!ratio) { ratio = PIXEL_RATIO; }
+      //     var can = document.createElement("canvas");
+      //     can.width = w * ratio;
+      //     can.height = h * ratio;
+      //     can.style.width = w + "px";
+      //     can.style.height = h + "px";
+      //     can.getContext("2d").setTransform(ratio, 0, 0, ratio, 0, 0);
+      //     return can;
+      // }
 
       //Create canvas with the device resolution.
       // createHiDPICanvas(2000, 1000);
@@ -85,12 +85,15 @@ export default {
           width: container.offsetWidth,
           height: container.offsetHeight,
           wireframes: false,
-          pixelRatio: 1
+          pixelRatio: window.devicePixelRatio
         }
       });
-      canvas.width = container.offsetWidth;
-      canvas.height = container.offsetHeight;
-      
+      canvas.width = container.offsetWidth * window.devicePixelRatio;
+      canvas.height = container.offsetHeight * window.devicePixelRatio;
+      // canvas.clientWidth = canvas.width * window.devicePixelRatio
+      // canvas.clientHeight = canvas.height * window.devicePixelRatio
+      console.log('canv '+ canvas.width)
+      console.log('canvClient '+ canvas.clientWidth)
 
 
       Render.run(render);
@@ -148,16 +151,16 @@ export default {
         const getImage = (path) => {
           return require(`@/assets/images/${path}`)
         }
-        var bounce = Bodies.circle(canvas.width/2, -300 - index * 900,canvas.width/12.5, {
+        var bounce = Bodies.circle(canvas.clientWidth/2, -300 - index * 900,canvas.clientWidth/12.5, {
           label: `bounce_${index}`,
           density: 2,
           restitution: .8,
           render: {
-            pixelRatio: 2,
+            pixelRatio: window.devicePixelRatio,
             sprite: {
                 // texture: require('@/assets/images/Group 3.png'),
                 texture: getImage(item.path),
-                pixelRatio: 2,
+                pixelRatio: window.devicePixelRatio,
                 xScale: procent,
                 yScale: procent
             }
@@ -165,16 +168,16 @@ export default {
         )
         bounes.push(bounce)
       })
-      var ground = Bodies.rectangle(canvas.width / 2, canvas.height + 30, canvas.width, 60, {
+      var ground = Bodies.rectangle(canvas.clientWidth / 2, canvas.clientHeight + 30, canvas.clientWidth, 60, {
         isStatic: true, label: "Ground", density: 1.4,
       });
-      var wallLeft = Bodies.rectangle(-30, canvas.height / 2, 60, canvas.height * 3, {
+      var wallLeft = Bodies.rectangle(-30, canvas.clientHeight / 2, 60, canvas.clientHeight * 3, {
         isStatic: true, label: "Wall Left", density: 1.4,
       });
-      var wallRight = Bodies.rectangle(canvas.width + 30, canvas.height / 2, 60, canvas.height * 3, {
+      var wallRight = Bodies.rectangle(canvas.clientWidth + 30, canvas.clientHeight / 2, 60, canvas.clientHeight * 3, {
         isStatic: true, label: "Wall Right", density: 1.4,
       });
-      var textBlock = Bodies.rectangle( canvas.width / 2,canvas.height / 2,props.centerOptions.width, props.centerOptions.height,{
+      var textBlock = Bodies.rectangle( canvas.clientWidth / 2,canvas.clientHeight / 2,canvas.clientWidth/1.8, props.centerOptions.height,{
         isStatic: true, label: "Center", density: 1.4, render: {
           fillStyle: 'transparent'
         }

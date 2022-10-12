@@ -82,7 +82,7 @@
 </style>
 
 <script>
-  import { useContext, computed } from '@nuxtjs/composition-api'
+  import { useContext, computed, onMounted } from '@nuxtjs/composition-api'
   export default {
     name: 'layout-default',
     setup() {
@@ -92,6 +92,9 @@
       })
       const isShowInterface = computed(() => {
         return store.state?.layout?.isShow
+      })
+      
+      onMounted(() => {
       })
       return {
         noClickedMatter,

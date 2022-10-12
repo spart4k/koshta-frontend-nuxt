@@ -42,14 +42,6 @@ export default {
       const blockHeight = projects.value.scrollHeight - projects.value.offsetHeight; 
       manageStateFullpage()
       projects.value.onwheel = e => {
-        console.log(blockHeight)
-        console.log(projects.value.scrollTop)
-        if (projects.value.scrollTop >= blockHeight) {
-          store.commit('layout/hideInterface')
-        }
-        else {
-          store.commit('layout/showInterface')
-        }
         manageStateFullpage()
         if (projects.value.scrollTop <= 0 || projects.value.scrollTop === blockHeight) {
           if (e.deltaY > 100 || e.deltaY < -100) {
