@@ -18,14 +18,17 @@
     background-blend-mode: difference;
   }
   svg {
-    color: #000;
+    position: fixed;
+    left: 4rem;
+    top: 4rem;
     mix-blend-mode: difference;
-    transform: translate3d(0,0, 100px);
-    z-index: 100;
-    path {
-      // color: $fontColorDefault;
-      // mix-blend-mode: multiply;
-      mix-blend-mode: difference;
+    transform: translate3d(0,0,0);
+    z-index: 10;
+    color: #fff;
+    @media (max-width: $mobileWidth) {
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 </style>

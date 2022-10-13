@@ -2,7 +2,19 @@
   width: 12.6rem;
   height: 3.2rem;
   color: #000;
+  mix-blend-mode: difference;
+  transform: translate3d(0,0,0);
   svg {
+    position: fixed;
+    left: 4rem;
+    top: 4rem;
     mix-blend-mode: difference;
+    transform: translate3d(0,0,0);
+    z-index: 10;
+    @media (max-width: $mobileWidth) {
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 }

@@ -2,7 +2,7 @@
   <div>
     <!-- <HeaderDefault/> -->
     <transition name="fade">
-      <LayoutHeaderLogotype
+      <Logotype
       v-if="isShowInterface"
       :style="{
         'pointer-events': noClickedMatter ? 'none' : 'unset'
@@ -41,7 +41,7 @@
 <style lang="scss" module>
   $zIndexHeader: 100;
   .logotype {
-    position: fixed;
+    // position: fixed;
     left: 4rem;
     top: 4rem;
     z-index: $zIndexHeader;
