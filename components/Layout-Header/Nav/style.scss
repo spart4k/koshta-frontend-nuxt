@@ -1,5 +1,8 @@
 .nav {
   @include regular-text;
+  mix-blend-mode: difference;
+  color: $fontColorDefault;
+  z-index: 20;
   .desktop {
     display: flex;
     &.projects {
@@ -44,7 +47,10 @@
         color: #000;
       }
       span {
+        display: block;
         position: relative;
+        color: #fff;
+        mix-blend-mode: difference;
         &:after {
           content: '';
           position: absolute;

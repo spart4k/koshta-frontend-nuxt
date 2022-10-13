@@ -45,6 +45,7 @@
     left: 4rem;
     top: 4rem;
     z-index: $zIndexHeader;
+    z-index: 10;
     @media (max-width: $mobileWidth) {
       top: 2rem;
       left: 50%;

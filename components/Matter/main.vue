@@ -92,8 +92,6 @@ export default {
       canvas.height = container.offsetHeight * window.devicePixelRatio;
       // canvas.clientWidth = canvas.width * window.devicePixelRatio
       // canvas.clientHeight = canvas.height * window.devicePixelRatio
-      console.log('canv '+ canvas.width)
-      console.log('canvClient '+ canvas.clientWidth)
 
 
       Render.run(render);
@@ -221,9 +219,9 @@ export default {
       window.addEventListener("resize", function () {
           canvas.width = container.offsetWidth;
           canvas.height = container.offsetHeight
-          Matter.Body.setPosition(ground, {x: canvas.width / 2, y: canvas.height + 30})
-          Matter.Body.setPosition(wallRight, {x: canvas.width + 30, y: canvas.height / 2})
-          Matter.Body.setPosition(textBlock, {x: canvas.width / 2, y: canvas.height / 2})
+          Matter.Body.setPosition(ground, {x: canvas.clientWidth / 2, y: canvas.clientHeight + 30})
+          Matter.Body.setPosition(wallRight, {x: canvas.clientWidth + 30, y: canvas.clientHeight / 2})
+          Matter.Body.setPosition(textBlock, {x: canvas.clientWidth / 2, y: canvas.clientHeight / 2})
           // Matter.Body.scale( textBlock, 1.005, 1.005);
       });
     }

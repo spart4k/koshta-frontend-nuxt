@@ -24,6 +24,7 @@ export default {
       return props.centerOptions
     })
     onMounted(() => {
+      startObserveFooter()
       setTimeout(() => {
         initMatter()
       }, 300)
@@ -56,11 +57,11 @@ export default {
           width: container.offsetWidth,
           height: container.offsetHeight,
           wireframes: false,
-          pixelRatio: 1
+          pixelRatio: window.devicePixelRatio
         }
       });
-      canvas.width = container.offsetWidth;
-      canvas.height = container.offsetHeight;
+      canvas.width = container.offsetWidth * window.devicePixelRatio;
+      canvas.height = container.offsetHeight * window.devicePixelRatio;
 
 
 
@@ -92,15 +93,16 @@ export default {
         const getImage = (path) => {
           return require(`@/assets/images/${path}`)
         }
-        var bounce = Bodies.circle((canvas.width / 2 - (canvas.width / 12.5 * 2)) + index * 100, canvas.height - 150, canvas.width / 12.5, {
+        var bounce = Bodies.circle((canvas.clientWidth / 2 - (canvas.clientWidth / 12.5 * 2)) + index * 100, canvas.clientHeight - 150, canvas.clientWidth / 12.5, {
           label: `Bounce`,
           density: 2,
           restitution: .8,
           render: {
-            pixelRatio: 2,
+            pixelRatio: window.devicePixelRatio,
             sprite: {
               // texture: require('@/assets/images/Group 3.png'),
               texture: getImage(item.path),
+              pixelRatio: window.devicePixelRatio,
               xScale: procent,
               yScale: procent
             }
@@ -109,18 +111,18 @@ export default {
         )
         bounes.push(bounce)
       })
-      var ground = Bodies.rectangle(canvas.width / 2, canvas.height + 30, canvas.width, 60, {
+      var ground = Bodies.rectangle(canvas.clientWidth / 2, canvas.clientHeight + 30, canvas.clientWidth, 60, {
         isStatic: true, label: "Ground", density: 1.4, render: {
           fillStyle: 'white'
         }
       });
-      var roof = Bodies.rectangle(canvas.width / 2, 0 - 60, canvas.width, 60, {
+      var roof = Bodies.rectangle(canvas.clientWidth / 2, 0 - 60, canvas.clientWidth, 60, {
         isStatic: true, label: "Roof", density: 1.4,
       });
-      var wallLeft = Bodies.rectangle(-30, canvas.height / 2, 60, canvas.height * 3, {
+      var wallLeft = Bodies.rectangle(-30, canvas.clientHeight / 2, 60, canvas.clientHeight * 3, {
         isStatic: true, label: "Wall Left", density: 1.4,
       });
-      var wallRight = Bodies.rectangle(canvas.width + 30, canvas.height / 2, 60, canvas.height * 3, {
+      var wallRight = Bodies.rectangle(canvas.clientWidth + 30, canvas.clientHeight / 2, 60, canvas.clientHeight * 3, {
         isStatic: true, label: "Wall Right", density: 1.4,
       });
       World.add(world, [
@@ -149,8 +151,8 @@ export default {
       window.addEventListener("resize", function () {
         canvas.width = container.offsetWidth;
         canvas.height = container.offsetHeight
-        Matter.Body.setPosition(ground, { x: canvas.width / 2, y: canvas.height + 30 })
-        Matter.Body.setPosition(wallRight, { x: canvas.width + 30, y: canvas.height / 2 })
+        Matter.Body.setPosition(ground, { x: canvas.clientWidth / 2, y: canvas.clientHeight + 30 })
+        Matter.Body.setPosition(wallRight, { x: canvas.clientWidth + 30, y: canvas.clientHeight / 2 })
         // Matter.Body.scale( textBlock, 1.005, 1.005);
       });
       const shakeBodies = () => {
@@ -166,13 +168,26 @@ export default {
           Matter.Body.setStatic(item, false);
         })
       }
+      
       canvas.addEventListener("wheel", (e) => {
-        console.log('move')
-        // e.stopPropagation()
       })
-      // setTimeout(() => {
-      //   shakeBodies()
-      // }, 3000)
+    }
+    const startObserveFooter = () => {
+      const footer = document.querySelector('.main-footer')
+      let options = {
+          threshold: 0.9
+      }
+      const callback = (entries) => {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            store.commit('layout/hideInterface')
+          } else {
+            store.commit('layout/showInterface')
+          }
+        });
+      }
+      let observer = new IntersectionObserver(callback, options);
+      observer.observe(footer);
     }
     return {
       centerOptions
@@ -183,7 +198,6 @@ export default {
 
 <style>
 #footer-matter {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

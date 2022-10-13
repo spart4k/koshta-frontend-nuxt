@@ -1,6 +1,8 @@
 .provided {
   @include uppercase;
   @include regular-text;
+  color: #fff;
+  mix-blend-mode: difference;
   span {
     @include garamond-narrow;
     font-size: 1.5rem;
