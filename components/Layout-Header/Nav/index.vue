@@ -42,9 +42,6 @@
             <button @click.prevent="openSection()">Video & CGI</button>
           </div>
         </div>
-        <button @click.prevent="openAbout()" :class="$style.subtitle">
-          About
-        </button>
         <button @click.prevent="openContacts()" :class="$style.subtitle">
           Contacts
         </button>
