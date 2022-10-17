@@ -78,7 +78,7 @@
       left: 50%;
       transform: translate(-50%, 0);
       bottom: 2rem;
-      z-index: 1;
+      z-index: 15;
     }
   }
 </style>

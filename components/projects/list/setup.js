@@ -1,10 +1,10 @@
 import { } from '@nuxtjs/composition-api'
 export default {
-  name: 'main-projects',
+  name: 'projects',
   props: {
     cases: {
-      type: Array,
-      default: () => []
+      type: Object,
+      default: () => {}
     }
   },
   setup() {

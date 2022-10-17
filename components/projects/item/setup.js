@@ -1,6 +1,6 @@
 import { useRouter, computed } from '@nuxtjs/composition-api'
 export default {
-  name: 'projects-item',
+  name: 'project',
   props: {
     case: {
       type: Object,
@@ -15,7 +15,7 @@ export default {
       })
     }
     const caseInfo = computed(() => {
-      return props.case?.attributes
+      return props.case
     })
     return {
       openProject,

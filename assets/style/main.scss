@@ -55,6 +55,9 @@ body {
   // &:global(.popup-opened) {
   //   overflow: hidden;
   // }
+  &.no-overflow {
+    overflow: hidden;
+  }
 }
 
 button {
@@ -70,6 +73,9 @@ button {
     &:hover {
       cursor: pointer;
     }
+  }
+  &:active {
+    color: red;
   }
 }
 
@@ -149,15 +155,35 @@ h1,h2,h3,h4,h5,h6,p {
   .slick-dots {
     display: none !important;
     @media (max-width: $mobileWidth) {
+      position: static;
       display: flex !important;
       justify-content: center;
-      z-index: 20;
+      z-index: 10;
+      margin-top: 1.5rem;
       li {
-        margin: 0 0;
+        background-color: $fontColorDefault;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 100%;
+        margin: 0 .5rem;
+        transition: .2s;
+        &:not(.slick-active) {
+          background-color: #E5E5E5;
+        }
+        &.slick-active {
+
+        }
         button {
+          position: relative;
           &:before {
-            transition: .2s;
-            font-size: 1.2rem;
+            display: none;
+            
+            font-size: 1rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
           }
         }
       }

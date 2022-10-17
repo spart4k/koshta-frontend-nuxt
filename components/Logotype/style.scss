@@ -12,6 +12,9 @@ svg {
   transform: translate3d(0,0,0);
   z-index: 100;
   color: #fff;
+  &:hover {
+    cursor: pointer;
+  }
   @media (max-width: $mobileWidth) {
     width: 12.6rem;
     height: 3.2rem;

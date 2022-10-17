@@ -142,59 +142,40 @@ export default {
         }
       ]
       const maxSize = 3200
-      let scaleParams = container.offsetWidth
-      let procent = scaleParams/maxSize
-      let bounes = []
-      sprites.forEach((item, index) => {
-        const getImage = (path) => {
-          return require(`@/assets/images/${path}`)
-        }
-        var bounce = Bodies.circle(canvas.clientWidth/2, -300 - index * 900,canvas.clientWidth/12.5, {
-          label: `bounce_${index}`,
-          density: 2,
-          restitution: .8,
-          render: {
-            pixelRatio: window.devicePixelRatio,
-            sprite: {
-                // texture: require('@/assets/images/Group 3.png'),
-                texture: getImage(item.path),
-                pixelRatio: window.devicePixelRatio,
-                xScale: procent,
-                yScale: procent
-            }
-          }}
-        )
-        bounes.push(bounce)
-      })
-      var ground = Bodies.rectangle(canvas.clientWidth / 2, canvas.clientHeight + 30, canvas.clientWidth, 60, {
-        isStatic: true, label: "Ground", density: 1.4,
-      });
-      var wallLeft = Bodies.rectangle(-30, canvas.clientHeight / 2, 60, canvas.clientHeight * 3, {
-        isStatic: true, label: "Wall Left", density: 1.4,
-      });
-      var wallRight = Bodies.rectangle(canvas.clientWidth + 30, canvas.clientHeight / 2, 60, canvas.clientHeight * 3, {
-        isStatic: true, label: "Wall Right", density: 1.4,
-      });
-      var textBlock = Bodies.rectangle( canvas.clientWidth / 2,canvas.clientHeight / 2,canvas.clientWidth/1.8, props.centerOptions.height,{
-        isStatic: true, label: "Center", density: 1.4, render: {
-          fillStyle: 'transparent'
-        }
-      });
-      World.add(world, [
-        ground,wallLeft, wallRight, ...bounes
-      ]);
-      if (container.offsetWidth >= 768) {
-        World.add(world, [
-          textBlock
-        ]);
-      }
+      var scaleParams = container.offsetWidth
+      var procent = scaleParams/maxSize
       // bounes.forEach((item) => {
       //   item.
       // })
       
       
       // add mouse control
-      var mouse = Mouse.create(render.canvas),
+      // keep the mouse in sync with rendering
+      
+      const addBodies = () => {
+        var ground = Bodies.rectangle(canvas.clientWidth / 2, canvas.clientHeight + 30, canvas.clientWidth, 60, {
+          isStatic: true, label: "Ground", density: 1.4,
+        });
+        var wallLeft = Bodies.rectangle(-30, canvas.clientHeight / 2, 60, canvas.clientHeight * 3, {
+          isStatic: true, label: "Wall Left", density: 1.4,
+        });
+        var wallRight = Bodies.rectangle(canvas.clientWidth + 30, canvas.clientHeight / 2, 60, canvas.clientHeight * 3, {
+          isStatic: true, label: "Wall Right", density: 1.4,
+        });
+        var textBlock = Bodies.rectangle( canvas.clientWidth / 2,canvas.clientHeight / 2,canvas.clientWidth/1.8, props.centerOptions.height,{
+          isStatic: true, label: "Center", density: 1.4, render: {
+            fillStyle: 'transparent'
+          }
+        });
+        Matter.Composite.add(engine.world, [
+          ground,wallLeft, wallRight
+        ])
+        if (container.offsetWidth >= 768) {
+          World.add(world, [
+            textBlock
+          ]);
+        }
+        var mouse = Mouse.create(render.canvas),
         mouseConstraint = MouseConstraint.create(engine, {
           mouse: mouse,
           constraint: {
@@ -204,25 +185,79 @@ export default {
             }
           }
         });
-      World.add(world, mouseConstraint);
-      Events.on(mouseConstraint, "startdrag", (e) => {
-        store.commit('fullpage/changeState', true)
-        store.commit('matter/changeState', true)
-      })
-      Events.on(mouseConstraint, "enddrag", (e) => {
-        store.commit('fullpage/changeState', false)
-        store.commit('matter/changeState', false)
-      })
-      // keep the mouse in sync with rendering
-      render.mouse = mouse;
-
+        World.add(world, mouseConstraint);
+        Events.on(mouseConstraint, "startdrag", (e) => {
+          store.commit('fullpage/changeState', true)
+          store.commit('matter/changeState', true)
+        })
+        Events.on(mouseConstraint, "enddrag", (e) => {
+          store.commit('fullpage/changeState', false)
+          store.commit('matter/changeState', false)
+        })
+        render.mouse = mouse;
+      }
+      const addBounces = () => {
+        canvas.width = container.offsetWidth * window.devicePixelRatio
+        canvas.height = container.offsetHeight * window.devicePixelRatio
+        sprites.forEach((item, index) => {
+          const getImage = (path) => {
+            return require(`@/assets/images/${path}`)
+          }
+          console.log(canvas.clientWidth/12.5)
+          var bounce = Bodies.circle(canvas.clientWidth/2, -300 - index * 900,canvas.clientWidth/12.5, {
+            label: `bounce_${index}`,
+            density: 2,
+            restitution: .8,
+            render: {
+              pixelRatio: window.devicePixelRatio,
+              sprite: {
+                  // texture: require('@/assets/images/Group 3.png'),
+                  texture: getImage(item.path),
+                  pixelRatio: window.devicePixelRatio,
+                  xScale: procent,
+                  yScale: procent
+              }
+            }}
+          )
+          // bounes.push(bounce)
+          Matter.Composite.add(engine.world, bounce)
+        })
+      }
+      addBounces()
+      addBodies()
       window.addEventListener("resize", function () {
-          canvas.width = container.offsetWidth;
-          canvas.height = container.offsetHeight
-          Matter.Body.setPosition(ground, {x: canvas.clientWidth / 2, y: canvas.clientHeight + 30})
-          Matter.Body.setPosition(wallRight, {x: canvas.clientWidth + 30, y: canvas.clientHeight / 2})
-          Matter.Body.setPosition(textBlock, {x: canvas.clientWidth / 2, y: canvas.clientHeight / 2})
+        // render.canvas.remove();
+        scaleParams = container.offsetWidth
+        procent = scaleParams/maxSize
+        console.log(window.devicePixelRatio)
+        canvas.width = container.offsetWidth * window.devicePixelRatio
+        canvas.height = container.offsetHeight * window.devicePixelRatio
+        canvas.style.width = container.offsetWidth + 'px'
+        // console.log(canvas.clientWidth)
+        // bounes.forEach((item) => {
+        //   // Matter.Body.scale(item, 1.2, 1.2)
+        //   Matter.Composite.remove(engine.world, item)
+        // })
+        Matter.Composite.clear(engine.world);
+        // Matter.Body.setPosition(ground, {x: canvas.clientWidth / 2, y: canvas.clientHeight + 30})
+        // Matter.Body.setPosition(wallRight, {x: canvas.clientWidth + 30, y: canvas.clientHeight / 2})
+        // Matter.Body.setPosition(textBlock, {x: canvas.clientWidth / 2, y: canvas.clientHeight / 2})
+        addBounces()
+        addBodies()
+        // addBodies()
+        
+          // render.canvas.remove();
+          // Render.run(render);
+          // World.clear(engine.world)
+          // Runner.run(runner, engine);
+          // World.add(world, [
+          //   ground,wallLeft, wallRight, ...bounes
+          // ]);
           // Matter.Body.scale( textBlock, 1.005, 1.005);
+          
+          
+          
+          // Render.run(render);
       });
     }
     return {

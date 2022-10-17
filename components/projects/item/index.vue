@@ -5,7 +5,7 @@
     </div>
     <div :class="$style.info">
       <div @click="openProject()" :class="$style.title">
-        {{ caseInfo.Title }}
+        <!-- {{ caseInfo.Title }} -->
       </div>
       <div :class="$style.author">
         – «Zodiac»

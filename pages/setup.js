@@ -73,7 +73,7 @@ export default {
       mainVideo.value.$el.pause()
     }
     onMounted(() => {
-
+      console.log(cases.value.data[0])
     })
     return {
       fullpageOptions,
@@ -87,8 +87,22 @@ export default {
       cases
     }
   },
+  data() {
+    return {
+      renderComponent: true
+    }
+  },
   methods: {
-
+    resizeWindow() {
+      window.addEventListener("resize", () => {
+        console.log('resize')
+        this.renderComponent = false;
+        this.$nextTick(() => {
+          // Adding the component back in
+          this.renderComponent = true;
+        });
+      })
+    }
   },
   watch: {
     disabledFullpage(newVal,oldVar) {
@@ -98,7 +112,7 @@ export default {
       else {
         this.$refs.example.$fullpage.setDisabled(false);
       }
-    }
+    },
   },
   computed: {
     disabledFullpage() {
@@ -106,6 +120,8 @@ export default {
     }
   },
   mounted() {
+    // this.resizeWindow()
+    // console.log('mount')
     // this.$refs.example.$fullpage.$update();
   }
   

@@ -9,7 +9,7 @@ export const mutations = {
 export const actions = {
   async getAllCases ({ commit }) {
     try {
-      const data = await this.$axios.get('/cases')
+      const data = await this.$axios.get('/cases?populate[author]=*&populate[section]=*')
       // commit('setBasket', data)
       return data.data
     } catch (e) {

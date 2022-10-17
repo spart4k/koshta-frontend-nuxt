@@ -108,6 +108,7 @@ $animationTiming1: cubic-bezier(.71,.01,.15,1);
 
 @mixin garamond-narrow {
   font-family: 'Garamond Narrow';
+  line-height: 2.2rem
 }
 
 @mixin regular-text-bold {

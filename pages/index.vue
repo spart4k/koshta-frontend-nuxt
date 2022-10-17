@@ -1,13 +1,13 @@
 <template>
   <div class="fullpage-container">
     <div class="fullpage-wp" v-fullpage="fullpageOptions" ref="example">
-      <start-page/>
+      <start-page v-if="renderComponent"/>
       <div class="page-2 page">
         <main-video ref="mainVideo"></main-video>
       </div>
       <div ref="projects" class="page-3 projects">
         <ui-container :class="$style.projectsContent">
-          <main-projects v-if="cases" :cases="cases.data" :headerOptions="headerOptions" ref=""></main-projects>
+          <main-projects v-if="cases" :cases="cases.data[0]" :headerOptions="headerOptions" ref=""></main-projects>
         </ui-container>
         <main-footer :class="$style.footer"></main-footer>
       </div>
