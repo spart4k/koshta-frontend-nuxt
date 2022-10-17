@@ -5,7 +5,7 @@
     </div>
     <div :class="$style.info">
       <div @click="openProject()" :class="$style.title">
-        S7 × Koshta × Charobai
+        {{ caseInfo.Title }}
       </div>
       <div :class="$style.author">
         – «Zodiac»
@@ -20,4 +20,4 @@
   </div>
 </template>
 <script src="./setup.js"></script>
-<style lang="scss" module src="./style.scss"></style>
+<style lang="scss" scoped module src="./style.scss"></style>

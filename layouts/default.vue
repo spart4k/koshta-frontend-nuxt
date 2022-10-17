@@ -3,6 +3,7 @@
     <!-- <HeaderDefault/> -->
     <transition name="fade">
       <Logotype
+      @click="openIndex"
       v-if="isShowInterface"
       :style="{
         'pointer-events': noClickedMatter ? 'none' : 'unset'
@@ -83,24 +84,30 @@
 </style>
 
 <script>
-  import { useContext, computed, onMounted } from '@nuxtjs/composition-api'
+  import { useContext, computed, onMounted, useRouter } from '@nuxtjs/composition-api'
   export default {
     name: 'layout-default',
     setup() {
       const { store, route } = useContext()
+      const router = useRouter()
       const noClickedMatter = computed(() => {
         return store.state?.matter?.matterClicked
       })
       const isShowInterface = computed(() => {
         return store.state?.layout?.isShow
       })
-      
+      const openIndex = () => {
+        router.push({
+          path: '/'
+        })
+      }
       onMounted(() => {
       })
       return {
         noClickedMatter,
         isShowInterface,
-        route
+        route,
+        openIndex
       }
     }
   }

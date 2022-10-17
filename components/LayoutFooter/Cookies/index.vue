@@ -17,5 +17,5 @@
     </div>
 </transition>
 </template>
-<style lang="scss" module src="./style.scss"></style>
+<style lang="scss" scoped module src="./style.scss"></style>
 <script src="./setup.js"></script>

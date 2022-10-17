@@ -10,4 +10,4 @@ export default {
   name: 'HeaderDefault'
 }
 </script>
-<style lang="scss" module src="./style.scss"></style>
+<style lang="scss" scoped module src="./style.scss"></style>

@@ -1,4 +1,4 @@
-import { ref, onMounted, useContext } from '@nuxtjs/composition-api'
+import { ref, onMounted, useContext, useAsync } from '@nuxtjs/composition-api'
 export default {
   name: 'IndexPage',
   components: {
@@ -8,6 +8,7 @@ export default {
     const mainVideo = ref(null) 
     const projects = ref(null)
     const example = ref(null)
+    const cases = useAsync(() => store.dispatch('cases/getAllCases'))
     const headerOptions = ref({
       title: "All projects",
       subtitle: "«I can't explain muself. I'm afraid. Sir», said Alice, because I am not myself, you see»"
@@ -72,6 +73,7 @@ export default {
       mainVideo.value.$el.pause()
     }
     onMounted(() => {
+
     })
     return {
       fullpageOptions,
@@ -81,7 +83,8 @@ export default {
       stopMainVideo,
       startMainVideo,
       headerOptions,
-      example
+      example,
+      cases
     }
   },
   methods: {

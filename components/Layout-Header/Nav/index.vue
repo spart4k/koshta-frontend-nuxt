@@ -1,5 +1,7 @@
 <template>
-  <nav :class="$style.nav">
+  <nav :class="$style.nav" :style="{
+    'mix-blend-mode': isShowWrap ? 'unset' : 'difference'
+  }">
     <div :class="$style.desktop">
       <div :class="[$style.button, $style.projects, $style.desktop, isOpenProjectsDrop ? $style.opened : '']">
         <button @click.prevent="openProjectsDrop">
@@ -52,4 +54,4 @@
 </template>
 
 <script src="./setup.js"></script>
-<style lang="scss" module src="./style.scss"></style>
+<style lang="scss" module scoped src="./style.scss"></style>

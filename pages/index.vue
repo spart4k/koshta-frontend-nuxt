@@ -7,7 +7,7 @@
       </div>
       <div ref="projects" class="page-3 projects">
         <ui-container :class="$style.projectsContent">
-          <main-projects :headerOptions="headerOptions" ref=""></main-projects>
+          <main-projects v-if="cases" :cases="cases.data" :headerOptions="headerOptions" ref=""></main-projects>
         </ui-container>
         <main-footer :class="$style.footer"></main-footer>
       </div>
@@ -18,5 +18,5 @@
   </div>
 
 </template>
-<style lang="scss" module src="./style.scss"></style>
+<style lang="scss" scoped module src="./style.scss"></style>
 <script src="./setup.js"></script>

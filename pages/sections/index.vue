@@ -7,4 +7,4 @@
   </ui-container>
 </template>
 <script src="./setup.js"></script>
-<style lang="scss" module src="./style.scss"></style>
+<style lang="scss" scoped module src="./style.scss"></style>
