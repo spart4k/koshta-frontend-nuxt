@@ -3,7 +3,7 @@
     <ui-page-title-default 
     :options="headerOptions"
     :class="$style.header" />
-    <projects-list></projects-list>
+    <projects-list :cases="sectionInfo"/>
   </ui-container>
 </template>
 <script src="./setup.js"></script>

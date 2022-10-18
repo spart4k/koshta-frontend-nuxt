@@ -1,18 +1,19 @@
 
-import { ref, useContext, useRouter } from '@nuxtjs/composition-api'
-export default {
+import { ref, useContext, defineComponent, useFetch, useRouter } from '@nuxtjs/composition-api'
+export default defineComponent({
   name: 'Nav',
   setup() {
     const { store } = useContext()
     const router = useRouter()
     const isOpenProjectsDrop = ref(false)
     const isShowWrap = ref(false)
+    const sections = ref([])
     const openProjectsDrop = () => {
       isOpenProjectsDrop.value = !isOpenProjectsDrop.value
     }
-    const openSection = () => {
+    const openSection = (id) => {
       router.push({
-        path: `/sections`
+        path: `/sections/${id}`
       })
       isOpenProjectsDrop.value = false
       if (isShowWrap) {
@@ -43,6 +44,20 @@ export default {
         closeNav()
       }
     }
+    const fetchData = async () => {
+      const data  = await store.dispatch('sections/getAllSections')
+      return data
+    }
+
+    const { fetch } = useFetch(async () => {
+      try {
+        const response = await fetchData()
+        sections.value = response
+      } catch (e) {
+        console.log(e)
+      }
+    })
+    fetch()
     return {
       isOpenProjectsDrop,
       openProjectsDrop,
@@ -51,7 +66,8 @@ export default {
       closeNav,
       isShowWrap,
       openAbout,
-      openContacts
+      openContacts,
+      sections
     }
   }
-}
+})

@@ -1,21 +1,21 @@
 <template>
   <div :class="$style.project">
     <div :class="$style.section">
-      NFT & Metavers
+      {{ section }}
     </div>
     <div :class="$style.info">
       <div @click="openProject()" :class="$style.title">
-        <!-- {{ caseInfo.Title }} -->
+        {{ caseInfo.title }}
       </div>
       <div :class="$style.author">
-        – «Zodiac»
+        – {{ author.name }}
       </div>
     </div>
     <div :class="$style.wrap">
-      <img src="@/assets/images/projects/wrap.png" alt="">
+      <img :src="wrap" alt="">
     </div>
     <div :class="$style.date" class="">
-      14.07.2022
+      {{ date }}
     </div>
   </div>
 </template>

@@ -32,7 +32,7 @@
       @include subtitle;
       @include garamond-narrow;
       @media (max-width: $mobileWidth) {
-        margin-top: -1rem;
+        margin-top: -.5rem;
       } 
     }
   }
@@ -47,6 +47,7 @@
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
   .date {

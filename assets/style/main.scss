@@ -90,6 +90,10 @@ a {
   max-width: 60rem;
 }
 
+.noPaddingTop {
+  padding-top: 0 !important;
+}
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -122,7 +126,9 @@ h1,h2,h3,h4,h5,h6,p {
     overflow: hidden;
     .slick-track {
       display: flex;
+      align-items: center;
       .slick-slide {
+
         width: 100%;
       }
     }

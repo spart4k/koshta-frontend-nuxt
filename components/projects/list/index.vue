@@ -3,8 +3,6 @@
     <projects-item v-for="(item, index) in $props.cases" 
     :key="item.id" 
     :case="item"/>
-    <p> {{ item }} </p>
-    {{ item }}
   </div>
 </template>
 <script src="./setup.js"></script>

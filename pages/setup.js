@@ -1,14 +1,39 @@
-import { ref, onMounted, useContext, useAsync } from '@nuxtjs/composition-api'
-export default {
+import { ref, onMounted, defineComponent, useFetch, computed, useContext, useAsync } from '@nuxtjs/composition-api'
+export default defineComponent({
   name: 'IndexPage',
   components: {
   },
   setup(props, ctx) {
-    const { store } = useContext()
+    const { store, $axios } = useContext()
     const mainVideo = ref(null) 
     const projects = ref(null)
     const example = ref(null)
-    const cases = useAsync(() => store.dispatch('cases/getAllCases'))
+    const footerInfo = ref([])
+    // const cases = ref([])
+    // const mainInfo = ref([])
+    const loading = ref(true)
+    const mainInfo = useAsync(async() => await store.dispatch('mainpage/getMainPageInfo'))
+    const cases = useAsync(async () => await store.dispatch('cases/getAllCases'))
+    // const fetchData = async () => {
+    //   const cases  = await store.dispatch('cases/getAllCases')
+    //   const mainInfo = await store.dispatch('mainpage/getMainPageInfo')
+    //   loading.value = true
+    //   return {
+    //     cases,
+    //     mainInfo
+    //   }
+    // }
+
+    // const { fetch } = useFetch(async () => {
+    //   try {
+    //     const response = await fetchData()
+    //     cases.value = response.cases
+    //     mainInfo.value = response.mainInfo
+    //   } catch (e) {
+    //     console.log(e)
+    //   }
+    // })
+    // fetch()
     const headerOptions = ref({
       title: "All projects",
       subtitle: "«I can't explain muself. I'm afraid. Sir», said Alice, because I am not myself, you see»"
@@ -36,6 +61,14 @@ export default {
       afterChange: function (currentSlideEl,currenIndex) {
         if (currenIndex === 2) {
           setOverflowBlock()
+        }
+      }
+    })
+    const mainVideoUrls = computed(() => {
+      if (mainInfo?.value?.data?.attributes) {
+        return {
+          desktop: $axios.defaults.baseURL + mainInfo?.value?.data?.attributes?.video_desktop?.data?.attributes?.url,
+          mobile: $axios.defaults.baseURL + mainInfo?.value?.data?.attributes?.video_mobile?.data?.attributes?.url
         }
       }
     })
@@ -67,13 +100,13 @@ export default {
       }
     }
     const startMainVideo = () => {
-      mainVideo.value.$el.play()
+      if (mainVideoUrls.value.desktop && mainVideoUrls.value.mobile) mainVideo.value.$el.play() 
     }
     const stopMainVideo = () => {
-      mainVideo.value.$el.pause()
+      if (mainVideoUrls.value.desktop && mainVideoUrls.value.mobile) mainVideo.value.$el.pause()
     }
     onMounted(() => {
-      console.log(cases.value.data[0])
+      loading.value = false
     })
     return {
       fullpageOptions,
@@ -84,28 +117,18 @@ export default {
       startMainVideo,
       headerOptions,
       example,
-      cases
-    }
-  },
-  data() {
-    return {
-      renderComponent: true
+      cases,
+      footerInfo,
+      mainInfo,
+      mainVideoUrls,
+      loading
     }
   },
   methods: {
-    resizeWindow() {
-      window.addEventListener("resize", () => {
-        console.log('resize')
-        this.renderComponent = false;
-        this.$nextTick(() => {
-          // Adding the component back in
-          this.renderComponent = true;
-        });
-      })
-    }
   },
   watch: {
     disabledFullpage(newVal,oldVar) {
+      console.log(newVal)
       if (newVal) {
         this.$refs.example.$fullpage.setDisabled(true);
       }
@@ -125,4 +148,4 @@ export default {
     // this.$refs.example.$fullpage.$update();
   }
   
-}
+})

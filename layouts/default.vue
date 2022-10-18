@@ -84,12 +84,13 @@
 </style>
 
 <script>
-  import { useContext, computed, onMounted, useRouter } from '@nuxtjs/composition-api'
+  import { useContext, computed, useFetch, ref, onMounted, useRouter } from '@nuxtjs/composition-api'
   export default {
     name: 'layout-default',
     setup() {
       const { store, route } = useContext()
       const router = useRouter()
+      const caseInfo = ref(null)
       const noClickedMatter = computed(() => {
         return store.state?.matter?.matterClicked
       })
@@ -107,7 +108,8 @@
         noClickedMatter,
         isShowInterface,
         route,
-        openIndex
+        openIndex,
+        caseInfo
       }
     }
   }

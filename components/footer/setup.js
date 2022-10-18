@@ -1,13 +1,35 @@
-import { useContext, computed } from '@nuxtjs/composition-api'
+import { useContext, ref, useFetch, computed } from '@nuxtjs/composition-api'
   export default {
-    name: 'layout-default',
+    name: 'footer-default',
+    props: {
+      // footerInfo: {
+      //   type: Object,
+      //   default: () => {}
+      // }
+    },
     setup() {
       const { store } = useContext()
+      const footerInfo = ref({})
+      const fetchData = async () => {
+        const data  = await store.dispatch('contacts/getContacts')
+        return data
+      }
+  
+      const { fetch } = useFetch(async () => {
+        try {
+          const response = await fetchData()
+          footerInfo.value = response.attributes
+        } catch (e) {
+          console.log(e)
+        }
+      })
+      fetch()
       const noClickedMatter = computed(() => {
         return store.state?.matter?.matterClicked
       })
       return {
-        noClickedMatter
+        noClickedMatter,
+        footerInfo
       }
     }
   }

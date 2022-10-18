@@ -1,26 +1,39 @@
 <template>
   <div class="">
-    <UiPreloaderPage v-if="$fetchState.pending" class="containerLoading"/>
+    <UiPreloaderPage v-if="false" class="containerLoading"/>
     <div v-else class="wrapLoading">
       <ui-container>
         <ui-page-title-project :options="headerInfo"></ui-page-title-project>
-        <div class="">
-          <div :class="$style.mainImage">
-            <img src="@/assets/images/projects/projectWrap.png" alt="">
-          </div>
-          <div :class="$style.infoText">
-            The task we accomplished for S7 Airlines was to develop visuals for seasonal promotions on their website. We decided that the concept of combining nature - with its circle of seasons - with high technologies would be best realized by 3D artist Lena Charobai, who addresses the aesthetics of ecodesign: she then created a series of visual images where biological forms are interwoven with synthetic materials.<br><br>
-            We make no secret about the fact that we enjoy coming to work every day, nor that our colleagues are closer to a group of friends than just a professional team. This is why we put so much emphasis on hiring people who will slot right in with the rest of us, while also bringing something new and unique to our broad mix of individuals. 
-          </div>
-        </div>
       </ui-container>
-      <VueSlickCarousel :class="$style.slider" :arrows="true" :dots="true">
-        <img v-for="item in 5" src="@/assets/images/projects/slide.png" alt="">
-      </VueSlickCarousel>
-      <ui-container :class="$style.noPaddingTop">
+      <div :class="$style.orderList">
+        <ui-container :style="{
+          'order': orderList ? orderList.image : 1
+        }" class="noPaddingTop">
+          <div class="">
+            <div :class="$style.mainImage">
+              <img :src="mainImage" alt="">
+            </div>
+          </div>
+        </ui-container>
+        <ui-container :style="{
+          'order': orderList ? orderList.text : 2
+        }" class="noPaddingTop">
+          <div v-if="richText" :class="$style.infoText">
+            <p v-for="(block, index) in richText">
+              {{ block.data.text }}
+            </p>
+          </div>
+        </ui-container>
+        <VueSlickCarousel :style="{
+          'order': orderList ? orderList.slider : 3
+        }" v-if="slider" :class="$style.slider" :arrows="true" :dots="true">
+          <img v-for="(url, index) in slider" :src="url" alt="">
+        </VueSlickCarousel>
+      </div>
+      <ui-container class="noPaddingTop">
         <div>
           <ui-page-title-default :class="$style.otherHeader" :options="otherProjectsHeader"></ui-page-title-default>
-          <projects-list/>
+          <projects-list :cases="cases.data"/>
         </div>
       </ui-container>
     </div>

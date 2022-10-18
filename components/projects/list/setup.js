@@ -3,8 +3,8 @@ export default {
   name: 'projects',
   props: {
     cases: {
-      type: Object,
-      default: () => {}
+      type: Array,
+      default: () => []
     }
   },
   setup() {

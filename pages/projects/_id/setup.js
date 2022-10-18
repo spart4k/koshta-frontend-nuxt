@@ -7,45 +7,31 @@ export default defineComponent ({
   },
   components: { VueSlickCarousel },
   setup(props,_) {
-    const { store, route } = useContext()
-    const caseInfo = ref({})
+    const { store, route, $axios } = useContext()
+    // const caseInfo = ref({})
     const loading = ref(false)
-    // const caseInfo = useAsync( async () => {
-    //   const id = route.value.params.id
-    //   const { data } = await store.dispatch('cases/getCase', id)
-    //   console.log(id)
-    //   console.log('mount')
-    //   // caseInfo.value =  data.attributes
-    //   return data.attributes
-    // })
-    const fetchData = async () => {
+    const cases = useAsync( async () => await store.dispatch('cases/getAllCases'))
+    const caseInfo = useAsync( async () => {
       const id = route.value.params.id
       const { data } = await store.dispatch('cases/getCase', id)
+      console.log(id)
+      console.log('mount')
+      // caseInfo.value =  data.attributes
       return data.attributes
-    }
-
-   const { fetch } = useFetch(async () => {
-      try {
-        const response = await fetchData()
-        caseInfo.value = response
-        console.log(caseInfo.value)
-        headerInfo.value.title = caseInfo?.value?.Title
-      } catch (e) {
-        console.log(e)
-      }
     })
-    fetch()
-    const headerInfo = ref({
-      title: '',
-      subtitle: ''
-    })
+    // const headerInfo = ref({
+    //   author: '',
+    //   job: '',
+    //   section: '',
+    //   date: ''
+    // })
     const otherProjectsHeader = ref({
       title: 'Other projects'
     })
     console.log(caseInfo?.value)
     // loading.value = true
     const caseData = computed(() => {
-      return caseInfo.value
+      return []
     })
     watch(caseData, () => {
       console.log('change')
@@ -53,18 +39,76 @@ export default defineComponent ({
       /* triggers on deep mutation to state */
     })
     console.log(caseInfo.value)
+    const headerInfo = computed(() => {
+      const dateSplit = caseInfo.value?.date.split('-')
+      let newDate = ''
+      if (dateSplit) {
+        newDate = `${dateSplit[2]}.${dateSplit[1]}.${dateSplit[0]}`
+      }
+      return {
+        author: caseInfo?.value?.author?.data?.attributes?.name,
+        job: caseInfo?.value?.author?.data?.attributes?.job,
+        section: caseInfo?.value?.section?.data?.attributes?.name,
+        date: newDate
+      }
+    })
+    const wrap = computed(() => {
+      return $axios.defaults.baseURL + caseInfo.value?.wrap?.data?.attributes?.url
+    })
+    const slider = computed(() => {
+      const component = caseInfo?.value?.slider_or_text.find((element) => element.__component === 'article.slider')
+      let array = []
+      if (component) {
+        component.images.data.forEach(element => {
+          let url = $axios.defaults.baseURL + element.attributes.url
+          array.push(url)
+        })
+        return array
+      }
+    })
+    const richText = computed(() => {
+      const component = caseInfo?.value?.slider_or_text.find((element) => element.__component === 'article.text')
+      if (component) {
+        const text = JSON.parse(component.text)
+        return text.blocks
+      }
+    })
+    const mainImage = computed(() => {
+      const component = caseInfo?.value?.slider_or_text.find((element) => element.__component === 'article.image')
+      if (component) {
+        const url = $axios.defaults.baseURL + component.image?.data?.attributes?.url
+        return url
+      }
+    })
+    const orderList = computed(() => {
+      const component = caseInfo?.value?.slider_or_text
+      if (component) {
+        var richText = component?.find((element) => element?.__component === 'article.text')
+        var mainImage = component?.find((element) => element?.__component === 'article.image')
+        var slider = component?.find((element) => element?.__component === 'article.slider')
+        return {
+          text: component.indexOf(richText)+1 ? component.indexOf(richText)+1 : 1,
+          image: component.indexOf(mainImage)+1 ? component.indexOf(mainImage)+1 : 2,
+          slider: component.indexOf(slider)+1 ? component.indexOf(slider)+1 : 3
+        }
+      }
+    })
     onMounted(() => {
       console.log('mount')
-      headerInfo.value.title = caseInfo?.value?.Title
-      console.log(headerInfo.value.title)
-      // if (headerInfo.value.title) loading.value = false 
+      console.log()
     })
     return {
       headerInfo,
       otherProjectsHeader,
       caseInfo,
       caseData,
-      loading
+      loading,
+      wrap,
+      slider,
+      richText,
+      mainImage,
+      orderList,
+      cases
     }
   }
 })

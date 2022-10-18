@@ -4,15 +4,15 @@
     <div :class="$style.authorInfo">
       <div :class="$style.author">
         <p>
-          by JOANNA OVERTON
+          by {{ $props.options.author }}
         </p>
         <p>
-          STUDIO LEAD
+          {{ $props.options.job }}
         </p>
       </div>
       <div :class="$style.date">
-        <p>NFT & Metavers</p>
-        <p>14.07.2022</p>
+        <p>{{ $props.options.section }}</p>
+        <p>{{ $props.options.date }}</p>
       </div>
     </div>
   </div>
