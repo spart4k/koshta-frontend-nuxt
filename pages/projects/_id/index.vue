@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <UiPreloaderPage v-if="false" class="containerLoading"/>
+    <UiPreloaderPage v-if="fetchState.pending" class="containerLoading"/>
     <div v-else class="wrapLoading">
       <ui-container>
         <ui-page-title-project :options="headerInfo"></ui-page-title-project>
@@ -11,7 +11,8 @@
         }" class="noPaddingTop">
           <div class="">
             <div :class="$style.mainImage">
-              <img :src="mainImage" alt="">
+              <!-- <img :src="mainImage" alt=""> -->
+              <nuxt-img loading="lazy" v-if="mainImage" :src="mainImage" />
             </div>
           </div>
         </ui-container>
@@ -26,8 +27,9 @@
         </ui-container>
         <VueSlickCarousel :style="{
           'order': orderList ? orderList.slider : 3
-        }" v-if="slider" :class="$style.slider" :arrows="true" :dots="true">
-          <img v-for="(url, index) in slider" :src="url" alt="">
+        }" v-if="slider" :class="$style.slider" :arrows="true" lazyLoad="ondemand" :adaptiveHeight="false" :speed='250' :dots="true">
+          <!-- <img v-for="(url, index) in slider" :src="url" alt=""> -->
+          <nuxt-img loading="lazy" v-for="(url, index) in slider" :src="url" />
         </VueSlickCarousel>
       </div>
       <ui-container class="noPaddingTop">

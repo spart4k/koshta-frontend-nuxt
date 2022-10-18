@@ -1,8 +1,9 @@
-import { ref, onMounted, defineComponent, useFetch, computed, useContext, useAsync } from '@nuxtjs/composition-api'
+import { ref, onMounted, defineComponent, useFetch, useMeta, computed, useContext, useAsync } from '@nuxtjs/composition-api'
 export default defineComponent({
   name: 'IndexPage',
   components: {
   },
+  head: {},
   setup(props, ctx) {
     const { store, $axios } = useContext()
     const mainVideo = ref(null) 
@@ -24,7 +25,7 @@ export default defineComponent({
     //   }
     // }
 
-    // const { fetch } = useFetch(async () => {
+    // const { fetch, fetchState } = useFetch(async () => {
     //   try {
     //     const response = await fetchData()
     //     cases.value = response.cases
@@ -105,6 +106,47 @@ export default defineComponent({
     const stopMainVideo = () => {
       if (mainVideoUrls.value.desktop && mainVideoUrls.value.mobile) mainVideo.value.$el.pause()
     }
+    useMeta(() => ({ 
+      title: mainInfo?.value?.data?.attributes?.meta?.meta_data,
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          property: 'og:title',
+          content: mainInfo?.value?.data?.attributes?.meta?.meta_data
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          property: 'og:description',
+          content: mainInfo?.value?.data?.attributes?.meta?.meta_description
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          property: 'og:image',
+          content: `${$axios.defaults.baseURL}${mainInfo?.value?.data?.attributes?.meta?.meta_image?.data?.attributes?.url}`
+        },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          property: 'twitter:card',
+          content: `summary_large_image`
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          property: 'twitter:image',
+          content: `${$axios.defaults.baseURL}${mainInfo?.value?.data?.attributes?.meta?.meta_image?.data?.attributes?.url}`
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          property: 'description',
+          content: mainInfo?.value?.data?.attributes?.meta?.meta_description
+        }
+      ]
+    }))
     onMounted(() => {
       loading.value = false
     })
@@ -121,7 +163,8 @@ export default defineComponent({
       footerInfo,
       mainInfo,
       mainVideoUrls,
-      loading
+      loading,
+      // fetchState
     }
   },
   methods: {

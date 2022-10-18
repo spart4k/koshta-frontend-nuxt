@@ -51,7 +51,8 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     'fullpage-nuxt',
-    '@fullpage/nuxt-fullpage'
+    '@fullpage/nuxt-fullpage',
+    '@nuxt/image'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

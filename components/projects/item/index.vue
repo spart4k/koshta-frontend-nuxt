@@ -12,7 +12,8 @@
       </div>
     </div>
     <div :class="$style.wrap">
-      <img :src="wrap" alt="">
+      <!-- <img :src="wrap" alt=""> -->
+      <nuxt-img loading="lazy" :src="wrap" />
     </div>
     <div :class="$style.date" class="">
       {{ date }}

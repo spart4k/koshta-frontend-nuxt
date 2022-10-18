@@ -1,5 +1,6 @@
 <template>
   <div class="fullpage-container">
+    <!-- <UiPreloaderPage v-if="fetchState.pending"/> -->
     <div class="fullpage-wp" v-fullpage="fullpageOptions" ref="example">
       <start-page/>
       <div class="page-2 page">

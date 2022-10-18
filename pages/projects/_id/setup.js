@@ -1,4 +1,4 @@
-import { ref, defineComponent, useAsync, useFetch, useContext, onMounted, watch, computed } from '@nuxtjs/composition-api'
+import { ref, defineComponent, useAsync, useMeta, useFetch, useContext, onMounted, watch, computed } from '@nuxtjs/composition-api'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default defineComponent ({
@@ -6,19 +6,52 @@ export default defineComponent ({
   props: {
   },
   components: { VueSlickCarousel },
+  head: {},
   setup(props,_) {
     const { store, route, $axios } = useContext()
-    // const caseInfo = ref({})
+    const caseInfo = ref({})
     const loading = ref(false)
-    const cases = useAsync( async () => await store.dispatch('cases/getAllCases'))
-    const caseInfo = useAsync( async () => {
+    const headerInfo = ref({})
+    const cases = ref([])
+    // const cases = useAsync( async () => await store.dispatch('cases/getAllCases'))
+    const caseInfoMeta = useAsync( async () => {
       const id = route.value.params.id
       const { data } = await store.dispatch('cases/getCase', id)
-      console.log(id)
-      console.log('mount')
-      // caseInfo.value =  data.attributes
       return data.attributes
     })
+    const fetchData = async () => {
+      const id = route.value.params.id
+      const { data } = await store.dispatch('cases/getCase', id)
+      const allCase = await store.dispatch('cases/getAllCases')
+      return {
+        case: data.attributes,
+        allCase: allCase
+      }
+    }
+
+    const { fetch, fetchState } = useFetch(async () => {
+      try {
+        const response = await fetchData()
+        caseInfo.value = response.case
+        cases.value = response.allCase
+        const dateSplit = caseInfo.value?.date?.split('-')
+        let newDate = ''
+        if (dateSplit) {
+          newDate = `${dateSplit[2]}.${dateSplit[1]}.${dateSplit[0]}`
+        }
+        headerInfo.value = {
+          title: caseInfo?.value?.title,
+          subtitle: caseInfo?.value?.subtitle,
+          author: caseInfo?.value?.author?.data?.attributes?.name,
+          job: caseInfo?.value?.author?.data?.attributes?.job,
+          section: caseInfo?.value?.section?.data?.attributes?.name,
+          date: newDate
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    })
+    fetch()
     // const headerInfo = ref({
     //   author: '',
     //   job: '',
@@ -39,24 +72,11 @@ export default defineComponent ({
       /* triggers on deep mutation to state */
     })
     console.log(caseInfo.value)
-    const headerInfo = computed(() => {
-      const dateSplit = caseInfo.value?.date.split('-')
-      let newDate = ''
-      if (dateSplit) {
-        newDate = `${dateSplit[2]}.${dateSplit[1]}.${dateSplit[0]}`
-      }
-      return {
-        author: caseInfo?.value?.author?.data?.attributes?.name,
-        job: caseInfo?.value?.author?.data?.attributes?.job,
-        section: caseInfo?.value?.section?.data?.attributes?.name,
-        date: newDate
-      }
-    })
     const wrap = computed(() => {
       return $axios.defaults.baseURL + caseInfo.value?.wrap?.data?.attributes?.url
     })
     const slider = computed(() => {
-      const component = caseInfo?.value?.slider_or_text.find((element) => element.__component === 'article.slider')
+      const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.slider')
       let array = []
       if (component) {
         component.images.data.forEach(element => {
@@ -67,14 +87,14 @@ export default defineComponent ({
       }
     })
     const richText = computed(() => {
-      const component = caseInfo?.value?.slider_or_text.find((element) => element.__component === 'article.text')
+      const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.text')
       if (component) {
         const text = JSON.parse(component.text)
         return text.blocks
       }
     })
     const mainImage = computed(() => {
-      const component = caseInfo?.value?.slider_or_text.find((element) => element.__component === 'article.image')
+      const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.image')
       if (component) {
         const url = $axios.defaults.baseURL + component.image?.data?.attributes?.url
         return url
@@ -97,6 +117,47 @@ export default defineComponent ({
       console.log('mount')
       console.log()
     })
+    useMeta(() => ({ 
+      title: caseInfoMeta?.value?.title
+      // meta: [
+      //   {
+      //     hid: 'og:title',
+      //     name: 'og:title',
+      //     property: 'og:title',
+      //     content: contactsInfo?.value?.attributes?.meta?.meta_data
+      //   },
+      //   {
+      //     hid: 'og:description',
+      //     name: 'og:description',
+      //     property: 'og:description',
+      //     content: contactsInfo?.value?.attributes?.meta?.meta_description
+      //   },
+      //   {
+      //     hid: 'og:image',
+      //     name: 'og:image',
+      //     property: 'og:image',
+      //     content: `${$axios.defaults.baseURL}${contactsInfo?.value?.attributes?.meta?.meta_image?.data?.attributes?.url}`
+      //   },
+      //   {
+      //     hid: 'twitter:card',
+      //     name: 'twitter:card',
+      //     property: 'twitter:card',
+      //     content: `summary_large_image`
+      //   },
+      //   {
+      //     hid: 'twitter:image',
+      //     name: 'twitter:image',
+      //     property: 'twitter:image',
+      //     content: `${$axios.defaults.baseURL}${contactsInfo?.value?.attributes?.meta?.meta_image?.data?.attributes?.url}`
+      //   },
+      //   {
+      //     hid: 'description',
+      //     name: 'description',
+      //     property: 'description',
+      //     content: contactsInfo?.value?.attributes?.meta?.meta_description
+      //   }
+      // ]
+    }))
     return {
       headerInfo,
       otherProjectsHeader,
@@ -108,7 +169,9 @@ export default defineComponent ({
       richText,
       mainImage,
       orderList,
-      cases
+      cases,
+      fetchState,
+      caseInfoMeta
     }
   }
 })

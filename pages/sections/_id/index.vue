@@ -3,7 +3,8 @@
     <ui-page-title-default 
     :options="headerOptions"
     :class="$style.header" />
-    <projects-list :cases="sectionInfo"/>
+    <UiPreloaderDefault v-if="fetchState.pending "/>
+    <projects-list v-else :cases="sectionInfo.cases.data"/>
   </ui-container>
 </template>
 <script src="./setup.js"></script>
