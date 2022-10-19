@@ -79,7 +79,7 @@ export default defineComponent({
       projects.value.onwheel = e => {
         manageStateFullpage()
         if (projects.value.scrollTop <= 0 || projects.value.scrollTop === blockHeight) {
-          if (e.deltaY > 100 || e.deltaY < -100) {
+          if (e.deltaY > 30 || e.deltaY < -30) {
             return
           }
           else {
