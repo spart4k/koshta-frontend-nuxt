@@ -71,7 +71,6 @@ $animationTiming1: cubic-bezier(.71,.01,.15,1);
 }
 @mixin title {
   font-size: 4.1rem;
-  line-height: 43px;
   @media (max-width: $mobileWidth) {
     font-size: 2.4rem;
   }
@@ -84,7 +83,6 @@ $animationTiming1: cubic-bezier(.71,.01,.15,1);
 }
 @mixin subtitle {
   font-size: 2.8rem;
-  line-height: 33.6px;
   @media (max-width: $mobileWidth) {
     font-size: 2.1rem;
   }
@@ -108,7 +106,7 @@ $animationTiming1: cubic-bezier(.71,.01,.15,1);
 
 @mixin garamond-narrow {
   font-family: 'Garamond Narrow';
-  line-height: 2.2rem
+  line-height: 1.2;
 }
 
 @mixin regular-text-bold {

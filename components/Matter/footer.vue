@@ -25,6 +25,7 @@ export default {
     })
     onMounted(() => {
       startObserveFooter()
+      // initMatter()
       setTimeout(() => {
         initMatter()
       }, 300)
@@ -61,6 +62,7 @@ export default {
           pixelRatio: window.devicePixelRatio
         }
       });
+      canvas.style.width = container.offsetWidth + 'px'
       canvas.width = container.offsetWidth * window.devicePixelRatio;
       canvas.height = container.offsetHeight * window.devicePixelRatio;
 
@@ -218,7 +220,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #929292;
-  min-height: -webkit-fill-available;
+  min-height: 100%;
+  line-height: 0;
+  width: 100%;
 }
 
 svg {

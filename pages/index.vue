@@ -10,7 +10,7 @@
         <ui-container :class="$style.projectsContent">
           <main-projects v-if="cases" :cases="cases.data" :headerOptions="headerOptions" ref=""></main-projects>
         </ui-container>
-        <main-footer :class="$style.footer"></main-footer>
+        <main-footer class="index-footer" :class="$style.footer"></main-footer>
       </div>
       <!-- <div class="page no-layout">
         

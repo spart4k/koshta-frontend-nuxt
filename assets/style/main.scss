@@ -36,7 +36,7 @@ video {
 
 html {
   font-size: 10px;
-  height: -webkit-fill-available;
+  // height: -webkit-fill-available;
   @media (max-width: $desktopWidth) {
     font-size: calc((10 / 1440) * 100vw);
   }
@@ -52,9 +52,11 @@ body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
   color: $fontColorDefault;
+  line-height: 1.2;
   // &:global(.popup-opened) {
   //   overflow: hidden;
   // }
+  // line-height: 0;
   &.no-overflow {
     overflow: hidden;
   }
@@ -195,6 +197,14 @@ h1,h2,h3,h4,h5,h6,p {
         }
       }
     }
+  }
+}
+.index-footer {
+  @media (max-width: $mobileWidth) {
+    // height: auto !important;
+  }
+  canvas {
+    pointer-events: none;
   }
 }
 .icon {
