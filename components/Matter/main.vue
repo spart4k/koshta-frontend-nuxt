@@ -24,7 +24,6 @@ export default {
       return props.centerOptions
     })
     onMounted(() => {
-      console.log(window.devicePixelRatio)
       setTimeout(() => {
         initMatter()
       }, 300)
@@ -72,7 +71,8 @@ export default {
 
       // create engine
       var engine = Engine.create(),
-        world = engine.world;
+      world = engine.world;
+      world.gravity.y = 1.8;
         // const { width, height } = this.$el.getBoundingClientRect();
       // create renderer
       var container = el
@@ -80,6 +80,7 @@ export default {
         element: container,
         canvas: canvas,
         engine: engine,
+        // gravity: { y: 1000 },
         options: {
           background: '#ffffff',
           width: container.offsetWidth,
@@ -110,18 +111,18 @@ export default {
         {
           path: 'path50.png',
         },
-        {
-          path: 'path18.png',
-        },
-        {
-          path: 'path16.png',
-        },
+        // {
+        //   path: 'path18.png',
+        // },
+        // {
+        //   path: 'path16.png',
+        // },
         {
           path: 'path20.png',
         },
-        {
-          path: 'path24.png',
-        },
+        // {
+        //   path: 'path24.png',
+        // },
         {
           path: 'path62.png',
         },
@@ -137,11 +138,11 @@ export default {
         {
           path: 'Group 7.png',
         },
-        {
-          path: 'Vector.png',
-        }
+        // {
+        //   path: 'Vector.png',
+        // }
       ]
-      const maxSize = 3200
+      const maxSize = 5000
       var scaleParams = container.offsetWidth
       var procent = scaleParams/maxSize
       // bounes.forEach((item) => {
@@ -156,10 +157,10 @@ export default {
         var ground = Bodies.rectangle(canvas.clientWidth / 2, canvas.clientHeight + 30, canvas.clientWidth, 60, {
           isStatic: true, label: "Ground", density: 1.4,
         });
-        var wallLeft = Bodies.rectangle(-30, canvas.clientHeight / 2, 60, canvas.clientHeight * 3, {
+        var wallLeft = Bodies.rectangle(-30, canvas.clientHeight / 2, 60, canvas.clientHeight * 6, {
           isStatic: true, label: "Wall Left", density: 1.4,
         });
-        var wallRight = Bodies.rectangle(canvas.clientWidth + 30, canvas.clientHeight / 2, 60, canvas.clientHeight * 3, {
+        var wallRight = Bodies.rectangle(canvas.clientWidth + 30, canvas.clientHeight / 2, 60, canvas.clientHeight * 6, {
           isStatic: true, label: "Wall Right", density: 1.4,
         });
         var textBlock = Bodies.rectangle( canvas.clientWidth / 2,canvas.clientHeight / 2,canvas.clientWidth/1.8, props.centerOptions.height,{
@@ -203,11 +204,12 @@ export default {
           const getImage = (path) => {
             return require(`@/assets/images/${path}`)
           }
-          console.log(canvas.clientWidth/12.5)
-          var bounce = Bodies.circle(canvas.clientWidth/2, -300 - index * 900,canvas.clientWidth/12.5, {
+          var bounce = Bodies.circle(canvas.clientWidth/2, -300 - index * 900,canvas.clientWidth/10.5, {
             label: `bounce_${index}`,
-            density: 2,
-            restitution: .8,
+            density: 4,
+            mass: 10,
+            restitution: .6,
+            inverseMass: 1/10,
             render: {
               pixelRatio: window.devicePixelRatio,
               sprite: {
@@ -221,6 +223,14 @@ export default {
           )
           // bounes.push(bounce)
           Matter.Composite.add(engine.world, bounce)
+          // Matter.Body.setMass(bounce, { x: 5, y: 45 })
+          Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
+          if (container.offsetWidth >= 1280) {
+            
+          } else {
+            // Matter.Body.SetPosition(bounce, { x: 0, y: -300 - index * 900 })
+            // Matter.Body.setVelocity(bounce, { x: 0, y: 15 })
+          } 
         })
       }
       addBounces()
@@ -229,7 +239,6 @@ export default {
         // render.canvas.remove();
         scaleParams = container.offsetWidth
         procent = scaleParams/maxSize
-        console.log(window.devicePixelRatio)
         canvas.width = container.offsetWidth * window.devicePixelRatio
         canvas.height = container.offsetHeight * window.devicePixelRatio
         canvas.style.width = container.offsetWidth + 'px'

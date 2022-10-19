@@ -36,12 +36,12 @@
   }
   .center {
     position: absolute;
-    top: 22.8rem;
+    top: 50%;
     z-index: 10;
     left: 50%;
-    transform: translate3d(-50%,0%, 0);
+    transform: translate3d(-50%,-50%, 0);
     @media (max-width: $mobileWidth) {
-      top: 23.9rem;
+      // top: 23.9rem;
     }
   }
   .contacts {

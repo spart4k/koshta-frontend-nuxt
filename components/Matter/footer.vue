@@ -44,7 +44,8 @@ export default {
 
       // create engine
       var engine = Engine.create(),
-        world = engine.world;
+      world = engine.world;
+      world.gravity.y = 2.5;
       // const { width, height } = this.$el.getBoundingClientRect();
       // create renderer
       var container = el
@@ -82,10 +83,10 @@ export default {
           path: 'path62.png',
         },
         {
-          path: 'path24.png',
+          path: 'path12.png',
         }
       ]
-      const maxSize = 3200
+      const maxSize = 5000
       let scaleParams = container.offsetWidth
       let procent = scaleParams / maxSize
       
@@ -107,7 +108,6 @@ export default {
         Matter.Composite.add(engine.world, [
           ground, wallLeft, wallRight, roof
         ])
-        console.log(ground)
         var mouse = Mouse.create(render.canvas),
         mouseConstraint = MouseConstraint.create(engine, {
           mouse: mouse,
@@ -136,11 +136,13 @@ export default {
           const getImage = (path) => {
             return require(`@/assets/images/${path}`)
           }
-          console.log(canvas.clientWidth/12.5)
-          var bounce = Bodies.circle((canvas.clientWidth / 2 - (canvas.clientWidth / 12.5 * 2)) + index * 100, canvas.clientHeight - 150, canvas.clientWidth / 12.5, {
+          var bounce = Bodies.circle((canvas.clientWidth / 2 - (canvas.clientWidth / 12.5 * 2)) + index * 100, canvas.clientHeight - 150, canvas.clientWidth/10.5, {
             label: `bounce_${index}`,
-            density: 2,
-            restitution: .8,
+            density: 4,
+            mass: 10,
+            // force: { x: 3, y: 3 },
+            restitution: .5,
+            inverseMass: 1/10,
             render: {
               pixelRatio: window.devicePixelRatio,
               sprite: {
@@ -153,8 +155,8 @@ export default {
             }}
           )
           // bounes.push(bounce)
-          console.log(bounce)
           Matter.Composite.add(engine.world, bounce)
+          Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
         })
       }
       addBounces()
@@ -162,7 +164,6 @@ export default {
       window.addEventListener("resize", function () {
         scaleParams = container.offsetWidth
         procent = scaleParams/maxSize
-        console.log(window.devicePixelRatio)
         canvas.width = container.offsetWidth * window.devicePixelRatio
         canvas.height = container.offsetHeight * window.devicePixelRatio
         canvas.style.width = container.offsetWidth + 'px'

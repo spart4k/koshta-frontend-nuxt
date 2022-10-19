@@ -9,7 +9,6 @@ export default {
   },
   setup(props, ctx) {
     const { $axios } = useContext()
-    console.log(useContext())
     const router = useRouter()
     const openProject = () => {
       router.push({
@@ -17,7 +16,11 @@ export default {
       })
     }
     const caseInfo = computed(() => {
-      return props.case.attributes
+      if (props?.case?.attributes?.cases) {
+        return props?.case?.attributes?.cases?.data[0]
+      } else {
+        return props?.case?.attributes
+      }
     })
     const author = computed(() => {
       return caseInfo.value?.author?.data?.attributes

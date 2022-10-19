@@ -21,7 +21,7 @@ export const actions = {
   },
   async getSection ({ commit }, id) {
     try {
-      const { data } = await this.$axios.get(`/api/sections/${id}?populate[0]=cases.wrap&populate[1]=cases.author&populate[2]=cases.section`)
+      const { data } = await this.$axios.get(`/api/sections/${id}?populate[0]=cases.wrap&populate[1]=cases.author&populate[2]=cases.section&populate[3]=meta.meta_image`)
       console.log('page')
       console.log(data.data)
       // commit('setSections', data)

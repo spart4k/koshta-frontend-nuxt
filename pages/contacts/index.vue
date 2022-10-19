@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div :class="$style.contacts">
     <!-- <UiPreloaderPage v-if="fetchState.pending"></UiPreloaderPage> -->
     <div class="">
       <ui-container>

@@ -1,6 +1,7 @@
 export const state = () => ({
   isShow: true,
-  bodyOverflow: true
+  bodyOverflow: true,
+  isShowNavWrap: false
 })
 
 export const mutations = {
@@ -18,6 +19,9 @@ export const mutations = {
     }
     state.bodyOverflow = param
   },
+  showWrap(state, param) {
+    state.isShowNavWrap = param
+  }
 }
 
 export const actions = {}

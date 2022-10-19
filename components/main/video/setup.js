@@ -33,7 +33,6 @@ export default {
     // })
     // fetch()
     onMounted(() => {
-      console.log(isMobile.value)
     })
     return {
       isMobile

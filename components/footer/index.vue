@@ -47,12 +47,12 @@
         </div>
       </div>
       <div :class="$style.bottom">
-        <p 
+        <!-- <p 
         :class="$style.name"
         :style="{
           'pointer-events': noClickedMatter ? 'none' : 'unset'
         }"
-        >KOSHTA ©2022</p>
+        >KOSHTA ©2022</p> -->
         <p 
         :class="$style.provide"
         :style="{

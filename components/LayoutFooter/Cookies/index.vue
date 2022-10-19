@@ -1,6 +1,6 @@
 <template>
   <transition :name="transition">
-    <div v-if="isShow && isShowInterface" :class="$style.cookies">
+    <div v-if="isShow" :class="$style.cookies">
       <p>
         This site uses third-party website tracking technologies to provide and continually improve your experience.
         <button class="active">

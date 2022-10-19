@@ -1,5 +1,5 @@
 
-import { ref, useContext, defineComponent, useFetch, useRouter } from '@nuxtjs/composition-api'
+import { ref, useContext, defineComponent, computed, useFetch, useRouter } from '@nuxtjs/composition-api'
 export default defineComponent({
   name: 'Nav',
   setup() {
@@ -20,12 +20,17 @@ export default defineComponent({
         closeNav()
       }
     }
+    const layoutShowWrap = computed(() => {
+      return store?.state?.layout?.isShowNavWrap
+    })
     const openNav = () => {
       store.commit('layout/setBodyOverflow', false)
+      store.commit('layout/showWrap', true)
       isShowWrap.value = true
     }
     const closeNav = () => {
       store.commit('layout/setBodyOverflow', true)
+      store.commit('layout/showWrap', false)
       isShowWrap.value = false
     }
     const openAbout = () => { 
@@ -67,7 +72,8 @@ export default defineComponent({
       isShowWrap,
       openAbout,
       openContacts,
-      sections
+      sections,
+      layoutShowWrap
     }
   }
 })

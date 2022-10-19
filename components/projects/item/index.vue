@@ -1,10 +1,10 @@
 <template>
-  <div :class="$style.project">
+  <div v-if="caseInfo" @click="openProject()" :class="$style.project">
     <div :class="$style.section">
       {{ section }}
     </div>
     <div :class="$style.info">
-      <div @click="openProject()" :class="$style.title">
+      <div :class="$style.title">
         {{ caseInfo.title }}
       </div>
       <div :class="$style.author">

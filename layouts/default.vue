@@ -4,7 +4,6 @@
     <transition name="fade">
       <Logotype
       @click="openIndex"
-      v-if="isShowInterface"
       :style="{
         'pointer-events': noClickedMatter ? 'none' : 'unset'
       }"
@@ -13,7 +12,6 @@
     </transition>
     <transition name="fade">
       <LayoutHeaderNav
-      v-if="isShowInterface"
       :class="$style.nav"
       :style="{
         'pointer-events': noClickedMatter ? 'none' : 'unset'
@@ -22,7 +20,6 @@
     </transition>
     <transition name="fade">
       <LayoutFooterProvided
-      v-if="isShowInterface"
       :style="{
         'pointer-events': noClickedMatter ? 'none' : 'unset'
       }"

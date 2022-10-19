@@ -79,7 +79,7 @@ export default defineComponent({
       projects.value.onwheel = e => {
         manageStateFullpage()
         if (projects.value.scrollTop <= 0 || projects.value.scrollTop === blockHeight) {
-          if (e.deltaY > 100 || e.deltaY < -100) {
+          if (e.deltaY > 50 || e.deltaY < - 50) {
             return
           }
           else {
@@ -171,7 +171,6 @@ export default defineComponent({
   },
   watch: {
     disabledFullpage(newVal,oldVar) {
-      console.log(newVal)
       if (newVal) {
         this.$refs.example.$fullpage.setDisabled(true);
       }

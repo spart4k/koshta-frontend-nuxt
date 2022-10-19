@@ -7,7 +7,6 @@ export default {
     const transition = ref('fade')
     const close = () => {
       transition.value = 'expand' 
-      console.log(transition.value)
       isShow.value = false
     }
     const isShowInterface = computed(() => {

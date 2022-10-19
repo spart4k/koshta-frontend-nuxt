@@ -118,45 +118,45 @@ export default defineComponent ({
       console.log()
     })
     useMeta(() => ({ 
-      title: caseInfoMeta?.value?.title
-      // meta: [
-      //   {
-      //     hid: 'og:title',
-      //     name: 'og:title',
-      //     property: 'og:title',
-      //     content: contactsInfo?.value?.attributes?.meta?.meta_data
-      //   },
-      //   {
-      //     hid: 'og:description',
-      //     name: 'og:description',
-      //     property: 'og:description',
-      //     content: contactsInfo?.value?.attributes?.meta?.meta_description
-      //   },
-      //   {
-      //     hid: 'og:image',
-      //     name: 'og:image',
-      //     property: 'og:image',
-      //     content: `${$axios.defaults.baseURL}${contactsInfo?.value?.attributes?.meta?.meta_image?.data?.attributes?.url}`
-      //   },
-      //   {
-      //     hid: 'twitter:card',
-      //     name: 'twitter:card',
-      //     property: 'twitter:card',
-      //     content: `summary_large_image`
-      //   },
-      //   {
-      //     hid: 'twitter:image',
-      //     name: 'twitter:image',
-      //     property: 'twitter:image',
-      //     content: `${$axios.defaults.baseURL}${contactsInfo?.value?.attributes?.meta?.meta_image?.data?.attributes?.url}`
-      //   },
-      //   {
-      //     hid: 'description',
-      //     name: 'description',
-      //     property: 'description',
-      //     content: contactsInfo?.value?.attributes?.meta?.meta_description
-      //   }
-      // ]
+      title: caseInfoMeta?.value?.meta?.meta_data,
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          property: 'og:title',
+          content: caseInfoMeta?.value?.meta?.meta_data
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          property: 'og:description',
+          content: caseInfoMeta?.value?.meta?.meta_description
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          property: 'og:image',
+          content: `${$axios.defaults.baseURL}${caseInfoMeta?.value?.meta?.meta_image?.data?.attributes?.url}`
+        },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          property: 'twitter:card',
+          content: `summary_large_image`
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          property: 'twitter:image',
+          content: `${$axios.defaults.baseURL}${caseInfoMeta?.value?.meta?.meta_image?.data?.attributes?.url}`
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          property: 'description',
+          content: caseInfoMeta?.value?.meta?.meta_description
+        }
+      ]
     }))
     return {
       headerInfo,

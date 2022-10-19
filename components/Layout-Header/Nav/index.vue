@@ -1,6 +1,6 @@
 <template>
   <nav :class="$style.nav" :style="{
-    'mix-blend-mode': isShowWrap ? 'unset' : 'difference'
+    'mix-blend-mode': isShowWrap && layoutShowWrap? 'unset' : 'difference'
   }">
     <div :class="$style.desktop">
       <div :class="[$style.button, $style.projects, $style.desktop, isOpenProjectsDrop ? $style.opened : '']">
@@ -26,10 +26,10 @@
     </div>
     <div :class="$style.mobile">
       <div :class="$style.trigger">
-        <IconsNavOpen v-if="!isShowWrap" @click="openNav" class="icon"></IconsNavOpen>
+        <IconsNavOpen v-if="!layoutShowWrap" @click="openNav" class="icon"></IconsNavOpen>
         <IconsClose v-else @click="closeNav" class="icon"></IconsClose>
       </div>
-      <div v-if="isShowWrap" :class="$style.wrap">
+      <div v-if="isShowWrap && layoutShowWrap" :class="$style.wrap">
         <div :class="$style.projects">
           <p :class="$style.subtitle">Projects</p>
           <div :class="$style.list">
