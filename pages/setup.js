@@ -10,6 +10,8 @@ export default defineComponent({
     const projects = ref(null)
     const example = ref(null)
     const footerInfo = ref([])
+    const scrollTop = ref(0)
+    const isTouchDisabled = ref(true)
     // const cases = ref([])
     // const mainInfo = ref([])
     const loading = ref(true)
@@ -59,9 +61,15 @@ export default defineComponent({
           // store.commit('layout/hideInterface')
         }
       },
-      afterChange: function (currentSlideEl,currenIndex) {
-        if (currenIndex === 2) {
+      afterChange: function (currentSlideEl, currentIndex) {
+        if (currentIndex === 0 || currentIndex === 1) {
+          isTouchDisabled.value = true
+        }
+        if (currentIndex === 2) {
           setOverflowBlock()
+          setTimeout(() => {
+            isTouchDisabled.value = false
+          }, 0);
         }
       }
     })
@@ -87,6 +95,22 @@ export default defineComponent({
           }
         }
         else {        
+          e.stopPropagation()
+        }
+      };
+      projects.value.ontouchstart = e => {
+        if (isTouchDisabled.value) {
+          e.preventDefault()
+          e.stopPropagation()
+          return
+        }
+      };
+      projects.value.ontouchmove = e => {
+        scrollTop.value = projects.value.scrollTop
+        if (projects.value.scrollTop <= 100) {
+          store.commit('fullpage/changeState', false)
+        } else {
+          store.commit('fullpage/changeState', true)
           e.stopPropagation()
         }
       };
@@ -149,6 +173,7 @@ export default defineComponent({
     }))
     onMounted(() => {
       loading.value = false
+      iNoBounce.enable()
     })
     return {
       fullpageOptions,
@@ -164,6 +189,7 @@ export default defineComponent({
       mainInfo,
       mainVideoUrls,
       loading,
+      isTouchDisabled,
       // fetchState
     }
   },

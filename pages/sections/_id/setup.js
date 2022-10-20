@@ -1,4 +1,4 @@
-import { ref, useAsync, useFetch, useMeta, defineComponent, useContext } from '@nuxtjs/composition-api'
+import { ref, useAsync, useFetch, useMeta, defineComponent, useContext, onMounted } from '@nuxtjs/composition-api'
 export default defineComponent({
   name: 'section-detail',
   head: {},
@@ -92,6 +92,11 @@ export default defineComponent({
         }
       ]
     }))
+
+    onMounted(() => {
+      iNoBounce.disable()
+    })
+
     return {
       headerOptions,
       sectionInfo,

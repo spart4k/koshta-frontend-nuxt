@@ -11,6 +11,7 @@ export default {
     }
     onMounted(() => {
       startMainVideo()
+      iNoBounce.disable()
     })
     onUnmounted(() => {
       // stopMainVideo()

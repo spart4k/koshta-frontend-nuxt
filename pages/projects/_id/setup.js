@@ -116,6 +116,7 @@ export default defineComponent ({
     onMounted(() => {
       console.log('mount')
       console.log()
+      iNoBounce.disable()
     })
     useMeta(() => ({ 
       title: caseInfoMeta?.value?.meta?.meta_data,
