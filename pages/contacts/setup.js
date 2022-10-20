@@ -1,4 +1,4 @@
-import { useAsync, useContext, useMeta, defineComponent, useFetch, computed } from '@nuxtjs/composition-api'
+import { useAsync, useContext, useMeta, defineComponent, useFetch, computed, onMounted } from '@nuxtjs/composition-api'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default defineComponent({
@@ -72,6 +72,11 @@ export default defineComponent({
         }
       ]
     }))
+
+    onMounted(() => {
+      iNoBounce.disable()
+    })
+
     return {
       contactsInfo,
       slider,
