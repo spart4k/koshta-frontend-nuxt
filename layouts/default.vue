@@ -3,6 +3,7 @@
     <!-- <HeaderDefault/> -->
     <transition name="fade">
       <Logotype
+      v-if="isShowInterface"
       @click="openIndex"
       :style="{
         'pointer-events': noClickedMatter ? 'none' : 'unset'

@@ -10,3 +10,15 @@
   display: flex;
   flex-direction: column;
 }
+.nextSlide {
+  position: fixed;
+  left: 50%;
+  bottom: 2rem;
+  transform: translate(-50%,0);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  border-radius: 100%;
+  @media (min-width: $mobileWidth) {
+    display: none !important;
+  }
+}

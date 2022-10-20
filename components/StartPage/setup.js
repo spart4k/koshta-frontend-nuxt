@@ -9,6 +9,9 @@ export default {
     //   
       
     // })
+    const nextSlide = () => {
+      console.log('next')
+    }
     onMounted(() => {
       let block = center?.value
       const { width, height, x, y } = block?.getBoundingClientRect();
@@ -18,7 +21,8 @@ export default {
     })
     return {
       center,
-      options
+      options,
+      nextSlide
       // centerOptions
     }
   }

@@ -88,7 +88,7 @@ export default {
           path: 'path12.png',
         }
       ]
-      const maxSize = 5000
+      const maxSize = 5300
       let scaleParams = container.offsetWidth
       let procent = scaleParams / maxSize
       
@@ -120,16 +120,36 @@ export default {
             }
           }
         });
-        World.add(world, mouseConstraint);
-        Events.on(mouseConstraint, "startdrag", (e) => {
-          store.commit('fullpage/changeState', true)
-          store.commit('matter/changeState', true)
-        })
-        Events.on(mouseConstraint, "enddrag", (e) => {
-          store.commit('fullpage/changeState', false)
-          store.commit('matter/changeState', false)
-        })
-        render.mouse = mouse;
+        if (window.location.pathname === '/') {
+          if (container.offsetWidth >= 768) {
+            console.log(true)
+            World.add(world, mouseConstraint);
+            Events.on(mouseConstraint, "startdrag", (e) => {
+              store.commit('fullpage/changeState', true)
+              store.commit('matter/changeState', true)
+            })
+            Events.on(mouseConstraint, "enddrag", (e) => {
+              store.commit('fullpage/changeState', false)
+              store.commit('matter/changeState', false)
+            })
+            render.mouse = mouse;
+          } else {
+            return 
+          }
+        } else {
+          console.log(true)
+          World.add(world, mouseConstraint);
+          Events.on(mouseConstraint, "startdrag", (e) => {
+            store.commit('fullpage/changeState', true)
+            store.commit('matter/changeState', true)
+          })
+          Events.on(mouseConstraint, "enddrag", (e) => {
+            store.commit('fullpage/changeState', false)
+            store.commit('matter/changeState', false)
+          })
+          render.mouse = mouse;
+        }
+        
       }
       const addBounces = () => {
         canvas.width = container.offsetWidth * window.devicePixelRatio
@@ -138,7 +158,8 @@ export default {
           const getImage = (path) => {
             return require(`@/assets/images/${path}`)
           }
-          var bounce = Bodies.circle((canvas.clientWidth / 2 - (canvas.clientWidth / 12.5 * 2)) + index * 100, canvas.clientHeight - 150, canvas.clientWidth/10.5, {
+          const bounceWidth = canvas.clientWidth/10.1
+          var bounce = Bodies.circle((canvas.clientWidth / 2 - (bounceWidth * 2)) + index * 100, canvas.clientHeight - 150, bounceWidth, {
             label: `bounce_${index}`,
             density: 4,
             mass: 10,
@@ -191,15 +212,18 @@ export default {
       })
     }
     const startObserveFooter = () => {
+      console.log('start observ')
       const footer = document.querySelector('.main-footer')
       let options = {
-          threshold: 0.9
+          threshold: 0.2
       }
       const callback = (entries) => {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
+            console.log(true)
             store.commit('layout/hideInterface')
           } else {
+            console.log(false)
             store.commit('layout/showInterface')
           }
         });

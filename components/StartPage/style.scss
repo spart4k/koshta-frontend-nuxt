@@ -26,3 +26,9 @@
     height: 100%;
   }
 }
+.nextSlide {
+  position: fixed;
+  left: 50%;
+  bottom: 2rem;
+  transform: translate(-50%, 0);
+}

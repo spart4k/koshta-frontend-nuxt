@@ -112,14 +112,14 @@ export default {
           path: 'path12.png',
         },
         {
+          path: '4 1.png',
+        },
+        {
+          path: '39 1.png',
+        },
+        {
           path: 'path50.png',
         },
-        // {
-        //   path: 'path18.png',
-        // },
-        // {
-        //   path: 'path16.png',
-        // },
         {
           path: 'path20.png',
         },
@@ -127,13 +127,13 @@ export default {
         //   path: 'path24.png',
         // },
         {
-          path: 'path62.png',
-        },
-        {
           path: 'path64.png',
         },
         {
           path: 'path22.png',
+        },
+        {
+          path: 'path62.png',
         },
         {
           path: 'path38.png',
@@ -145,7 +145,7 @@ export default {
         //   path: 'Vector.png',
         // }
       ]
-      const maxSize = 5700
+      const maxSize = 5300
       var scaleParams = container.offsetWidth
       var procent = scaleParams/maxSize
       // bounes.forEach((item) => {
@@ -209,7 +209,8 @@ export default {
           const getImage = (path) => {
             return require(`@/assets/images/${path}`)
           }
-          var bounce = Bodies.circle(canvas.clientWidth/2, -300 - index * 400,canvas.clientWidth/12.5, {
+          const bounceWidth = canvas.clientWidth/10.1
+          var bounce = Bodies.circle(100 + index * bounceWidth, -800 - index * bounceWidth,bounceWidth, {
             label: `bounce_${index}`,
             density: 6,
             mass: 5,

@@ -39,12 +39,14 @@ export default defineComponent({
       title: "All projects",
       subtitle: "«I can't explain muself. I'm afraid. Sir», said Alice, because I am not myself, you see»"
     })
+    const showButtonNext = ref(true)
     const fullpageOptions = ref({
       dir: 'v',
       duration: 500,
       disabled: false,
       beforeChange: function (currentSlideEl,currenIndex,nextIndex) {
         if (nextIndex === 1) {
+          showButtonNext.value = true
           startMainVideo()
         }
         if (currenIndex === 1) {
@@ -56,6 +58,7 @@ export default defineComponent({
           // store.commit('layout/showInterface')
         }
         if (nextIndex === 2 ) {
+          showButtonNext.value = false
           // store.commit('layout/hideInterface')
         }
       },
@@ -164,10 +167,14 @@ export default defineComponent({
       mainInfo,
       mainVideoUrls,
       loading,
+      showButtonNext
       // fetchState
     }
   },
   methods: {
+    nextSlide() {
+      this.$refs.example.$fullpage.moveNext()
+    }
   },
   watch: {
     disabledFullpage(newVal,oldVar) {
