@@ -12,16 +12,16 @@
         </button>
         <transition name="expand">
           <div v-if="isOpenProjectsDrop" :class="[$style.projectsDrop]">
-            <button v-for="(item, index) in sections" @click.prevent="openSection(item.id)">{{ item.attributes.name }}</button>
+            <nuxt-link v-for="(item, index) in sections" :to="`/sections/${item.id}`" @click.native="openSection(item.id)">{{ item.attributes.name }}</nuxt-link>
           </div>
         </transition>
       </div>
       <div :class="$style.button">
-        <button @click.prevent="openContacts()">
+        <nuxt-link to="/contacts" @click.native="openContacts()">
           <span>
             Contacts
           </span>
-        </button>
+        </nuxt-link>
       </div>
     </div>
     <div :class="$style.mobile">
@@ -30,15 +30,21 @@
         <IconsClose v-else @click="closeNav" class="icon"></IconsClose>
       </div>
       <div v-if="isShowWrap && layoutShowWrap" :class="$style.wrap">
-        <div :class="$style.projects">
-          <p :class="$style.subtitle">Projects</p>
-          <div :class="$style.list">
-            <button v-for="(item, index) in sections" @click.prevent="openSection(item.id)">{{ item.attributes.name }}</button>
+        <div :class="$style.mobileWrap">
+          <div :class="$style.projects">
+            <p :class="$style.subtitle">Projects</p>
+            <div :class="$style.list">
+              <nuxt-link v-for="(item, index) in sections" :to="`/sections/${item.id}`" @click.native="openSection(item.id)">{{ item.attributes.name }}</nuxt-link>
+            </div>
           </div>
+          <nuxt-link to="/contacts" @click.native="openContacts()" :class="[$style.subtitle, $style.contacts]">
+            Contacts
+          </nuxt-link>
+          <p 
+          :class="$style.provide"
+          >PROVIDED BY OUR <span>DREAMS</span> ©2022</p>
         </div>
-        <button @click.prevent="openContacts()" :class="$style.subtitle">
-          Contacts
-        </button>
+        
       </div>
     </div>
   </nav>

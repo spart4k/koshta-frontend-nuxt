@@ -53,12 +53,12 @@
           'pointer-events': noClickedMatter ? 'none' : 'unset'
         }"
         >KOSHTA ©2022</p> -->
-        <p 
+        <!-- <p 
         :class="$style.provide"
         :style="{
           'pointer-events': noClickedMatter ? 'none' : 'unset'
         }"
-        >PROVIDED BY OUR <span>DREAMS</span></p>
+        >PROVIDED BY OUR <span>DREAMS</span></p> -->
         <p 
         :class="$style.policy"
         :style="{

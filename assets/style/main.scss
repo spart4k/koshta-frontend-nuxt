@@ -61,7 +61,7 @@ body {
     overflow: hidden;
   }
 }
-
+button
 button {
   &.link {
     display: inline-block;
@@ -83,6 +83,16 @@ button {
 
 a {
   text-decoration: none;
+  &.nuxt-link-active {
+    &:after {
+      width: 100% !important;
+    }
+    span {
+      &:after {
+        width: 100% !important;
+      }
+    }
+  }
 }
 
 .popup-container {
@@ -198,6 +208,9 @@ h1,h2,h3,h4,h5,h6,p {
       }
     }
   }
+}
+img {
+  background-color: #F5F5F5;
 }
 .index-footer {
   @media (max-width: $mobileWidth) {

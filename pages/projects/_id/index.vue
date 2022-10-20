@@ -32,10 +32,10 @@
           <nuxt-img loading="lazy" v-for="(url, index) in slider" :src="url" />
         </VueSlickCarousel>
       </div>
-      <ui-container :class="$style.otherProjects" class="noPaddingTop">
+      <ui-container v-if="allCaseList" :class="$style.otherProjects" class="noPaddingTop">
         <div>
           <ui-page-title-default :class="$style.otherHeader" :options="otherProjectsHeader"></ui-page-title-default>
-          <projects-list :cases="cases.data"/>
+          <projects-list :cases="allCaseList"/>
         </div>
       </ui-container>
     </div>

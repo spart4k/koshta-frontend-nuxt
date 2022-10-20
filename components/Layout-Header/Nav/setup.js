@@ -12,6 +12,7 @@ export default defineComponent({
       isOpenProjectsDrop.value = !isOpenProjectsDrop.value
     }
     const openSection = (id) => {
+      console.log('open')
       router.push({
         path: `/sections/${id}`
       })
@@ -45,6 +46,9 @@ export default defineComponent({
       router.push({
         path: `/contacts`
       })
+      if (isOpenProjectsDrop.value) {
+        isOpenProjectsDrop.value = false
+      }
       if (isShowWrap) {
         closeNav()
       }

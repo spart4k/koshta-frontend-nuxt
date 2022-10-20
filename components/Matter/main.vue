@@ -158,7 +158,9 @@ export default {
       
       const addBodies = () => {
         var ground = Bodies.rectangle(canvas.clientWidth / 2, canvas.clientHeight + 30, canvas.clientWidth, 60, {
-          isStatic: true, label: "Ground", density: 0,
+          isStatic: true, label: "Ground", density: 0, render: {
+            fillStyle: 'white'
+          }
         });
         var wallLeft = Bodies.rectangle(-30, canvas.clientHeight / 2, 60, canvas.clientHeight * 6, {
           isStatic: true, label: "Wall Left", density: 0,

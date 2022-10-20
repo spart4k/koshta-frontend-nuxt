@@ -52,6 +52,9 @@ export default defineComponent ({
       }
     })
     fetch()
+    const allCaseList = computed(() => {
+      return cases?.value?.data?.filter((item) => item.id !== +route.value.params.id)
+    })
     // const headerInfo = ref({
     //   author: '',
     //   job: '',
@@ -171,7 +174,8 @@ export default defineComponent ({
       orderList,
       cases,
       fetchState,
-      caseInfoMeta
+      caseInfoMeta,
+      allCaseList
     }
   }
 })
