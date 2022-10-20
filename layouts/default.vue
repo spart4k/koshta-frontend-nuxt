@@ -95,6 +95,11 @@
       const isShowInterface = computed(() => {
         return store.state?.layout?.isShow
       })
+      const isMobile = computed(() => {
+        if (process.client) {
+          return window.innerWidth <= 768
+        }
+      })
       const openIndex = () => {
         router.push({
           path: '/'
@@ -107,7 +112,8 @@
         isShowInterface,
         route,
         openIndex,
-        caseInfo
+        caseInfo,
+        isMobile
       }
     }
   }

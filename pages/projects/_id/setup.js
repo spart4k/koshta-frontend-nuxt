@@ -103,16 +103,26 @@ export default defineComponent ({
         return url
       }
     })
+    const mainVideo = computed(() => {
+      const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.video')
+      if (component) {
+        console.log(component)
+        const url = $axios.defaults.baseURL + component.video?.data?.attributes?.url
+        return url
+      }
+    })
     const orderList = computed(() => {
       const component = caseInfo?.value?.slider_or_text
       if (component) {
         var richText = component?.find((element) => element?.__component === 'article.text')
         var mainImage = component?.find((element) => element?.__component === 'article.image')
         var slider = component?.find((element) => element?.__component === 'article.slider')
+        var video = component?.find((element) => element?.__component === 'article.video')
         return {
           text: component.indexOf(richText)+1 ? component.indexOf(richText)+1 : 1,
           image: component.indexOf(mainImage)+1 ? component.indexOf(mainImage)+1 : 2,
-          slider: component.indexOf(slider)+1 ? component.indexOf(slider)+1 : 3
+          slider: component.indexOf(slider)+1 ? component.indexOf(slider)+1 : 3,
+          video: component.indexOf(slider)+1 ? component.indexOf(video)+1 : 4
         }
       }
     })
@@ -176,7 +186,8 @@ export default defineComponent ({
       cases,
       fetchState,
       caseInfoMeta,
-      allCaseList
+      allCaseList,
+      mainVideo
     }
   }
 })

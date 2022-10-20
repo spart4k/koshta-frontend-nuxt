@@ -16,6 +16,15 @@
             </div>
           </div>
         </ui-container>
+        <ui-container v-if="mainVideo" :style="{
+          'order': orderList ? orderList.video : 1
+        }" class="noPaddingTop">
+          <div :class="$style.mainVideo">
+            <video ref="mainVideo" controls loop playsinline webkit-playinginline id="mainVideo">
+              <source poster="https://koshta.c.roky.rocks/uploads/mainposter_ba70b0b94a.png?updated_at=2022-10-19T17:58:47.272Z" :src="mainVideo" type="video/mp4">
+            </video>
+          </div>
+        </ui-container>
         <ui-container :style="{
           'order': orderList ? orderList.text : 2
         }" class="noPaddingTop">

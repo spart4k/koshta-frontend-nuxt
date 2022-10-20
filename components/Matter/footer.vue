@@ -215,7 +215,7 @@ export default {
       console.log('start observ')
       const footer = document.querySelector('.main-footer')
       let options = {
-          threshold: 0.2
+          threshold: 0.5
       }
       const callback = (entries) => {
         entries.forEach(function (entry) {
