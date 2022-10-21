@@ -13,6 +13,8 @@
   padding: 1rem;
   @media (max-width: $mobileWidth) {
     margin: 0rem auto 8.5rem auto;
+    transform: translate(0%, 0%);
     width: calc(100% - 9rem);
+    padding: 0;
   }
 }

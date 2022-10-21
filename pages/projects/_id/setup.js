@@ -118,11 +118,13 @@ export default defineComponent ({
         var mainImage = component?.find((element) => element?.__component === 'article.image')
         var slider = component?.find((element) => element?.__component === 'article.slider')
         var video = component?.find((element) => element?.__component === 'article.video')
+        console.log(richText, mainImage, slider , video)
+        console.log(component.indexOf(richText), component.indexOf(mainImage), component.indexOf(slider), component.indexOf(video))
         return {
-          text: component.indexOf(richText)+1 ? component.indexOf(richText)+1 : 1,
-          image: component.indexOf(mainImage)+1 ? component.indexOf(mainImage)+1 : 2,
-          slider: component.indexOf(slider)+1 ? component.indexOf(slider)+1 : 3,
-          video: component.indexOf(slider)+1 ? component.indexOf(video)+1 : 4
+          text: richText ? component.indexOf(richText)+1 : null,
+          image: mainImage ? component.indexOf(mainImage)+1 : null,
+          slider: slider ? component.indexOf(slider)+1 : null,
+          video: video ? component.indexOf(video)+1 : null
         }
       }
     })
