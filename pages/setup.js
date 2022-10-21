@@ -47,8 +47,11 @@ export default defineComponent({
       duration: 500,
       disabled: false,
       beforeChange: function (currentSlideEl,currenIndex,nextIndex) {
-        if (nextIndex === 1) {
+        if (nextIndex === 0) {
           showButtonNext.value = true
+        }
+        if (nextIndex === 1) {
+          showButtonNext.value = false
           startMainVideo()
         }
         if (currenIndex === 1) {
@@ -60,7 +63,7 @@ export default defineComponent({
           // store.commit('layout/showInterface')
         }
         if (nextIndex === 2 ) {
-          showButtonNext.value = false
+          
           // store.commit('layout/hideInterface')
         }
       },

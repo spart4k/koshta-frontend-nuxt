@@ -88,7 +88,13 @@ export default {
           path: 'path12.png',
         }
       ]
-      const maxSize = 5300
+      let maxSize = null
+      if (container.offsetWidth >= 768) {
+          maxSize = 5800
+        }
+      else {
+        maxSize = 3700
+      }
       let scaleParams = container.offsetWidth
       let procent = scaleParams / maxSize
       
@@ -158,8 +164,19 @@ export default {
           const getImage = (path) => {
             return require(`@/assets/images/${path}`)
           }
-          const bounceWidth = canvas.clientWidth/10.1
-          var bounce = Bodies.circle((canvas.clientWidth / 2 - (bounceWidth * 2)) + index * 100, canvas.clientHeight - 150, bounceWidth, {
+          let bounceWidth = null
+          let optBounce = {
+            x: (canvas.clientWidth / 2 - (bounceWidth * 2)) + index * 100,
+            y: canvas.clientHeight - 150,
+            width: null
+          }
+          if (container.offsetWidth >= 768) {
+            bounceWidth = canvas.clientWidth/11
+            }
+          else {
+            bounceWidth = canvas.clientWidth/7.5
+          }
+          var bounce = Bodies.circle(optBounce.x, optBounce.y, bounceWidth, {
             label: `bounce_${index}`,
             density: 4,
             mass: 10,

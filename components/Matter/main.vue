@@ -145,7 +145,13 @@ export default {
         //   path: 'Vector.png',
         // }
       ]
-      const maxSize = 5300
+      let maxSize = null
+      if (container.offsetWidth >= 768) {
+          maxSize = 5800
+        }
+      else {
+        maxSize = 3700
+      }
       var scaleParams = container.offsetWidth
       var procent = scaleParams/maxSize
       // bounes.forEach((item) => {
@@ -209,8 +215,30 @@ export default {
           const getImage = (path) => {
             return require(`@/assets/images/${path}`)
           }
-          const bounceWidth = canvas.clientWidth/10.1
-          var bounce = Bodies.circle(100 + index * bounceWidth, -800 - index * bounceWidth,bounceWidth, {
+          let bounceWidth = null
+          let optBounce = {
+            x: null,
+            y: null,
+            width: null
+          }
+          if (container.offsetWidth >= 768) {
+            bounceWidth = canvas.clientWidth/11
+            optBounce = {
+              x: 100 + index * bounceWidth,
+              y:  -800 - index * bounceWidth,
+              width: bounceWidth
+            }
+            }
+          else {
+            bounceWidth = canvas.clientWidth/7.5
+            optBounce = {
+              x: 0 + index * bounceWidth/2,
+              y:  -800 - index * (bounceWidth + 200 ),
+              width: bounceWidth
+            }
+          }
+          
+          var bounce = Bodies.circle(optBounce.x, optBounce.y, optBounce.width, {
             label: `bounce_${index}`,
             density: 6,
             mass: 5,
