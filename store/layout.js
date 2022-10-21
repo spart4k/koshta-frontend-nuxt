@@ -1,5 +1,6 @@
 export const state = () => ({
   isShow: true,
+  isShowObs: true,
   bodyOverflow: true,
   isShowNavWrap: false
 })
@@ -10,6 +11,12 @@ export const mutations = {
   },
   showInterface(state) {
     state.isShow = true
+  },
+  hideInterfaceObs(state) {
+    state.isShowObs = false
+  },
+  showInterfaceObs(state) {
+    state.isShowObs = true
   },
   setBodyOverflow(state, param) {
     if (param) {

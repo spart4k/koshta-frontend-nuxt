@@ -25,15 +25,27 @@ export default defineComponent({
       return store?.state?.layout?.isShowNavWrap
     })
     const openNav = () => {
+      if (!logoIsShow.value) {
+        store.commit('layout/showInterface')
+      }
       store.commit('layout/setBodyOverflow', false)
       store.commit('layout/showWrap', true)
       isShowWrap.value = true
     }
+    const logoIsShow = computed(() => {
+      return store?.state?.layout?.isShow
+    })
     const closeNav = () => {
+      if (!logoIsShowObs.value) {
+        store.commit('layout/hideInterface')
+      }
       store.commit('layout/setBodyOverflow', true)
       store.commit('layout/showWrap', false)
       isShowWrap.value = false
     }
+    const logoIsShowObs = computed(() => {
+      return store?.state?.layout?.isShowObs
+    })
     const openAbout = () => { 
       router.push({
         path: `/about`
@@ -77,7 +89,9 @@ export default defineComponent({
       openAbout,
       openContacts,
       sections,
-      layoutShowWrap
+      layoutShowWrap,
+      logoIsShow,
+      logoIsShowObs
     }
   }
 })

@@ -92,6 +92,9 @@
       const noClickedMatter = computed(() => {
         return store.state?.matter?.matterClicked
       })
+      const isShowInterfaceObs = computed(() => {
+        return store.state?.layout?.isShowObs
+      })
       const isShowInterface = computed(() => {
         return store.state?.layout?.isShow
       })
@@ -113,7 +116,8 @@
         route,
         openIndex,
         caseInfo,
-        isMobile
+        isMobile,
+        isShowInterfaceObs
       }
     }
   }

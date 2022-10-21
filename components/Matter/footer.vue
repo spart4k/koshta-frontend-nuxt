@@ -24,7 +24,7 @@ export default {
       return props.centerOptions
     })
     onMounted(() => {
-      startObserveFooter()
+      // startObserveFooter()
       // initMatter()
       setTimeout(() => {
         initMatter()
@@ -211,26 +211,7 @@ export default {
       canvas.addEventListener("wheel", (e) => {
       })
     }
-    const startObserveFooter = () => {
-      console.log('start observ')
-      const footer = document.querySelector('.main-footer')
-      let options = {
-          threshold: 0.5
-      }
-      const callback = (entries) => {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            console.log(true)
-            store.commit('layout/hideInterface')
-          } else {
-            console.log(false)
-            store.commit('layout/showInterface')
-          }
-        });
-      }
-      let observer = new IntersectionObserver(callback, options);
-      observer.observe(footer);
-    }
+    
     return {
       centerOptions
     }
