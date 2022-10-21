@@ -21,45 +21,17 @@ export default {
   setup(props,_) {
     const { store } = useContext()
     const centerOptions = computed(() => {
-      return props.centerOptions
+      return props?.centerOptions
     })
     onMounted(() => {
       setTimeout(() => {
         initMatter()
-      }, 200)
+      }, 0)
       
     })
     const initMatter = () => {
       const el = document.getElementById('start-matter')
       var canvas = document.getElementById('wrap')
-      // var PIXEL_RATIO = (function () {
-      // var ctx = canvas.getContext("2d"),
-      //     dpr = window.devicePixelRatio || 1,
-      //     bsr = ctx.webkitBackingStorePixelRatio ||
-      //           ctx.mozBackingStorePixelRatio ||
-      //           ctx.msBackingStorePixelRatio ||
-      //           ctx.oBackingStorePixelRatio ||
-      //           ctx.backingStorePixelRatio || 1;
-
-      // return dpr / bsr;
-      // })();
-
-
-      // var createHiDPICanvas = function(w, h, ratio) {
-      //     if (!ratio) { ratio = PIXEL_RATIO; }
-      //     var can = document.createElement("canvas");
-      //     can.width = w * ratio;
-      //     can.height = h * ratio;
-      //     can.style.width = w + "px";
-      //     can.style.height = h + "px";
-      //     can.getContext("2d").setTransform(ratio, 0, 0, ratio, 0, 0);
-      //     return can;
-      // }
-
-      //Create canvas with the device resolution.
-      // createHiDPICanvas(2000, 1000);
-      //Create canvas with a custom resolution.
-      // createHiDPICanvas(1900, 1000, 4);
       var Engine = Matter.Engine,
         Render = Matter.Render,
         Runner = Matter.Runner,
@@ -76,14 +48,12 @@ export default {
       if (el.offsetWidth <= 768) {
         world.gravity.y = 1
       }
-        // const { width, height } = this.$el.getBoundingClientRect();
       // create renderer
       var container = el
       var render = Render.create({
         element: container,
         canvas: canvas,
         engine: engine,
-        // gravity: { y: 1000 },
         options: {
           background: '#ffffff',
           width: container.offsetWidth,
@@ -94,8 +64,6 @@ export default {
       });
       canvas.width = container.offsetWidth * window.devicePixelRatio;
       canvas.height = container.offsetHeight * window.devicePixelRatio;
-      // canvas.clientWidth = canvas.width * window.devicePixelRatio
-      // canvas.clientHeight = canvas.height * window.devicePixelRatio
 
 
       Render.run(render);
@@ -154,9 +122,6 @@ export default {
       }
       var scaleParams = container.offsetWidth
       var procent = scaleParams/maxSize
-      // bounes.forEach((item) => {
-      //   item.
-      // })
       
       
       // add mouse control
@@ -247,7 +212,6 @@ export default {
             render: {
               pixelRatio: window.devicePixelRatio,
               sprite: {
-                  // texture: require('@/assets/images/Group 3.png'),
                   texture: getImage(item.path),
                   pixelRatio: window.devicePixelRatio,
                   xScale: procent,
@@ -255,53 +219,27 @@ export default {
               }
             }}
           )
-          // bounes.push(bounce)
           Matter.Composite.add(engine.world, bounce)
-          // Matter.Body.setMass(bounce, { x: 5, y: 45 })
           Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
           if (container.offsetWidth >= 1280) {
             Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
           } else {
             Matter.Body.setVelocity(bounce, { x: 0, y: 0 })
-            // Matter.Body.SetPosition(bounce, { x: 0, y: -300 - index * 900 })
-            // Matter.Body.setVelocity(bounce, { x: 0, y: 15 })
           } 
         })
       }
       addBounces()
       addBodies()
       window.addEventListener("resize", function () {
-        // render.canvas.remove();
         scaleParams = container.offsetWidth
         procent = scaleParams/maxSize
         canvas.width = container.offsetWidth * window.devicePixelRatio
         canvas.height = container.offsetHeight * window.devicePixelRatio
         canvas.style.width = container.offsetWidth + 'px'
-        // console.log(canvas.clientWidth)
-        // bounes.forEach((item) => {
-        //   // Matter.Body.scale(item, 1.2, 1.2)
-        //   Matter.Composite.remove(engine.world, item)
-        // })
+        canvas.style.height = container.offsetHeight + 'px'
         Matter.Composite.clear(engine.world);
-        // Matter.Body.setPosition(ground, {x: canvas.clientWidth / 2, y: canvas.clientHeight + 30})
-        // Matter.Body.setPosition(wallRight, {x: canvas.clientWidth + 30, y: canvas.clientHeight / 2})
-        // Matter.Body.setPosition(textBlock, {x: canvas.clientWidth / 2, y: canvas.clientHeight / 2})
         addBounces()
         addBodies()
-        // addBodies()
-        
-          // render.canvas.remove();
-          // Render.run(render);
-          // World.clear(engine.world)
-          // Runner.run(runner, engine);
-          // World.add(world, [
-          //   ground,wallLeft, wallRight, ...bounes
-          // ]);
-          // Matter.Body.scale( textBlock, 1.005, 1.005);
-          
-          
-          
-          // Render.run(render);
       });
     }
     return {
@@ -318,7 +256,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #929292;
-  min-height: -webkit-fill-available;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #fff;
 }
 svg {
   display: none;

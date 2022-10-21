@@ -17,6 +17,7 @@
         console.log('start observ')
         const footer = document.querySelector('.main-footer')
         let options = {
+            // root: document.querySelector('#main-logotype'),
             threshold: 0.5
         }
         const callback = (entries) => {

@@ -207,6 +207,7 @@ export default {
         canvas.width = container.offsetWidth * window.devicePixelRatio
         canvas.height = container.offsetHeight * window.devicePixelRatio
         canvas.style.width = container.offsetWidth + 'px'
+        canvas.style.height = container.offsetHeight + 'px'
         Matter.Composite.clear(engine.world);
         addBounces()
         addBodies()

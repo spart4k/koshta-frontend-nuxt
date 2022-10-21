@@ -45,6 +45,7 @@ export default defineComponent({
     const fullpageOptions = ref({
       dir: 'v',
       duration: 500,
+      start: 0,
       disabled: false,
       beforeChange: function (currentSlideEl,currenIndex,nextIndex) {
         if (nextIndex === 0) {

@@ -2,11 +2,11 @@
   <div class="fullpage-container">
     <!-- <UiPreloaderPage v-if="fetchState.pending"/> -->
     <div class="fullpage-wp" v-fullpage="fullpageOptions" ref="example">
-      <start-page/>
+      <start-page class="page-1 page"/>
       <div class="page-2 page">
         <main-video v-if="mainVideoUrls" :mainVideoUrls="mainVideoUrls" ref="mainVideo"></main-video>
       </div>
-      <div ref="projects" class="page-3 projects">
+      <div ref="projects" class="page-3 projects page">
         <ui-container :class="$style.projectsContent">
           <main-projects v-if="cases" :cases="cases.data" :headerOptions="headerOptions" ref=""></main-projects>
         </ui-container>
