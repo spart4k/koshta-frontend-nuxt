@@ -1,9 +1,9 @@
 <template>
-  <div id="start-matter">
+  <div id="footer-matter">
     <p>
       {{ gyrascopeX, gyrascopeY }}
     </p>
-    <canvas id="wrap"></canvas>
+    <canvas id="wrap-footer"></canvas>
   </div>
 </template>
 
@@ -18,25 +18,27 @@ export default {
   props: {
     centerOptions: {
       type: Object,
-      default: () => {}
+      default: () => { }
     }
   },
-  setup(props,_) {
+  setup(props, _) {
     const { store } = useContext()
-    const centerOptions = computed(() => {
-      return props?.centerOptions
-    })
-    onMounted(() => {
-      setTimeout(() => {
-        initMatter()
-      }, 200)
-      
-    })
     const gyrascopeX = ref(1)
     const gyrascopeY = ref(1)
+    const centerOptions = computed(() => {
+      return props.centerOptions
+    })
+    onMounted(() => {
+      // startObserveFooter()
+      // initMatter()
+      setTimeout(() => {
+        initMatter()
+      }, 300)
+
+    })
     const initMatter = () => {
-      const el = document.getElementById('start-matter')
-      var canvas = document.getElementById('wrap')
+      const el = document.getElementById('footer-matter')
+      var canvas = document.getElementById('wrap-footer')
       var Engine = Matter.Engine,
         Render = Matter.Render,
         Runner = Matter.Runner,
@@ -49,10 +51,8 @@ export default {
       // create engine
       var engine = Engine.create(),
       world = engine.world;
-      world.gravity.y = 1.8;
-      if (el.offsetWidth <= 768) {
-        world.gravity.y = 1
-      }
+      world.gravity.y = 2.5;
+      // const { width, height } = this.$el.getBoundingClientRect();
       // create renderer
       var container = el
       var render = Render.create({
@@ -67,56 +67,31 @@ export default {
           pixelRatio: window.devicePixelRatio
         }
       });
+      canvas.style.width = container.offsetWidth + 'px'
       canvas.width = container.offsetWidth * window.devicePixelRatio;
       canvas.height = container.offsetHeight * window.devicePixelRatio;
 
 
+
       Render.run(render);
-      
+
       // create runner
       var runner = Runner.create();
       Runner.run(runner, engine);
 
       const sprites = [
         {
-          path: 'path40.png',
+          path: 'Group 7.png',
         },
-        {
-          path: 'path12.png',
-        },
-        {
-          path: '4 1.png',
-        },
-        {
-          path: '39 1.png',
-        },
-        {
-          path: 'path50.png',
-        },
-        {
-          path: 'path20.png',
-        },
-        // {
-        //   path: 'path24.png',
-        // },
         {
           path: 'path64.png',
-        },
-        {
-          path: 'path22.png',
         },
         {
           path: 'path62.png',
         },
         {
-          path: 'path38.png',
-        },
-        {
-          path: 'Group 7.png',
-        },
-        // {
-        //   path: 'Vector.png',
-        // }
+          path: 'path12.png',
+        }
       ]
       let maxSize = null
       if (container.offsetWidth >= 768) {
@@ -125,38 +100,27 @@ export default {
       else {
         maxSize = 3700
       }
-      var scaleParams = container.offsetWidth
-      var procent = scaleParams/maxSize
-      
-      
-      // add mouse control
-      // keep the mouse in sync with rendering
+      let scaleParams = container.offsetWidth
+      let procent = scaleParams / maxSize
       
       const addBodies = () => {
         var ground = Bodies.rectangle(canvas.clientWidth / 2, canvas.clientHeight + 30, canvas.clientWidth, 60, {
-          isStatic: true, label: "Ground", density: 0, render: {
+          isStatic: true, label: "Ground", density: 1.4, render: {
             fillStyle: 'white'
           }
         });
-        var wallLeft = Bodies.rectangle(-30, canvas.clientHeight / 2, 60, canvas.clientHeight * 6, {
-          isStatic: true, label: "Wall Left", density: 0,
+        var roof = Bodies.rectangle(canvas.clientWidth / 2, 0 - 60, canvas.clientWidth, 60, {
+          isStatic: true, label: "Roof", density: 1.4,
         });
-        var wallRight = Bodies.rectangle(canvas.clientWidth + 30, canvas.clientHeight / 2, 60, canvas.clientHeight * 6, {
-          isStatic: true, label: "Wall Right", density: 0,
+        var wallLeft = Bodies.rectangle(-30, canvas.clientHeight / 2, 60, canvas.clientHeight * 3, {
+          isStatic: true, label: "Wall Left", density: 1.4,
         });
-        var textBlock = Bodies.rectangle( canvas.clientWidth / 2,canvas.clientHeight / 2,canvas.clientWidth/1.8, props.centerOptions.height,{
-          isStatic: true, label: "Center", density: 0, render: {
-            fillStyle: 'transparent'
-          }
+        var wallRight = Bodies.rectangle(canvas.clientWidth + 30, canvas.clientHeight / 2, 60, canvas.clientHeight * 3, {
+          isStatic: true, label: "Wall Right", density: 1.4,
         });
         Matter.Composite.add(engine.world, [
-          ground,wallLeft, wallRight
+          ground, wallLeft, wallRight, roof
         ])
-        if (container.offsetWidth >= 768) {
-          World.add(world, [
-            textBlock
-          ]);
-        }
         var mouse = Mouse.create(render.canvas),
         mouseConstraint = MouseConstraint.create(engine, {
           mouse: mouse,
@@ -167,16 +131,34 @@ export default {
             }
           }
         });
-        World.add(world, mouseConstraint);
-        Events.on(mouseConstraint, "startdrag", (e) => {
-          store.commit('fullpage/changeState', true)
-          store.commit('matter/changeState', true)
-        })
-        Events.on(mouseConstraint, "enddrag", (e) => {
-          store.commit('fullpage/changeState', false)
-          store.commit('matter/changeState', false)
-        })
-        render.mouse = mouse;
+        if (window.location.pathname === '/') {
+          if (container.offsetWidth >= 768) {
+            World.add(world, mouseConstraint);
+            Events.on(mouseConstraint, "startdrag", (e) => {
+              store.commit('fullpage/changeState', true)
+              store.commit('matter/changeState', true)
+            })
+            Events.on(mouseConstraint, "enddrag", (e) => {
+              store.commit('fullpage/changeState', false)
+              store.commit('matter/changeState', false)
+            })
+            render.mouse = mouse;
+          } else {
+            return 
+          }
+        } else {
+          World.add(world, mouseConstraint);
+          Events.on(mouseConstraint, "startdrag", (e) => {
+            store.commit('fullpage/changeState', true)
+            store.commit('matter/changeState', true)
+          })
+          Events.on(mouseConstraint, "enddrag", (e) => {
+            store.commit('fullpage/changeState', false)
+            store.commit('matter/changeState', false)
+          })
+          render.mouse = mouse;
+        }
+        
       }
       const addBounces = () => {
         canvas.width = container.offsetWidth * window.devicePixelRatio
@@ -187,36 +169,27 @@ export default {
           }
           let bounceWidth = null
           let optBounce = {
-            x: null,
-            y: null,
+            x: (canvas.clientWidth / 2 - (bounceWidth * 2)) + index * 100,
+            y: canvas.clientHeight - 150,
             width: null
           }
           if (container.offsetWidth >= 768) {
             bounceWidth = canvas.clientWidth/11
-            optBounce = {
-              x: 100 + index * bounceWidth,
-              y:  -800 - index * bounceWidth,
-              width: bounceWidth
-            }
             }
           else {
             bounceWidth = canvas.clientWidth/7.5
-            optBounce = {
-              x: 0 + index * bounceWidth/2,
-              y:  -800 - index * (bounceWidth + 200 ),
-              width: bounceWidth
-            }
           }
-          
-          var bounce = Bodies.circle(optBounce.x, optBounce.y, optBounce.width, {
+          var bounce = Bodies.circle(optBounce.x, optBounce.y, bounceWidth, {
             label: `bounce_${index}`,
-            density: 6,
-            mass: 5,
-            restitution: .6,
-            inverseMass: 1/5,
+            density: 4,
+            mass: 10,
+            // force: { x: 3, y: 3 },
+            restitution: .5,
+            inverseMass: 1/10,
             render: {
               pixelRatio: window.devicePixelRatio,
               sprite: {
+                  // texture: require('@/assets/images/Group 3.png'),
                   texture: getImage(item.path),
                   pixelRatio: window.devicePixelRatio,
                   xScale: procent,
@@ -224,13 +197,9 @@ export default {
               }
             }}
           )
+          // bounes.push(bounce)
           Matter.Composite.add(engine.world, bounce)
           Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
-          if (container.offsetWidth >= 1280) {
-            Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
-          } else {
-            Matter.Body.setVelocity(bounce, { x: 0, y: 0 })
-          } 
         })
       }
       addBounces()
@@ -246,25 +215,42 @@ export default {
         addBounces()
         addBodies()
       });
-      // const startGyro = () => {
-      //   let gyroscope = new Gyroscope({frequency: 60});
-      //   gyroscope.addEventListener('reading', e => {
-      //     console.log("Angular velocity along the X-axis " + gyroscope.x);
-      //     console.log("Angular velocity along the Y-axis " + gyroscope.y);
-      //     console.log("Angular velocity along the Z-axis " + gyroscope.z);
-      //     // alert(gyroscope.x)
-      //     gyrascopeX.value = gyroscope.x
-      //     gyrascopeY.value = gyroscope.y
-      //     world.gravity.x = gyroscope.x * 5
-      //     world.gravity.y = gyroscope.y * 5 
-      //   });
-      //   console.log(gyroscope)
-      //   setTimeout(() => {
-      //     gyroscope.start();
-      //   }, 4000)
-      // }
-      // startGyro()
+      const startGyro = () => {
+        let gyroscope = new Gyroscope({frequency: 60});
+        gyroscope.addEventListener('reading', e => {
+          console.log("Angular velocity along the X-axis " + gyroscope.x);
+          console.log("Angular velocity along the Y-axis " + gyroscope.y);
+          console.log("Angular velocity along the Z-axis " + gyroscope.z);
+          // alert(gyroscope.x)
+          gyrascopeX.value = gyroscope.x
+          gyrascopeY.value = gyroscope.y
+          world.gravity.x = gyroscope.x * 3
+          world.gravity.y = gyroscope.y * 3 
+        });
+        console.log(gyroscope)
+        setTimeout(() => {
+          gyroscope.start();
+        }, 0)
+      }
+      startGyro()
+      const shakeBodies = () => {
+        bounes.forEach((item) => {
+          // Matter.Body.translate(item, {x: 0, y: -100})
+          Matter.Body.setStatic(item, true);
+          let i = 0;
+          while (i < 10) { // выводит 0, затем 1, затем 2
+            i++;
+            Matter.Body.setPosition(item, { x: item.position.x, y: item.position.y - i });
+            // Matter.Body.setVelocity(item, {x : 0, y : 1});
+          }
+          Matter.Body.setStatic(item, false);
+        })
+      }
+      
+      canvas.addEventListener("wheel", (e) => {
+      })
     }
+    
     return {
       centerOptions,
       gyrascopeX,
@@ -275,19 +261,20 @@ export default {
 </script>
 
 <style>
-#start-matter {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+#footer-matter {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #929292;
+  height: 100vh;
+  line-height: 0;
   width: 100%;
-  min-height: -webkit-fill-available;
-  background-color: #fff;
 }
+
 svg {
   display: none;
 }
+
 * {
   padding: 0;
   margin: 0;

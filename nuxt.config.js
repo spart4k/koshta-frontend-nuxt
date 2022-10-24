@@ -1,3 +1,5 @@
+import path from 'path'
+import fs from 'fs'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -21,7 +23,12 @@ export default {
   loading: false,
   server: {
     port: process.env.PORT || 3080, // default: 3000
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'key.pem')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'cert.pem'))
+    }
+    // https: true
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -70,7 +77,6 @@ export default {
       '~/assets/style/_variables.scss'
     ]
   },
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
