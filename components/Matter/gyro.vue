@@ -224,8 +224,8 @@ export default {
           // alert(gyroscope.x)
           gyrascopeX.value = gyroscope.x
           gyrascopeY.value = gyroscope.y
-          world.gravity.x = gyroscope.x * 3
-          world.gravity.y = gyroscope.y * 3 
+          world.gravity.x = gyroscope.x * 2
+          world.gravity.y = gyroscope.y * 2
         });
         console.log(gyroscope)
         setTimeout(() => {

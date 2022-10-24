@@ -24,10 +24,10 @@ export default {
   server: {
     port: process.env.PORT || 3080, // default: 3000
     host: '0.0.0.0',
-    https: {
+    https: process.env.NODE_ENV !== 'production' ? {
       key: fs.readFileSync(path.resolve(__dirname, 'key.pem')),
       cert: fs.readFileSync(path.resolve(__dirname, 'cert.pem'))
-    }
+    } : ''
     // https: true
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
