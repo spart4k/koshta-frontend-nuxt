@@ -10,6 +10,7 @@ export const mutations = {
     state.isShow = false
   },
   showInterface(state) {
+    console.log(state.isShow)
     state.isShow = true
   },
   hideInterfaceObs(state) {

@@ -27,7 +27,7 @@
     <div :class="$style.mobile">
       <div :class="$style.trigger">
         <IconsNavOpen v-if="!layoutShowWrap" @click="openNav" class="icon"></IconsNavOpen>
-        <IconsClose v-else @click="closeNav" class="icon"></IconsClose>
+        <IconsClose v-else @click="closeNavWrap" class="icon"></IconsClose>
       </div>
       <div v-if="isShowWrap && layoutShowWrap" :class="$style.wrap">
         <div :class="$style.mobileWrap">

@@ -64,17 +64,14 @@ export default defineComponent ({
     const otherProjectsHeader = ref({
       title: 'Other projects'
     })
-    console.log(caseInfo?.value)
     // loading.value = true
     const caseData = computed(() => {
       return []
     })
     watch(caseData, () => {
-      console.log('change')
       if (caseData?.value) loading.value = false
       /* triggers on deep mutation to state */
     })
-    console.log(caseInfo.value)
     const wrap = computed(() => {
       return $axios.defaults.baseURL + caseInfo.value?.wrap?.data?.attributes?.url
     })
@@ -106,7 +103,6 @@ export default defineComponent ({
     const mainVideo = computed(() => {
       const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.video')
       if (component) {
-        console.log(component)
         const url = $axios.defaults.baseURL + component.video?.data?.attributes?.url
         return url
       }
@@ -118,8 +114,6 @@ export default defineComponent ({
         var mainImage = component?.find((element) => element?.__component === 'article.image')
         var slider = component?.find((element) => element?.__component === 'article.slider')
         var video = component?.find((element) => element?.__component === 'article.video')
-        console.log(richText, mainImage, slider , video)
-        console.log(component.indexOf(richText), component.indexOf(mainImage), component.indexOf(slider), component.indexOf(video))
         return {
           text: richText ? component.indexOf(richText)+1 : null,
           image: mainImage ? component.indexOf(mainImage)+1 : null,

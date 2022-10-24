@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div :class="$style.section">
     <ui-container>
       <ui-page-title-default 
       :options="headerOptions"

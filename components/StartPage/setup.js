@@ -10,7 +10,7 @@ export default {
       
     // })
     const nextSlide = () => {
-      console.log('next')
+      
     }
     onMounted(() => {
       let block = center?.value

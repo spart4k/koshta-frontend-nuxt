@@ -11,16 +11,13 @@ export default defineComponent({
     })
     const sectionInfoMeta = useAsync( async () => {
       const id = route.value.params.id
-      console.log(id)
       const attributes  = await store.dispatch('sections/getSection', id)
-      console.log('mount')
       route.value.path
       // caseInfo.value =  data.attributes
       return attributes
     })
     const fetchData = async () => {
       const id = route.value.params.id
-      console.log(id)
       const { attributes } = await store.dispatch('sections/getSection', id)
       return attributes
     }

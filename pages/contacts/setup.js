@@ -30,7 +30,6 @@ export default defineComponent({
         return array
       }
     })
-    console.log(contactsInfo?.value?.attributes?.meta?.meta_data)
     useMeta(() => ({ 
       title: contactsInfo?.value?.attributes?.meta?.meta_data,
       meta: [

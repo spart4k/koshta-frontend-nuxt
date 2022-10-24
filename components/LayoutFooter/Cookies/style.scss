@@ -9,8 +9,26 @@
   border-radius: 20px;
   padding: 1.5rem;
   button {
+    position: relative;
     display: inline-flex;
     @include uppercase;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 1px;
+      left: 0;
+      bottom: -.4rem;
+      background-color: #000000;
+      background-blend-mode: difference;
+      transition: .2s;
+    }
+    &:hover {
+      cursor: pointer;
+      &:after {
+        width: 100%;
+      }
+    }
   }
   @media (max-width: $mobileWidth) {
     width: calc(100% - 4rem);

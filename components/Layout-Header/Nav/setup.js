@@ -12,7 +12,7 @@ export default defineComponent({
       isOpenProjectsDrop.value = !isOpenProjectsDrop.value
     }
     const openSection = (id) => {
-      console.log('open')
+
       router.push({
         path: `/sections/${id}`
       })
@@ -27,6 +27,7 @@ export default defineComponent({
     const openNav = () => {
       if (!logoIsShow.value) {
         store.commit('layout/showInterface')
+        // store.commit('layout/showInterfaceObs')
       }
       store.commit('layout/setBodyOverflow', false)
       store.commit('layout/showWrap', true)
@@ -35,7 +36,15 @@ export default defineComponent({
     const logoIsShow = computed(() => {
       return store?.state?.layout?.isShow
     })
-    const closeNav = () => {
+    const closeNav = () => {  
+      setTimeout(() => {
+        store.commit('layout/setBodyOverflow', true)
+        store.commit('layout/showWrap', false)
+        isShowWrap.value = false
+      }, 200)
+      
+    }
+    const closeNavWrap = () => {
       if (!logoIsShowObs.value) {
         store.commit('layout/hideInterface')
       }
@@ -91,7 +100,8 @@ export default defineComponent({
       sections,
       layoutShowWrap,
       logoIsShow,
-      logoIsShowObs
+      logoIsShowObs,
+      closeNavWrap
     }
   }
 })

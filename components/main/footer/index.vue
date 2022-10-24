@@ -14,7 +14,6 @@
     setup() {
       const { store } = useContext()
       const startObserveFooter = () => {
-        console.log('start observ')
         const footer = document.querySelector('.main-footer')
         let options = {
             // root: document.querySelector('#main-logotype'),
@@ -23,16 +22,19 @@
         const callback = (entries) => {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
-              console.log(true)
               if ( window.innerWidth <= 768 ) {
-                store.commit('layout/hideInterface') 
-                store.commit('layout/hideInterfaceObs') 
+                if (store.state.layout.isShow) {
+                  store.commit('layout/hideInterface') 
+                  store.commit('layout/hideInterfaceObs') 
+                } 
               }
             } else {
-              console.log(false)
               if ( window.innerWidth <= 768 ) {
-                store.commit('layout/showInterface')
-                store.commit('layout/showInterfaceObs')
+                if (!store.state.layout.isShow) {
+                  store.commit('layout/showInterface') 
+                  store.commit('layout/showInterfaceObs')
+                }
+                
               }
             }
           });
@@ -40,8 +42,12 @@
         let observer = new IntersectionObserver(callback, options);
         observer.observe(footer);
       }
+      
       onMounted(() => {
-        startObserveFooter()
+        setTimeout(() => {
+          startObserveFooter()
+        }, 100)
+        
       })
       return {
         startObserveFooter
