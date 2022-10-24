@@ -26,7 +26,7 @@ export default {
     onMounted(() => {
       setTimeout(() => {
         initMatter()
-      }, 0)
+      }, 200)
       
     })
     const initMatter = () => {
@@ -256,8 +256,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #929292;
-  min-height: 100vh;
   width: 100%;
+  min-height: -webkit-fill-available;
   background-color: #fff;
 }
 svg {
