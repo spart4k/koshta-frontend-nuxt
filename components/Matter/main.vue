@@ -1,8 +1,5 @@
 <template>
   <div id="start-matter">
-    <p>
-      {{ gyrascopeX, gyrascopeY }}
-    </p>
     <canvas id="wrap"></canvas>
   </div>
 </template>
