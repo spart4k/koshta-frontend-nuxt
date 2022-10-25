@@ -256,7 +256,7 @@ export default {
               handler()
             } catch(error) {
               console.log(error)
-              // alert(error)
+              alert(error)
             }
             
             
