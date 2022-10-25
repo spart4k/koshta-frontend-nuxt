@@ -252,7 +252,7 @@ export default {
           accessBtn.addEventListener('click', () => {
             requestBody.style.display = 'none'
             try {
-              // handler()
+              handler()
             } catch {
               alert(error)
             }
@@ -294,14 +294,14 @@ export default {
             console.log(e)
             gyrascopeX.value = e.accelerationIncludingGravity.y * 2
             gyrascopeY.value = e.accelerationIncludingGravity.x * 2
-            world.gravity.x = gyroscope.y * 2
-            world.gravity.y = gyroscope.x * 2
+            world.gravity.x = e.accelerationIncludingGravity.y * 2
+            world.gravity.y = e.accelerationIncludingGravity.x * 2
           }
         }
         
         initRequest()
         setTimeout(() => {
-          gyroscope.start();
+          // gyroscope.start();
         }, 0)
       }
       
