@@ -230,7 +230,7 @@ export default {
         addBodies()
       });
       const startGyro = () => {
-        let gyroscope = new Gyroscope({frequency: 60});
+        // let gyroscope = new Gyroscope({frequency: 60});
         // gyroscope.addEventListener('reading', e => {
         //   console.log("Angular velocity along the X-axis " + gyroscope.x);
         //   console.log("Angular velocity along the Y-axis " + gyroscope.y);
@@ -241,12 +241,25 @@ export default {
         //   world.gravity.x = gyroscope.y * 2
         //   world.gravity.y = gyroscope.x * 2
         // });
-        console.log(gyroscope)
+        // console.log(gyroscope)
         // if (confirm('Enable orientaion mode?')) {
         //   document.addEventListener('click')
         //   handler()
         // }
-        
+        const initRequest = () => {
+          const requestBody = document.querySelector('.ruquestGyro')
+          const accessBtn = document.getElementById('accessRequest')
+          accessBtn.addEventListener('click', () => {
+            requestBody.style.display = 'none'
+            try {
+              // handler()
+            } catch {
+              alert(error)
+            }
+            
+            
+          })
+        }
         function handler() {
           if (typeof DeviceMotionEvent.requestPermission === 'function') {
             // Handle iOS 13+ devices.
@@ -285,21 +298,7 @@ export default {
             world.gravity.y = gyroscope.x * 2
           }
         }
-        const initRequest = () => {
-          const requestBody = document.querySelector('.ruquestGyro')
-          console.log(requestBody)
-          const accessBtn = document.getElementById('accessRequest')
-          console.log(accessBtn)
-          accessBtn.addEventListener('click', () => {
-            try {
-              // handler()
-            } catch {
-              alert(error)
-            }
-            
-            requestBody.style.display = 'none'
-          })
-        }
+        
         initRequest()
         setTimeout(() => {
           gyroscope.start();
