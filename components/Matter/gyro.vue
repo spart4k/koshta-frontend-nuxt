@@ -234,6 +234,10 @@ export default {
         //   world.gravity.y = gyroscope.x * 2
         // });
         console.log(gyroscope)
+        if (confirm('Enable orientaion mode?')) {
+          handler()
+        }
+        
         function handler() {
           if (typeof DeviceMotionEvent.requestPermission === 'function') {
             // Handle iOS 13+ devices.
@@ -243,7 +247,7 @@ export default {
                 if (state === 'granted') {
                   window.addEventListener('devicemotion', handleOrientation);
                 } else {
-                  console.error('Request to access the orientation was rejected');
+                  alert('Request to access the orientation was rejected');
                 }
               })
               .catch(console.error);
@@ -260,7 +264,7 @@ export default {
             world.gravity.y = gyroscope.x * 2
           }
         }
-        handler()
+        
         setTimeout(() => {
           gyroscope.start();
         }, 0)
