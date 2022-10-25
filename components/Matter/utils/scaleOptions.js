@@ -8,10 +8,6 @@ let scaleOptions = (container) => {
   }
   var scaleParams = container.offsetWidth
   var procent = scaleParams/maxSize
-  return {
-    maxSize,
-    scaleParams,
-    procent
-  }
+  return procent
 }
 export default scaleOptions

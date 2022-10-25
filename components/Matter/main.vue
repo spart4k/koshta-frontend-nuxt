@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import "pathseg";
 import Matter from "matter-js";
 import EngineCreate from './utils/engineCreate.js';
 import RenderCreate from './utils/renderCreate.js';
@@ -14,7 +13,7 @@ import scaleOptions from './utils/scaleOptions.js';
 import setWalls from './utils/setWalls.js';
 import mouseConstraint from './utils/mouseConstraint.js'
 import bounceOptions from './utils/bounceOptions.js';
-import createBody from './utils/bounceCreate.js';
+// import createBody from './utils/bounceCreate.js';
 import { onMounted, ref, computed, useContext } from '@nuxtjs/composition-api'
 
 export default {
@@ -48,8 +47,6 @@ export default {
           Mouse = Matter.Mouse,
           World = Matter.World,
           Bodies = Matter.Bodies
-          
-
       // create engine
       var engine = EngineCreate(),
           { world } = engine;
@@ -108,7 +105,6 @@ export default {
         // }
       ]
       
-      let { maxSize, scaleParams, procent } = scaleOptions(container)
       // add bodies for box 
       const addBodies = () => {
         const { ground, wallLeft, wallRight, textBlock } = setWalls(canvas, props.centerOptions)
@@ -128,6 +124,7 @@ export default {
       // set option for scale and craete bodies
       const addBounces = () => {
         setWidth(canvas, container, pixelsRatio)
+        let procent = scaleOptions(container)
         sprites.forEach((item, index) => {
           const getImage = (path) => {
             return require(`@/assets/images/${path}`)
@@ -162,8 +159,6 @@ export default {
       addBounces()
       addBodies()
       window.addEventListener("resize", function () {
-        scaleParams = container.offsetWidth
-        procent = scaleParams/maxSize
         setWidth(canvas, container, pixelsRatio)
         canvas.style.width = container.offsetWidth + 'px'
         canvas.style.height = container.offsetHeight + 'px'
