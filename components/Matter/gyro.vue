@@ -262,7 +262,7 @@ export default {
             
           })
           setTimeout(() => {
-            accessBtn.click()
+            // accessBtn.click()
         }, 300)
         }
         function handler() {
