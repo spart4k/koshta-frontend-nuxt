@@ -10,7 +10,7 @@
       </p>
     </div>
     <canvas id="wrap-footer"></canvas>
-    <div style="display: none" class="ruquestGyro">
+    <div class="ruquestGyro">
       <button id="notAccessRequest">
         No
       </button>
@@ -250,7 +250,7 @@ export default {
           const requestBody = document.querySelector('.ruquestGyro')
           const accessBtn = document.getElementById('accessRequest')
           accessBtn.addEventListener('click', () => {
-            alert(accessBtn)
+            // alert(accessBtn)
             requestBody.style.display = 'none'
             try {
               handler()
@@ -261,7 +261,7 @@ export default {
             
           })
           setTimeout(() => {
-            accessBtn.click()
+            // accessBtn.click()
         }, 300)
         }
         function handler() {
