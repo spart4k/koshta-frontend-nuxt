@@ -10,7 +10,7 @@
       </p>
     </div>
     <canvas id="wrap-footer"></canvas>
-    <div class="ruquestGyro">
+    <div style="visibility: hidden" class="ruquestGyro">
       <button id="notAccessRequest">
         No
       </button>
@@ -256,7 +256,7 @@ export default {
               handler()
             } catch(error) {
               console.log(error)
-              alert(error)
+              // alert(error)
             }
             
             
