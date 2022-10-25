@@ -263,7 +263,6 @@ export default {
         function handler() {
           if (typeof DeviceMotionEvent.requestPermission === 'function') {
             // Handle iOS 13+ devices.
-            alert('request handle')
             DeviceMotionEvent.requestPermission()
               .then((state) => {
                 if (state === 'granted') {
@@ -275,7 +274,6 @@ export default {
               .catch(alert(error));
           } else if (typeof DeviceOrientationEvent.requestPermission === 'function') {
             // Handle iOS 13+ devices.
-            alert('request handle')
             DeviceMotionEvent.requestPermission()
               .then((state) => {
                 if (state === 'granted') {
@@ -290,7 +288,6 @@ export default {
             window.addEventListener('devicemotion', handleOrientationAndroid);
           }
           function handleOrientationIos(e) {
-            console.log('handle')
             console.log(e)
             gyrascopeX.value = 'iphone'
             gyrascopeY.value = 'iphone'
@@ -298,7 +295,6 @@ export default {
             world.gravity.y = -e.accelerationIncludingGravity.y * 2
           }
           function handleOrientationAndroid(e) {
-            console.log('handle')
             console.log(e)
             gyrascopeX.value = 'android'
             gyrascopeY.value = 'android'
