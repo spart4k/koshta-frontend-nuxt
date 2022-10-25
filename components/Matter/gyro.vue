@@ -10,14 +10,14 @@
       </p>
     </div>
     <canvas id="wrap-footer"></canvas>
-    <div class="ruquestGyro">
+    <!-- <div class="ruquestGyro">
       <button id="notAccessRequest">
         No
       </button>
       <button id="accessRequest">
         Yes
       </button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -306,8 +306,8 @@ export default {
             world.gravity.y = e.accelerationIncludingGravity.y * 2
           }
         }
-        
-        initRequest()
+        handler()
+        // initRequest()
         setTimeout(() => {
           // gyroscope.start();
         }, 0)
