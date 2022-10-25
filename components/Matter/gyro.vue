@@ -292,7 +292,7 @@ export default {
           console.log(accessBtn)
           accessBtn.addEventListener('click', () => {
             try {
-              handler()
+              // handler()
             } catch {
               alert(error)
             }
