@@ -260,6 +260,18 @@ export default {
                 }
               })
               .catch(alert(error));
+          } else if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+            // Handle iOS 13+ devices.
+            alert('request handle')
+            DeviceMotionEvent.requestPermission()
+              .then((state) => {
+                if (state === 'granted') {
+                  window.addEventListener('devicemotion', handleOrientation);
+                } else {
+                  alert('Request to access the orientation was rejected');
+                }
+              })
+              .catch(alert(error));
           } else {
             // Handle regular non iOS 13+ devices.
             window.addEventListener('devicemotion', handleOrientation);
