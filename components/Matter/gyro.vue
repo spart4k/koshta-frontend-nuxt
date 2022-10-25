@@ -10,14 +10,14 @@
       </p>
     </div>
     <canvas id="wrap-footer"></canvas>
-    <!-- <div class="ruquestGyro">
+    <div style="display: none" class="ruquestGyro">
       <button id="notAccessRequest">
         No
       </button>
       <button id="accessRequest">
         Yes
       </button>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -250,6 +250,7 @@ export default {
           const requestBody = document.querySelector('.ruquestGyro')
           const accessBtn = document.getElementById('accessRequest')
           accessBtn.addEventListener('click', () => {
+            console.log(accessBtn)
             requestBody.style.display = 'none'
             try {
               handler()
@@ -259,6 +260,9 @@ export default {
             
             
           })
+          setTimeout(() => {
+            accessBtn.click()
+        }, 300)
         }
         function handler() {
           if (typeof DeviceMotionEvent.requestPermission === 'function') {
@@ -302,8 +306,8 @@ export default {
             world.gravity.y = e.accelerationIncludingGravity.y * 2
           }
         }
-        handler()
-        // initRequest()
+        // handler()
+        initRequest()
         setTimeout(() => {
           // gyroscope.start();
         }, 0)
