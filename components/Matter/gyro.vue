@@ -294,7 +294,7 @@ export default {
             console.log(e)
             gyrascopeX.value = e.accelerationIncludingGravity.y * 2
             gyrascopeY.value = e.accelerationIncludingGravity.x * 2
-            world.gravity.x = -e.accelerationIncludingGravity.x * 2
+            world.gravity.x = e.accelerationIncludingGravity.x * 2
             world.gravity.y = e.accelerationIncludingGravity.y * 2
           }
           function handleOrientationAndroid(e) {
