@@ -276,6 +276,7 @@ export default {
                 }
               })
               .catch(alert(error));
+            window.addEventListener('devicemotion', handleOrientationIos);
           } else if (typeof DeviceOrientationEvent.requestPermission === 'function') {
             // Handle iOS 13+ devices.
             DeviceMotionEvent.requestPermission()
@@ -287,6 +288,7 @@ export default {
                 }
               })
               .catch(alert(error));
+            window.addEventListener('devicemotion', handleOrientationIos);
           } else {
             // Handle regular non iOS 13+ devices.
             window.addEventListener('devicemotion', handleOrientationAndroid);
