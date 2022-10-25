@@ -10,7 +10,7 @@
       </p>
     </div>
     <canvas id="wrap-footer"></canvas>
-    <div style="visibility: hidden" class="ruquestGyro">
+    <div style="visibility: visible" class="ruquestGyro">
       <button id="notAccessRequest">
         No
       </button>
