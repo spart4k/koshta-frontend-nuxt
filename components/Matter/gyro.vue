@@ -267,7 +267,7 @@ export default {
             DeviceMotionEvent.requestPermission()
               .then((state) => {
                 if (state === 'granted') {
-                  window.addEventListener('devicemotion', handleOrientation);
+                  window.addEventListener('devicemotion', handleOrientationIos);
                 } else {
                   alert('Request to access the orientation was rejected');
                 }
@@ -279,7 +279,7 @@ export default {
             DeviceMotionEvent.requestPermission()
               .then((state) => {
                 if (state === 'granted') {
-                  window.addEventListener('devicemotion', handleOrientation);
+                  window.addEventListener('devicemotion', handleOrientationIos);
                 } else {
                   alert('Request to access the orientation was rejected');
                 }
@@ -287,9 +287,17 @@ export default {
               .catch(alert(error));
           } else {
             // Handle regular non iOS 13+ devices.
-            window.addEventListener('devicemotion', handleOrientation);
+            window.addEventListener('devicemotion', handleOrientationAndroid);
           }
-          function handleOrientation(e) {
+          function handleOrientationIos(e) {
+            console.log('handle')
+            console.log(e)
+            gyrascopeX.value = e.accelerationIncludingGravity.y * 2
+            gyrascopeY.value = e.accelerationIncludingGravity.x * 2
+            world.gravity.x = -e.accelerationIncludingGravity.x * 2
+            world.gravity.y = e.accelerationIncludingGravity.y * 2
+          }
+          function handleOrientationAndroid(e) {
             console.log('handle')
             console.log(e)
             gyrascopeX.value = e.accelerationIncludingGravity.y * 2
