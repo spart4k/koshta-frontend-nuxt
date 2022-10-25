@@ -250,7 +250,7 @@ export default {
           const requestBody = document.querySelector('.ruquestGyro')
           const accessBtn = document.getElementById('accessRequest')
           accessBtn.addEventListener('click', () => {
-            console.log(accessBtn)
+            alert(accessBtn)
             requestBody.style.display = 'none'
             try {
               handler()
