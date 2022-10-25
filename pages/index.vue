@@ -12,9 +12,6 @@
         </ui-container>
         <main-footer class="index-footer" :class="$style.footer"></main-footer>
       </div>
-      <!-- <div class="page no-layout">
-        
-      </div> -->
     </div>
     <transition name="fade">
       <svg v-if="showButtonNext" :class="$style.nextSlide" @click="nextSlide" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">

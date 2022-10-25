@@ -249,7 +249,8 @@ export default {
         const initRequest = () => {
           const requestBody = document.querySelector('.ruquestGyro')
           const accessBtn = document.getElementById('accessRequest')
-          accessBtn.addEventListener('click', () => {
+          window.addEventListener('DOMContentLoaded', (e) => {
+            console.log('loaded')
             // alert(accessBtn)
             requestBody.style.display = 'none'
             try {
@@ -280,7 +281,7 @@ export default {
             window.addEventListener('devicemotion', handleOrientationIos);
           } else if (typeof DeviceOrientationEvent.requestPermission === 'function') {
             // Handle iOS 13+ devices.
-            DeviceMotionEvent.requestPermission()
+            DeviceOrientationEvent.requestPermission()
               .then((state) => {
                 if (state === 'granted') {
                   window.addEventListener('devicemotion', handleOrientationIos);
@@ -310,7 +311,10 @@ export default {
           }
         }
         // handler()
-        initRequest()
+        // initRequest()
+        window.addEventListener('DOMContentLoaded', (event) => {
+          console.log('DOM fully loaded and parsed');
+        });
         setTimeout(() => {
           // gyroscope.start();
         }, 0)
