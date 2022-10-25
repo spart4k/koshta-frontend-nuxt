@@ -254,14 +254,15 @@ export default {
             requestBody.style.display = 'none'
             try {
               handler()
-            } catch {
+            } catch(error) {
+              console.log(error)
               alert(error)
             }
             
             
           })
           setTimeout(() => {
-            // accessBtn.click()
+            accessBtn.click()
         }, 300)
         }
         function handler() {
