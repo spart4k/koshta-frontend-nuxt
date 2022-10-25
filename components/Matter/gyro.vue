@@ -250,7 +250,7 @@ export default {
         function handler() {
           if (typeof DeviceMotionEvent.requestPermission === 'function') {
             // Handle iOS 13+ devices.
-            console.log('handle')
+            alert('request handle')
             DeviceMotionEvent.requestPermission()
               .then((state) => {
                 if (state === 'granted') {
@@ -259,7 +259,7 @@ export default {
                   alert('Request to access the orientation was rejected');
                 }
               })
-              .catch(console.error);
+              .catch(alert(error));
           } else {
             // Handle regular non iOS 13+ devices.
             window.addEventListener('devicemotion', handleOrientation);
@@ -279,7 +279,12 @@ export default {
           const accessBtn = document.getElementById('accessRequest')
           console.log(accessBtn)
           accessBtn.addEventListener('click', () => {
-            handler()
+            try {
+              handler()
+            } catch {
+              alert(error)
+            }
+            
             requestBody.style.display = 'none'
           })
         }
