@@ -1,8 +1,14 @@
 <template>
   <div id="footer-matter">
-    <p>
-      {{ gyrascopeX, gyrascopeY }}
-    </p>
+    <div class="gyro">
+      <p>
+        X:{{ gyrascopeX }}
+      </p>
+      <br>
+      <p>
+        Y:{{ gyrascopeY }}
+      </p>
+    </div>
     <canvas id="wrap-footer"></canvas>
   </div>
 </template>
@@ -217,17 +223,44 @@ export default {
       });
       const startGyro = () => {
         let gyroscope = new Gyroscope({frequency: 60});
-        gyroscope.addEventListener('reading', e => {
-          console.log("Angular velocity along the X-axis " + gyroscope.x);
-          console.log("Angular velocity along the Y-axis " + gyroscope.y);
-          console.log("Angular velocity along the Z-axis " + gyroscope.z);
-          // alert(gyroscope.x)
-          gyrascopeX.value = gyroscope.x
-          gyrascopeY.value = gyroscope.y
-          world.gravity.x = gyroscope.x * 2
-          world.gravity.y = gyroscope.y * 2
-        });
+        // gyroscope.addEventListener('reading', e => {
+        //   console.log("Angular velocity along the X-axis " + gyroscope.x);
+        //   console.log("Angular velocity along the Y-axis " + gyroscope.y);
+        //   console.log("Angular velocity along the Z-axis " + gyroscope.z);
+        //   // alert(gyroscope.x)
+        //   gyrascopeX.value = gyroscope.x
+        //   gyrascopeY.value = gyroscope.y
+        //   world.gravity.x = gyroscope.y * 2
+        //   world.gravity.y = gyroscope.x * 2
+        // });
         console.log(gyroscope)
+        function handler() {
+          if (typeof DeviceMotionEvent.requestPermission === 'function') {
+            // Handle iOS 13+ devices.
+            console.log('handle')
+            DeviceMotionEvent.requestPermission()
+              .then((state) => {
+                if (state === 'granted') {
+                  window.addEventListener('devicemotion', handleOrientation);
+                } else {
+                  console.error('Request to access the orientation was rejected');
+                }
+              })
+              .catch(console.error);
+          } else {
+            // Handle regular non iOS 13+ devices.
+            window.addEventListener('devicemotion', handleOrientation);
+          }
+          function handleOrientation(e) {
+            console.log('handle')
+            console.log(e)
+            gyrascopeX.value = e.accelerationIncludingGravity.y * 2
+            gyrascopeY.value = e.accelerationIncludingGravity.x * 2
+            world.gravity.x = gyroscope.y * 2
+            world.gravity.y = gyroscope.x * 2
+          }
+        }
+        handler()
         setTimeout(() => {
           gyroscope.start();
         }, 0)
@@ -260,7 +293,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 #footer-matter {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -269,7 +302,28 @@ export default {
   height: 100vh;
   line-height: 0;
   width: 100%;
+  .gyro {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.3;
+    p {
+      margin: 1rem 1rem;
+      line-height: 1.3;
+      &:first-child {
+        margin-top: 5rem;
+      }
+    }
+  }
 }
+#footer-matter p {
+  position: absolute;
+}
+
 
 svg {
   display: none;

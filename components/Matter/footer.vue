@@ -235,7 +235,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #footer-matter {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
