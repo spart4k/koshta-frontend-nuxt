@@ -292,16 +292,16 @@ export default {
           function handleOrientationIos(e) {
             console.log('handle')
             console.log(e)
-            gyrascopeX.value = e.accelerationIncludingGravity.y * 2
-            gyrascopeY.value = e.accelerationIncludingGravity.x * 2
+            gyrascopeX.value = 'iphone'
+            gyrascopeY.value = 'iphone'
             world.gravity.x = e.accelerationIncludingGravity.x * 2
-            world.gravity.y = e.accelerationIncludingGravity.y * 2
+            world.gravity.y = -e.accelerationIncludingGravity.y * 2
           }
           function handleOrientationAndroid(e) {
             console.log('handle')
             console.log(e)
-            gyrascopeX.value = e.accelerationIncludingGravity.y * 2
-            gyrascopeY.value = e.accelerationIncludingGravity.x * 2
+            gyrascopeX.value = 'android'
+            gyrascopeY.value = 'android'
             world.gravity.x = -e.accelerationIncludingGravity.x * 2
             world.gravity.y = e.accelerationIncludingGravity.y * 2
           }
