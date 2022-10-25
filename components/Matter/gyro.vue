@@ -10,6 +10,14 @@
       </p>
     </div>
     <canvas id="wrap-footer"></canvas>
+    <div class="ruquestGyro">
+      <button id="notAccessRequest">
+        No
+      </button>
+      <button id="accessRequest">
+        Yes
+      </button>
+    </div>
   </div>
 </template>
 
@@ -234,9 +242,10 @@ export default {
         //   world.gravity.y = gyroscope.x * 2
         // });
         console.log(gyroscope)
-        if (confirm('Enable orientaion mode?')) {
-          handler()
-        }
+        // if (confirm('Enable orientaion mode?')) {
+        //   document.addEventListener('click')
+        //   handler()
+        // }
         
         function handler() {
           if (typeof DeviceMotionEvent.requestPermission === 'function') {
@@ -264,11 +273,22 @@ export default {
             world.gravity.y = gyroscope.x * 2
           }
         }
-        
+        const initRequest = () => {
+          const requestBody = document.querySelector('.ruquestGyro')
+          console.log(requestBody)
+          const accessBtn = document.getElementById('accessRequest')
+          console.log(accessBtn)
+          accessBtn.addEventListener('click', () => {
+            handler()
+            requestBody.style.display = 'none'
+          })
+        }
+        initRequest()
         setTimeout(() => {
           gyroscope.start();
         }, 0)
       }
+      
       startGyro()
       const shakeBodies = () => {
         bounes.forEach((item) => {
@@ -322,6 +342,22 @@ export default {
         margin-top: 5rem;
       }
     }
+  }
+}
+.ruquestGyro {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 10rem;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid #000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  button {
+    padding: 1rem;
   }
 }
 #footer-matter p {
