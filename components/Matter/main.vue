@@ -40,6 +40,7 @@ export default {
     const gyrascopeX = ref(1)
     const gyrascopeY = ref(1)
     const initMatter = () => {
+      let loaded = false
       const container = document.getElementById('start-matter')
       var canvas = document.getElementById('wrap')
       var pixelsRatio = window.devicePixelRatio
@@ -53,7 +54,7 @@ export default {
           { world } = engine;
       world.gravity.y = 1.8;
       if (container.offsetWidth <= 768) {
-        world.gravity.y = 1
+        world.gravity.y = 2.2
       }
       // create renderer
       var render = RenderCreate(container, canvas, engine)
@@ -108,18 +109,25 @@ export default {
       
       // add bodies for box 
       const addBodies = () => {
-        const { ground, wallLeft, wallRight, textBlock } = setWalls(canvas, props.centerOptions)
+        var { ground, wallLeft, wallRight, textBlock, roof } = setWalls(canvas, props.centerOptions)
         Matter.Composite.add(engine.world, [
           ground,wallLeft, wallRight
         ])
+        if (loaded) {
+          Matter.Composite.add(engine.world, [
+            roof
+          ])
+        }
         if (container.offsetWidth >= 768) {
           World.add(world, [
             textBlock
           ]);
         }
         var mouse = Mouse.create(render.canvas),
-            mouseConstraintHandler = mouseConstraint(engine, mouse, store)
-        World.add(world, mouseConstraintHandler);
+            mouseConstraintHandler = mouseConstraint(engine, mouse, store);
+        if (container.offsetWidth >= 768) {
+          World.add(world, mouseConstraintHandler);
+        }
         render.mouse = mouse;
       }
       // set option for scale and craete bodies
@@ -154,12 +162,21 @@ export default {
             Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
           } else {
             Matter.Body.setVelocity(bounce, { x: 0, y: 0 })
-          } 
+          }
+          setTimeout(() => {
+            var { roof } = setWalls(canvas, props.centerOptions)
+            Matter.Composite.add(engine.world, [
+              roof
+            ])
+            loaded = true
+          }, 4000)
         })
       }
       addBounces()
       addBodies()
       window.addEventListener("resize", function () {
+        loaded = false
+        // var { roof } = setWalls(canvas, props.centerOptions)
         setWidth(canvas, container, pixelsRatio)
         canvas.style.width = container.offsetWidth + 'px'
         canvas.style.height = container.offsetHeight + 'px'
@@ -185,7 +202,9 @@ export default {
       //   }, 4000)
       // }
       // startGyro()
-      startGyroScope(world)
+      setTimeout(() => {
+        startGyroScope(world)
+      }, 4000)
     }
     return {
       centerOptions,

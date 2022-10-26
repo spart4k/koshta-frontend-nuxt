@@ -17,8 +17,10 @@ let boxBodies = (canvas,centerOptions) => {
       fillStyle: 'transparent'
     }
   });
-  var roof = Bodies.rectangle(canvas.clientWidth / 2, 0 - 60, canvas.clientWidth, 60, {
-    isStatic: true, label: "Roof", density: 1.4,
+  var roof = Bodies.rectangle(canvas.clientWidth / 2, 0 - 30, canvas.clientWidth, 60, {
+    isStatic: true, label: "Roof", density: 1.4, render: {
+      fillStyle: 'white'
+    }
   });
   return {
     ground,
