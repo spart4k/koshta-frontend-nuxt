@@ -251,7 +251,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #929292;
-  height: 100vh;
+  min-height: 100%;
   line-height: 0;
   width: 100%;
   .gyro {
