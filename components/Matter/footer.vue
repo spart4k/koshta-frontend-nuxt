@@ -7,6 +7,7 @@
 <script>
 import "pathseg";
 import Matter from "matter-js";
+import startGyroScope from './utils/startGyroScope.js'
 import { onMounted, computed, useContext } from '@nuxtjs/composition-api'
 
 export default {
@@ -104,8 +105,10 @@ export default {
             fillStyle: 'white'
           }
         });
-        var roof = Bodies.rectangle(canvas.clientWidth / 2, 0 - 60, canvas.clientWidth, 60, {
-          isStatic: true, label: "Roof", density: 1.4,
+        var roof = Bodies.rectangle(canvas.clientWidth / 2, 0 - 30, canvas.clientWidth, 60, {
+          isStatic: true, label: "Roof", density: 1.4, render: {
+            fillStyle: 'white'
+          }
         });
         var wallLeft = Bodies.rectangle(-30, canvas.clientHeight / 2, 60, canvas.clientHeight * 3, {
           isStatic: true, label: "Wall Left", density: 1.4,
@@ -127,7 +130,7 @@ export default {
           }
         });
         if (window.location.pathname === '/') {
-          if (container.offsetWidth >= 768) {
+          if (container.offsetWidth) {
             World.add(world, mouseConstraint);
             Events.on(mouseConstraint, "startdrag", (e) => {
               store.commit('fullpage/changeState', true)
@@ -210,6 +213,7 @@ export default {
         addBounces()
         addBodies()
       });
+      startGyroScope(world)
       const shakeBodies = () => {
         bounes.forEach((item) => {
           // Matter.Body.translate(item, {x: 0, y: -100})

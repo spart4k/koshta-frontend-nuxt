@@ -1,6 +1,6 @@
 <template>
   <div id="footer-matter">
-    <div class="gyro">
+    <!-- <div class="gyro">
       <p>
         X:{{ gyrascopeX }}
       </p>
@@ -8,7 +8,7 @@
       <p>
         Y:{{ gyrascopeY }}
       </p>
-    </div>
+    </div> -->
     <canvas id="wrap-footer"></canvas>
     <!-- <div style="visibility: visible" class="ruquestGyro">
       <button id="notAccessRequest">
@@ -24,6 +24,7 @@
 <script>
 import "pathseg";
 import Matter from "matter-js";
+import startGyroScope from './utils/startGyroScope.js'
 import { onMounted, ref, computed, useContext } from '@nuxtjs/composition-api'
 
 export default {
@@ -229,53 +230,7 @@ export default {
         addBounces()
         addBodies()
       });
-      const startGyro = () => {
-        // let gyroscope = new Gyroscope({frequency: 60});
-        // gyroscope.addEventListener('reading', e => {
-        //   console.log("Angular velocity along the X-axis " + gyroscope.x);
-        //   console.log("Angular velocity along the Y-axis " + gyroscope.y);
-        //   console.log("Angular velocity along the Z-axis " + gyroscope.z);
-        //   // alert(gyroscope.x)
-        //   gyrascopeX.value = gyroscope.x
-        //   gyrascopeY.value = gyroscope.y
-        //   world.gravity.x = gyroscope.y * 2
-        //   world.gravity.y = gyroscope.x * 2
-        // });
-        // console.log(gyroscope)
-        // if (confirm('Enable orientaion mode?')) {
-        //   document.addEventListener('click')
-        //   handler()
-        // }
-        function handler() {
-          console.log('gyro start')
-          console.log(typeof DeviceMotionEvent.requestPermission)
-          if (typeof DeviceMotionEvent.requestPermission === 'function') {
-            window.addEventListener('devicemotion', handleOrientationIos);
-          } else if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-            window.addEventListener('devicemotion', handleOrientationIos);
-          } else {
-            // Handle regular non iOS 13+ devices.
-            window.addEventListener('devicemotion', handleOrientationAndroid);
-          }
-        }
-        handler()
-        // initRequest()
-        function handleOrientationIos(e) {
-          console.log(e)
-          gyrascopeX.value = 'iphone'
-          gyrascopeY.value = 'iphone'
-          world.gravity.x = e.accelerationIncludingGravity.x * 2
-          world.gravity.y = -e.accelerationIncludingGravity.y * 2
-        }
-        function handleOrientationAndroid(e) {
-          console.log(e)
-          gyrascopeX.value = 'android'
-          gyrascopeY.value = 'android'
-          world.gravity.x = -e.accelerationIncludingGravity.x * 2
-          world.gravity.y = e.accelerationIncludingGravity.y * 2
-        }
-      }
-      startGyro()
+      startGyroScope(world)
       
       canvas.addEventListener("wheel", (e) => {
       })
