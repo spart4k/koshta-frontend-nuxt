@@ -24,7 +24,7 @@
 <script>
 import "pathseg";
 import Matter from "matter-js";
-import startGyroScope from './utils/startGyroScope.js'
+import startGyroScope from './utils/startGyroscope.js'
 import { onMounted, ref, computed, useContext } from '@nuxtjs/composition-api'
 
 export default {

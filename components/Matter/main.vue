@@ -14,7 +14,7 @@ import setWalls from './utils/setWalls.js';
 import mouseConstraint from './utils/mouseConstraint.js'
 import bounceOptions from './utils/bounceOptions.js';
 // import createBody from './utils/bounceCreate.js';
-import startGyroScope from './utils/startGyroScope.js'
+import startGyroScope from './utils/startGyroscope.js'
 import { onMounted, ref, computed, useContext } from '@nuxtjs/composition-api'
 
 export default {
