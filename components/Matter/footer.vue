@@ -130,7 +130,7 @@ export default {
           }
         });
         if (window.location.pathname === '/') {
-          if (container.offsetWidth) {
+          if (container.offsetWidth < 768) {
             World.add(world, mouseConstraint);
             Events.on(mouseConstraint, "startdrag", (e) => {
               store.commit('fullpage/changeState', true)
