@@ -10,14 +10,14 @@
       </p>
     </div>
     <canvas id="wrap-footer"></canvas>
-    <div style="visibility: visible" class="ruquestGyro">
+    <!-- <div style="visibility: visible" class="ruquestGyro">
       <button id="notAccessRequest">
         No
       </button>
       <button id="accessRequest">
         Yes
       </button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -246,94 +246,36 @@ export default {
         //   document.addEventListener('click')
         //   handler()
         // }
-        const initRequest = () => {
-          const requestBody = document.querySelector('.ruquestGyro')
-          const accessBtn = document.getElementById('accessRequest')
-          window.addEventListener('DOMContentLoaded', (e) => {
-            console.log('loaded')
-            // alert(accessBtn)
-            requestBody.style.display = 'none'
-            try {
-              handler()
-            } catch(error) {
-              console.log(error)
-              alert(error)
-            }
-            
-            
-          })
-          setTimeout(() => {
-            // accessBtn.click()
-        }, 300)
-        }
         function handler() {
+          console.log('gyro start')
+          console.log(typeof DeviceMotionEvent.requestPermission)
           if (typeof DeviceMotionEvent.requestPermission === 'function') {
-            // Handle iOS 13+ devices.
-            DeviceMotionEvent.requestPermission()
-              .then((state) => {
-                if (state === 'granted') {
-                  window.addEventListener('devicemotion', handleOrientationIos);
-                } else {
-                  alert('Request to access the orientation was rejected');
-                }
-              })
-              .catch(alert(error));
             window.addEventListener('devicemotion', handleOrientationIos);
           } else if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-            // Handle iOS 13+ devices.
-            DeviceOrientationEvent.requestPermission()
-              .then((state) => {
-                if (state === 'granted') {
-                  window.addEventListener('devicemotion', handleOrientationIos);
-                } else {
-                  alert('Request to access the orientation was rejected');
-                }
-              })
-              .catch(alert(error));
             window.addEventListener('devicemotion', handleOrientationIos);
           } else {
             // Handle regular non iOS 13+ devices.
             window.addEventListener('devicemotion', handleOrientationAndroid);
           }
-          function handleOrientationIos(e) {
-            console.log(e)
-            gyrascopeX.value = 'iphone'
-            gyrascopeY.value = 'iphone'
-            world.gravity.x = e.accelerationIncludingGravity.x * 2
-            world.gravity.y = -e.accelerationIncludingGravity.y * 2
-          }
-          function handleOrientationAndroid(e) {
-            console.log(e)
-            gyrascopeX.value = 'android'
-            gyrascopeY.value = 'android'
-            world.gravity.x = -e.accelerationIncludingGravity.x * 2
-            world.gravity.y = e.accelerationIncludingGravity.y * 2
-          }
         }
-        // handler()
+        handler()
         // initRequest()
-        window.addEventListener('DOMContentLoaded', (event) => {
-          console.log('DOM fully loaded and parsed');
-        });
-        setTimeout(() => {
-          // gyroscope.start();
-        }, 0)
+        function handleOrientationIos(e) {
+          console.log(e)
+          gyrascopeX.value = 'iphone'
+          gyrascopeY.value = 'iphone'
+          world.gravity.x = e.accelerationIncludingGravity.x * 2
+          world.gravity.y = -e.accelerationIncludingGravity.y * 2
+        }
+        function handleOrientationAndroid(e) {
+          console.log(e)
+          gyrascopeX.value = 'android'
+          gyrascopeY.value = 'android'
+          world.gravity.x = -e.accelerationIncludingGravity.x * 2
+          world.gravity.y = e.accelerationIncludingGravity.y * 2
+        }
       }
-      
       startGyro()
-      const shakeBodies = () => {
-        bounes.forEach((item) => {
-          // Matter.Body.translate(item, {x: 0, y: -100})
-          Matter.Body.setStatic(item, true);
-          let i = 0;
-          while (i < 10) { // выводит 0, затем 1, затем 2
-            i++;
-            Matter.Body.setPosition(item, { x: item.position.x, y: item.position.y - i });
-            // Matter.Body.setVelocity(item, {x : 0, y : 1});
-          }
-          Matter.Body.setStatic(item, false);
-        })
-      }
       
       canvas.addEventListener("wheel", (e) => {
       })

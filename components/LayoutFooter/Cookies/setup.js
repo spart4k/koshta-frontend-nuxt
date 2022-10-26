@@ -8,15 +8,34 @@ export default {
     const close = () => {
       transition.value = 'expand' 
       isShow.value = false
+      if (isMobile) {
+        handler()
+      }
     }
     const isShowInterface = computed(() => {
       return store.state?.layout?.isShow
     })
+    const isMobile = computed(() => {
+      if (process.client) {
+        return window.innerWidth < 768
+      }
+    })
+    const handler = () => {
+      if (typeof DeviceMotionEvent.requestPermission === 'function') {
+        // Handle iOS 13+ devices.
+        DeviceMotionEvent.requestPermission()
+      } else if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        // Handle iOS 13+ devices.
+        DeviceOrientationEvent.requestPermission()
+      }
+    }
     return {
       isShow,
       close,
       isShowInterface,
-      transition
+      transition,
+      handler,
+      isMobile
     }
   }
 }
