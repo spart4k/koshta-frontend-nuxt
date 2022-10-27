@@ -1,10 +1,11 @@
 let scaleOptions = (container) => {
   let maxSize = null
   if (container.offsetWidth >= 768) {
-      maxSize = 5800
+      maxSize = 6000
+      console.log(maxSize)
     }
   else {
-    maxSize = 3700
+    maxSize = 4800
   }
   var scaleParams = container.offsetWidth
   var procent = scaleParams/maxSize

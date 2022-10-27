@@ -42,10 +42,31 @@
         let observer = new IntersectionObserver(callback, options);
         observer.observe(footer);
       }
+      const startObserveFooterLayout = () => {
+        const footer = document.querySelector('.main-footer')
+        let options = {
+            // root: document.querySelector('#main-logotype'),
+            threshold: 0.9
+        }
+        const callback = (entries) => {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              console.log('showProvide')
+              store.commit('layout/showInterfaceProvide') 
+            } else {
+              console.log('hideProvide')
+              store.commit('layout/hideInterfaceProvide') 
+            }
+          });
+        }
+        let observer = new IntersectionObserver(callback, options);
+        observer.observe(footer);
+      }
       
       onMounted(() => {
         setTimeout(() => {
           startObserveFooter()
+          startObserveFooterLayout()
         }, 100)
         
       })

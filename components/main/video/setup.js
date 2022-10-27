@@ -1,4 +1,4 @@
-import { computed, onMounted } from '@nuxtjs/composition-api'
+import { computed, ref, onMounted } from '@nuxtjs/composition-api'
 export default {
   name: 'main-video',
   props: {
@@ -12,11 +12,18 @@ export default {
     }
   },
   setup () {
+    const mainVideo = ref(null)
     const isMobile = computed(() => {
       if (process.client) {
         return window.innerWidth < 768
       }
     })
+    const playVideo = () => {
+      mainVideo.value.play()
+    }
+    const stopVideo = () => {
+      mainVideo.value.pause()
+    }
     // const videos = ref([])
     // const fetchData = async () => {
     //   const data  = await store.dispatch('contacts/getContats')
@@ -35,7 +42,10 @@ export default {
     onMounted(() => {
     })
     return {
-      isMobile
+      isMobile,
+      mainVideo,
+      playVideo,
+      stopVideo
     }
   }
 }

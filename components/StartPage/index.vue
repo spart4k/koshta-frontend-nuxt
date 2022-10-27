@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.start_page">
     <div ref="center" :class="$style.center">
-      Koshta is a collective of art-director, media artists, designers, producers and curators. We truly believe in boundless imagination and realize our works beyond the limits of conventional reality.
+      Koshta is a collective of art-directors, media artists, designers, producers and curators. We truly believe in boundless imagination and realize our works beyond the limits of conventional reality.
     </div>
     <matter-main
     v-if="true"

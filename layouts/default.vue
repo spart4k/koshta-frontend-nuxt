@@ -21,6 +21,7 @@
     </transition>
     <transition name="fade">
       <LayoutFooterProvided
+      v-if="isShowProvide"
       :style="{
         'pointer-events': noClickedMatter ? 'none' : 'unset'
       }"
@@ -42,7 +43,7 @@
   .logotype {
     // position: fixed;
     left: 4rem;
-    top: 4rem;
+    top: 2rem;
     z-index: $zIndexHeader;
     z-index: 10;
     @media (max-width: $mobileWidth) {
@@ -54,7 +55,7 @@
   .nav {
     position: fixed;
     right: 4rem;
-    top: 5.4rem;
+    top: 3.4rem;
     z-index: $zIndexHeader;
     z-index: 10;
   }
@@ -98,6 +99,9 @@
       const isShowInterface = computed(() => {
         return store.state?.layout?.isShow
       })
+      const isShowProvide = computed(() => {
+        return store.state?.layout?.isShowProvide
+      })
       const isMobile = computed(() => {
         if (process.client) {
           return window.innerWidth <= 768
@@ -118,7 +122,8 @@
         openIndex,
         caseInfo,
         isMobile,
-        isShowInterfaceObs
+        isShowInterfaceObs,
+        isShowProvide
       }
     }
   }

@@ -65,7 +65,7 @@ export default defineComponent({
     }
     const openContacts = () => {
       router.push({
-        path: `/contacts`
+        path: `/about`
       })
       if (isOpenProjectsDrop.value) {
         isOpenProjectsDrop.value = false

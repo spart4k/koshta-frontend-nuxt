@@ -17,9 +17,9 @@
         </transition>
       </div>
       <div :class="$style.button">
-        <nuxt-link to="/contacts" @click.native="openContacts()">
+        <nuxt-link to="/about" @click.native="openContacts()">
           <span>
-            Contacts
+            About
           </span>
         </nuxt-link>
       </div>
@@ -37,8 +37,8 @@
               <nuxt-link v-for="(item, index) in sections" :to="`/sections/${item.id}`" @click.native="openSection(item.id)">{{ item.attributes.name }}</nuxt-link>
             </div>
           </div>
-          <nuxt-link to="/contacts" @click.native="openContacts()" :class="[$style.subtitle, $style.contacts]">
-            Contacts
+          <nuxt-link to="/about" @click.native="openContacts()" :class="[$style.subtitle, $style.contacts]">
+            About
           </nuxt-link>
           <p 
           :class="$style.provide"

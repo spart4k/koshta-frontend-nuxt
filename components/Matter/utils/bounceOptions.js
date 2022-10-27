@@ -6,7 +6,7 @@ let bounseOptions = (canvas,container, index) => {
     width: null
   }
   if (container.offsetWidth >= 768) {
-    bounceWidth = canvas.clientWidth/11
+    bounceWidth = (canvas.clientWidth/12)
     optBounce = {
       x: 100 + index * bounceWidth,
       y:  -800 - index * bounceWidth,
@@ -14,7 +14,7 @@ let bounseOptions = (canvas,container, index) => {
     }
     }
   else {
-    bounceWidth = canvas.clientWidth/7.5
+    bounceWidth = (canvas.clientWidth/9.5)
     optBounce = {
       x: 0 + index * bounceWidth/2,
       y:  -800 - index * (bounceWidth + 200 ),

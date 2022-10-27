@@ -39,7 +39,7 @@ export default defineComponent({
     // fetch()
     const headerOptions = ref({
       title: "All projects",
-      subtitle: "«I can't explain muself. I'm afraid. Sir», said Alice, because I am not myself, you see»"
+      subtitle: ""
     })
     const showButtonNext = ref(true)
     const fullpageOptions = ref({
@@ -132,10 +132,11 @@ export default defineComponent({
       }
     }
     const startMainVideo = () => {
-      if (mainVideoUrls.value.desktop && mainVideoUrls.value.mobile) mainVideo.value.$el.play() 
+      console.log(mainVideo.value)
+      if (mainVideoUrls.value.desktop && mainVideoUrls.value.mobile) mainVideo.value.playVideo() 
     }
     const stopMainVideo = () => {
-      if (mainVideoUrls.value.desktop && mainVideoUrls.value.mobile) mainVideo.value.$el.pause()
+      if (mainVideoUrls.value.desktop && mainVideoUrls.value.mobile) mainVideo.value.stopVideo()
     }
     useMeta(() => ({ 
       title: mainInfo?.value?.data?.attributes?.meta?.meta_data,

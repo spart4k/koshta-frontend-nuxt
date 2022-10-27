@@ -16,16 +16,16 @@
       }"
       >
         <div :class="$style.contacts">
-          <p :class="$style.subtitle">Headquarters</p>
+          <!-- <p :class="$style.subtitle">Headquarters</p> -->
           <div class="">
-            <p :class="$style.text">{{ footerInfo.address }}</p>
             <p :class="$style.text">{{ footerInfo.city }}</p>
-            <p :class="$style.text">{{ footerInfo.country }}</p>
+            <p :class="$style.text">{{ footerInfo.address }}</p>
+            <!-- <p :class="$style.text">{{ footerInfo.country }}</p> -->
           </div>
           <div class="">
-            <button class="link" :class="$style.text">
+            <!-- <button class="link" :class="$style.text">
               <a href="tel:8 800 773 3445">{{ footerInfo.phone }}</a>
-            </button>
+            </button> -->
             <br>
             <button class="link" :class="$style.text">
               <a href="mailto:HELLO@KOSHTA.STUDIO">{{ footerInfo.main_email }}</a>
@@ -34,13 +34,13 @@
           </div>
         </div>
         <div :class="$style.feedback">
-          <p :class="$style.subtitle">NEW BUSINESS</p>
+          <!-- <p :class="$style.subtitle">NEW BUSINESS</p> -->
           <button class="link" :class="$style.text">
             <a href="mailto:NEWBIZAMS@KOSHTA.STUDIO">{{ footerInfo.new_business_email }}</a>
           </button>
         </div>
         <div :class="$style.join">
-          <p :class="$style.subtitle">JOIN US</p>
+          <!-- <p :class="$style.subtitle">JOIN US</p> -->
           <button class="link" :class="$style.text">
             <a href="mailto:CAREERS@KOSHTA.STUDIOS">{{ footerInfo.join_us_email }}</a>
           </button>

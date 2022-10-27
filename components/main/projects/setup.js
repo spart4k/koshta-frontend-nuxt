@@ -10,7 +10,7 @@ export default {
   setup() {
     const headerOptions = ref({
       title: "All projects",
-      subtitle: "«I can't explain muself. I'm afraid. Sir», said Alice, because I am not myself, you see»"
+      subtitle: ""
     })
     return {
       headerOptions
