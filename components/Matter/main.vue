@@ -67,40 +67,40 @@ export default {
 
       const sprites = [
         {
-          path: 'path40.png',
+          path: 'path40.webp',
         },
         {
-          path: 'path12.png',
+          path: 'path12.webp',
         },
         {
-          path: '4 1.png',
+          path: '4 1.webp',
         },
         {
-          path: '39 1.png',
+          path: '39 1.webp',
         },
         {
-          path: 'path50.png',
+          path: 'path50.webp',
         },
         {
-          path: 'path20.png',
+          path: 'path20.webp',
         },
         // {
         //   path: 'path24.png',
         // },
         {
-          path: 'path64.png',
+          path: 'path64.webp',
         },
         {
-          path: 'path22.png',
+          path: 'path22.webp',
         },
         {
-          path: 'path62.png',
+          path: 'path62.webp',
         },
         {
-          path: 'path38.png',
+          path: 'path38.webp',
         },
         {
-          path: 'Group 7.png',
+          path: 'Group 7.webp',
         },
         // {
         //   path: 'Vector.png',

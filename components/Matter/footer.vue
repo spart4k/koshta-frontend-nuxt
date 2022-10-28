@@ -69,16 +69,16 @@ export default {
 
       const sprites = [
         {
-          path: 'Group 7.png',
+          path: 'Group 7.webp',
         },
         {
-          path: 'path64.png',
+          path: 'path64.webp',
         },
         {
-          path: 'path62.png',
+          path: 'path62.webp',
         },
         {
-          path: 'path12.png',
+          path: 'path12.webp',
         }
       ]
       const addBounces = () => {

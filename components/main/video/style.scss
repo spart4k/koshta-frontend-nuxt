@@ -11,10 +11,12 @@
     width: calc(100%/1.8);
     color: #fff;
     mix-blend-mode: difference;
-    padding: 1rem;
     z-index: 1;
-    @include title-h1;
     font-size: 4.8rem;
+    @media (max-width: $mobileWidth) {
+      width: calc(39rem - 4rem);
+      font-size: 3.4rem;
+    }
   }
   video {
     position: absolute;

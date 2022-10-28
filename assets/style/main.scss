@@ -42,7 +42,13 @@ html {
   }
   @media (max-width: $mobileWidth) {
     font-size: calc((10 / 390) * 100vw);
+    @media (orientation: landscape) {
+      font-size: calc((10 / 768) * 100vw);
+    }
   }
+  // @media (max-width: $mobileWidth) {
+  //   font-size: calc((10 / 390) * 100vw);
+  // }
 }
 
 body {
