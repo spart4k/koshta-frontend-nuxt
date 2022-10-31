@@ -1,24 +1,30 @@
 let bounseOptions = (canvas,container, index) => {
-  let bounceWidth = null
+  const square = canvas.width * canvas.height
+  let widthBody = null
+  if (container.offsetWidth >= 768) {
+    widthBody = 5
+  } else {
+    widthBody = 6.2
+  }
+  const targetWidth = (Math.sqrt(square)/widthBody)/window.devicePixelRatio
   let optBounce = {
     x: null,
-    y: null,
+    y:  null,
     width: null
   }
   if (container.offsetWidth >= 768) {
-    bounceWidth = (canvas.clientWidth/12)
     optBounce = {
-      x: 100 + index * bounceWidth,
-      y:  -800 - index * bounceWidth,
-      width: bounceWidth
+      x: 100 + index * (targetWidth/2),
+      y:  -300 - index * targetWidth,
+      width: targetWidth
     }
-    }
+    
+  }
   else {
-    bounceWidth = (canvas.clientWidth/9.5)
     optBounce = {
-      x: 0 + index * bounceWidth/2,
-      y:  -800 - index * (bounceWidth + 200 ),
-      width: bounceWidth
+      x: 0 + (index * targetWidth/3),
+      y:  -300 - index * (targetWidth + 200 ),
+      width: targetWidth
     }
   }
   return {

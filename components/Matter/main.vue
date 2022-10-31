@@ -48,7 +48,8 @@ export default {
           Runner = Matter.Runner,
           Mouse = Matter.Mouse,
           World = Matter.World,
-          Bodies = Matter.Bodies
+          Bodies = Matter.Bodies,
+          Constraint = Matter.Constraint
       // create engine
       var engine = EngineCreate(),
           { world } = engine;
@@ -58,7 +59,7 @@ export default {
       }
       // create renderer
       var render = RenderCreate(container, canvas, engine)
-      setWidth(canvas, container, pixelsRatio)
+      setWidth(canvas, container)
       Render.run(render);
   
       // create runner
@@ -88,6 +89,9 @@ export default {
           path: 'Group 7.webp',
         },
         {
+          path: '6.webp',
+        },
+        {
           path: '16.webp',
         },
         {
@@ -96,6 +100,9 @@ export default {
         {
           path: '32.webp',
         },
+        {
+          path: '33.webp',
+        }
       ]
       
       // add bodies for box 
@@ -123,52 +130,68 @@ export default {
       }
       // set option for scale and craete bodies
       const addBounces = () => {
-        setWidth(canvas, container, pixelsRatio)
-        let procent = scaleOptions(container)
+        // console.log(pixelsRatio, window.devicePixelRatio)
+        setWidth(canvas, container)
         sprites.forEach((item, index) => {
           const getImage = (path) => {
             return require(`@/assets/images/${path}`)
           }
-          const image = getImage(item.path)
-          const {x, y, width} = bounceOptions(canvas, container, index)
-          var bounce = Bodies.circle(x, y, width, {
-            label: `bounce_${index}`,
-            density: 6,
-            mass: 5,
-            restitution: .6,
-            inverseMass: 1/5,
-            render: {
-              pixelRatio: pixelsRatio,
-              sprite: {
-                  texture: image,
-                  pixelRatio: pixelsRatio,
-                  xScale: procent,
-                  yScale: procent
-              }
-            }}
-          )
-          Matter.Composite.add(engine.world, bounce)
-          Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
-          if (container.offsetWidth >= 1280) {
+          // const targetWidth = scaleOptions(container)
+          const imageUrl = getImage(item.path)
+          const image = new Image()
+          image.onload = () => {
+            const {x, y, width} = bounceOptions(canvas, container, index)
+            const scale = width/image.width
+            var bounce = Bodies.circle(x, y, width/2, {
+              label: `bounce_${index}`,
+              density: .2,
+              mass: 5,
+              restitution: .6,
+              // stiffness: 0.1,
+              inverseMass: 1/5,
+              render: {
+                sprite: {
+                    texture: imageUrl,
+                    xScale: scale,
+                    yScale: scale
+                }
+              }}
+            )
+            // var constraint = Constraint.create({
+            //   bodyB: body,
+            //   stiffness: 0.001
+            // });
+            Matter.Composite.add(engine.world, bounce)
             Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
-          } else {
-            Matter.Body.setVelocity(bounce, { x: 0, y: 0 })
+            if (container.offsetWidth >= 1280) {
+              Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
+            } else {
+              Matter.Body.setVelocity(bounce, { x: 0, y: 0 })
+            }
+            Matter.Engine.update(engine)
+            setTimeout(() => {
+              if (container.offsetWidth <= 768 ) {
+                var { roof } = setWalls(canvas, props.centerOptions)
+                Matter.Composite.add(engine.world, [
+                  roof
+                ])
+              }
+              
+              loaded = true
+            }, 4000)
           }
-          setTimeout(() => {
-            var { roof } = setWalls(canvas, props.centerOptions)
-            Matter.Composite.add(engine.world, [
-              roof
-            ])
-            loaded = true
-          }, 4000)
+          image.src = imageUrl
         })
       }
       addBounces()
       addBodies()
+      // var constraint = Constraint.create({
+      //   stiffness: 0.5
+      // })
       window.addEventListener("resize", function () {
         loaded = false
         // var { roof } = setWalls(canvas, props.centerOptions)
-        setWidth(canvas, container, pixelsRatio)
+        setWidth(canvas, container)
         canvas.style.width = container.offsetWidth + 'px'
         canvas.style.height = container.offsetHeight + 'px'
         Matter.Composite.clear(engine.world);

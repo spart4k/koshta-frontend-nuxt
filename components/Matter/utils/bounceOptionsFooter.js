@@ -1,17 +1,17 @@
 let bounseOptions = (canvas,container, index) => {
-  let bounceWidth = null
-  let optBounce = {
-    x: (canvas.clientWidth / 2 - (bounceWidth * 3)) + index * 100,
-    y: canvas.clientHeight - 150,
-    width: bounceWidth
-  }
+  const square = canvas.width * canvas.height
+  let widthBody = null
   if (container.offsetWidth >= 768) {
-    optBounce.width = canvas.clientWidth/12
-    }
-  else {
-    optBounce.width = canvas.clientWidth/9.5
+    widthBody = 5
+  } else {
+    widthBody = 6.2
   }
-  console.log(bounceWidth)
+  const targetWidth = (Math.sqrt(square)/widthBody)/window.devicePixelRatio
+  let optBounce = {
+    x: (canvas.clientWidth / 2 - (targetWidth * 3)) + index * 100,
+    y: canvas.clientHeight - 150,
+    width: targetWidth
+  }
   return {
     ...optBounce
   }

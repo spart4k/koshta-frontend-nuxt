@@ -89,18 +89,6 @@ $animationTiming1: cubic-bezier(.71,.01,.15,1);
   }
 }
 
-@mixin subtitle-sm {
-  font-size: 2rem;
-  line-height: 1.219;
-}
-
-
-@mixin regular-text-small {
-  font-family: 'Montserrat-Medium', sans-serif;
-  font-weight: normal;
-  font-size: 1.2rem;
-}
-
 @mixin uppercase {
   text-transform: uppercase;
 }

@@ -82,36 +82,42 @@ export default {
         }
       ]
       const addBounces = () => {
-        let procent = scaleOptions(container)
+        // let procent = scaleOptions(container,canvas)
         setWidth(canvas, container, pixelsRatio)
         sprites.forEach((item, index) => {
           const getImage = (path) => {
             return require(`@/assets/images/${path}`)
           }
-          const image = getImage(item.path)
-          const {x, y, width} = bounceOptionsFooter(canvas, container, index)
-          var bounce = Bodies.circle(x, y, width, {
-            label: `bounce_${index}`,
-            density: 4,
-            mass: 10,
-            // force: { x: 3, y: 3 },
-            restitution: .5,
-            inverseMass: 1/10,
-            render: {
-              pixelRatio: window.devicePixelRatio,
-              sprite: {
-                  // texture: require('@/assets/images/Group 3.png'),
-                  texture: image,
-                  pixelRatio: window.devicePixelRatio,
-                  xScale: procent,
-                  yScale: procent
-              }
-            }}
-          )
-          // bounes.push(bounce)
-          Matter.Composite.add(engine.world, bounce)
-          Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
+          const imageUrl = getImage(item.path)
+          const image = new Image()
+          image.onload = () => {
+            const {x, y, width} = bounceOptionsFooter(canvas, container, index)
+            console.log(x, y, width)
+            const scale = width/image.width
+            var bounce = Bodies.circle(x, y, width/2, {
+              label: `bounce_${index}`,
+              density: 4,
+              mass: 10,
+              // force: { x: 3, y: 3 },
+              restitution: .5,
+              inverseMass: 1/10,
+              render: {
+                sprite: {
+                    // texture: require('@/assets/images/Group 3.png'),
+                    texture: imageUrl,
+                    xScale: scale,
+                    yScale: scale
+                }
+              }}
+            )
+            // bounes.push(bounce)
+            Matter.Composite.add(engine.world, bounce)
+            Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
+          }
+          image.src = imageUrl
+          
         })
+        
       }
       const addBodies = () => {
         var { ground, wallLeft, wallRight, roof } = setWalls(canvas, props.centerOptions)

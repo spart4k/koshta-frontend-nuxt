@@ -5,7 +5,7 @@ const mouseConstraint = (engine, mouse, store) => {
   const mouseConstraint = MouseConstraint.create(engine, {
     mouse: mouse,
     constraint: {
-      stiffness: 0.2,
+      // stiffness: 0.2,
       render: {
         visible: false
       }
