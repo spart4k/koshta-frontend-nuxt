@@ -37,12 +37,16 @@
             </p>
           </div>
         </ui-container>
-        <VueSlickCarousel :style="{
+        <!-- <VueSlickCarousel :style="{
           'order': orderList ? orderList.slider : 3
         }" v-if="slider" :class="$style.slider" :arrows="true" lazyLoad="ondemand" :adaptiveHeight="false" :speed='250' :dots="true">
-          <!-- <img v-for="(url, index) in slider" :src="url" alt=""> -->
           <nuxt-img loading="lazy" v-for="(url, index) in slider" :src="url" />
-        </VueSlickCarousel>
+        </VueSlickCarousel> -->
+        <flickity :style="{
+          'order': orderList ? orderList.slider : 3
+        }" v-if="slider" :class="$style.slider" ref="flickity" :options="flickityOptions" :src="url">
+        <nuxt-img loading="lazy" v-for="(url, index) in slider" :src="url" />
+        </flickity>
       </div>
       <ui-container v-if="allCaseList" :class="$style.otherProjects" class="noPaddingTop">
         <div>

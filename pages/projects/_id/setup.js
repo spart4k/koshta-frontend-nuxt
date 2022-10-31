@@ -1,11 +1,12 @@
 import { ref, defineComponent, useAsync, useMeta, useFetch, useContext, onMounted, watch, computed } from '@nuxtjs/composition-api'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+import Flickity from 'vue-flickity';
 export default defineComponent ({
   name: 'project-page',
   props: {
   },
-  components: { VueSlickCarousel },
+  components: { VueSlickCarousel, Flickity },
   head: {},
   setup(props,_) {
     const { store, route, $axios } = useContext()
@@ -13,6 +14,13 @@ export default defineComponent ({
     const loading = ref(false)
     const headerInfo = ref({})
     const cases = ref([])
+    const flickityOptions = ref({
+      prevNextButtons: true,
+      pageDots: true,
+      wrapAround: true,
+      draggable: true
+      // adaptiveHeight: true
+    })
     // const cases = useAsync( async () => await store.dispatch('cases/getAllCases'))
     const caseInfoMeta = useAsync( async () => {
       const id = route.value.params.id
@@ -183,7 +191,8 @@ export default defineComponent ({
       fetchState,
       caseInfoMeta,
       allCaseList,
-      mainVideo
+      mainVideo,
+      flickityOptions
     }
   }
 })

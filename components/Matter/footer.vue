@@ -69,16 +69,16 @@ export default {
 
       const sprites = [
         {
-          path: '28.webp',
+          path: '6.webp',
         },
         {
           path: 'path64.webp',
         },
         {
-          path: 'path40.webp',
+          path: 'path38.webp',
         },
         {
-          path: 'path38.webp',
+          path: '28.webp',
         }
       ]
       const addBounces = () => {
@@ -91,12 +91,14 @@ export default {
           const imageUrl = getImage(item.path)
           const image = new Image()
           image.onload = () => {
+            console.log(bounceOptionsFooter(canvas, container, index))
             const {x, y, width} = bounceOptionsFooter(canvas, container, index)
-            console.log(x, y, width)
-            const scale = width/image.width
+            const scaleWidth = width/image.width
+            const scaleHeight = width/image.height
             var bounce = Bodies.circle(x, y, width/2, {
               label: `bounce_${index}`,
               density: 4,
+              isStatic: container.offsetWidth <= 768 ? false : true,
               mass: 10,
               // force: { x: 3, y: 3 },
               restitution: .5,
@@ -105,14 +107,14 @@ export default {
                 sprite: {
                     // texture: require('@/assets/images/Group 3.png'),
                     texture: imageUrl,
-                    xScale: scale,
-                    yScale: scale
+                    xScale: scaleWidth,
+                    yScale: scaleWidth
                 }
               }}
             )
             // bounes.push(bounce)
             Matter.Composite.add(engine.world, bounce)
-            Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
+            // Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
           }
           image.src = imageUrl
           

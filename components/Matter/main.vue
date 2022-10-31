@@ -141,7 +141,8 @@ export default {
           const image = new Image()
           image.onload = () => {
             const {x, y, width} = bounceOptions(canvas, container, index)
-            const scale = width/image.width
+            const scaleWidth = width/image.width
+            const scaleHeight = width/image.height
             var bounce = Bodies.circle(x, y, width/2, {
               label: `bounce_${index}`,
               density: .2,
@@ -152,8 +153,8 @@ export default {
               render: {
                 sprite: {
                     texture: imageUrl,
-                    xScale: scale,
-                    yScale: scale
+                    xScale: scaleWidth,
+                    yScale: scaleWidth
                 }
               }}
             )
