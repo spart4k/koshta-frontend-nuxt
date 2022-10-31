@@ -24,12 +24,16 @@ import { useContext, ref, useFetch, computed } from '@nuxtjs/composition-api'
         }
       })
       fetch()
+      const officeses = computed(() => {
+        return footerInfo.value.Office
+      })
       const noClickedMatter = computed(() => {
         return store.state?.matter?.matterClicked
       })
       return {
         noClickedMatter,
-        footerInfo
+        footerInfo,
+        officeses
       }
     }
   }

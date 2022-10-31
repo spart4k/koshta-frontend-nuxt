@@ -11,7 +11,7 @@ export const mutations = {
 export const actions = {
   async getContacts ({ commit }) {
     try {
-      const { data } = await this.$axios.get('/api/contacts-page?populate[0]=meta.meta_image&populate[1]=photos')
+      const { data } = await this.$axios.get('/api/contacts-page?populate[0]=meta.meta_image&populate[1]=photos&populate[2]=Office')
       // commit('setSections', data)
       return data.data
     } catch (e) {

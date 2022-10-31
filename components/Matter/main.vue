@@ -70,31 +70,16 @@ export default {
           path: 'path40.webp',
         },
         {
-          path: 'path12.webp',
-        },
-        {
-          path: '4 1.webp',
-        },
-        {
-          path: '39 1.webp',
-        },
-        {
           path: 'path50.webp',
-        },
-        {
-          path: 'path20.webp',
-        },
-        // {
-        //   path: 'path24.png',
-        // },
-        {
-          path: 'path64.webp',
         },
         {
           path: 'path22.webp',
         },
         {
-          path: 'path62.webp',
+          path: 'path20.webp',
+        },
+        {
+          path: 'path64.webp',
         },
         {
           path: 'path38.webp',
@@ -102,9 +87,15 @@ export default {
         {
           path: 'Group 7.webp',
         },
-        // {
-        //   path: 'Vector.png',
-        // }
+        {
+          path: '16.webp',
+        },
+        {
+          path: '28.webp',
+        },
+        {
+          path: '32.webp',
+        },
       ]
       
       // add bodies for box 
