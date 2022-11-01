@@ -1,24 +1,26 @@
 <template>
   <div>
     <!-- <HeaderDefault/> -->
-    <transition name="fade">
-      <Logotype
-      v-if="isShowInterface"
-      @click="openIndex"
-      :style="{
-        'pointer-events': noClickedMatter ? 'none' : 'unset'
-      }"
-      :class="$style.logotype"
-      />
-    </transition>
-    <transition name="fade">
-      <LayoutHeaderNav
-      :class="$style.nav"
-      :style="{
-        'pointer-events': noClickedMatter ? 'none' : 'unset'
-      }"
-      />
-    </transition>
+    <header>
+      <transition name="fade">
+        <Logotype
+        v-if="isShowInterface"
+        @click="openIndex"
+        :style="{
+          'pointer-events': noClickedMatter ? 'none' : 'unset'
+        }"
+        :class="$style.logotype"
+        />
+      </transition>
+      <transition name="fade">
+        <LayoutHeaderNav
+        :class="$style.nav"
+        :style="{
+          'pointer-events': noClickedMatter ? 'none' : 'unset'
+        }"
+        />
+      </transition>
+    </header>
     <transition name="fade">
       <LayoutFooterProvided
       v-if="isShowProvide"
@@ -38,7 +40,7 @@
   </div>  
 </template>
 
-<style lang="scss" module>
+<style scoped lang="scss" module>
   $zIndexHeader: 100;
   .logotype {
     // position: fixed;
