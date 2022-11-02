@@ -6,6 +6,7 @@
 
 <script>
 import Matter from "matter-js";
+import { debounce } from "debounce";
 import EngineCreate from './utils/engineCreate.js';
 import RenderCreate from './utils/renderCreate.js';
 import setWidth from './utils/setWidth.js';
@@ -180,7 +181,7 @@ export default {
       //   stiffness: 0.5
       // })
       var setRoof
-      window.addEventListener("resize", function () {
+      window.addEventListener("resize", debounce(function () {
         render.options.pixelRatio = window.devicePixelRatio
         console.log('resize')
         loaded = false
@@ -203,10 +204,7 @@ export default {
         }, 4000)
         addBounces()
         addBodies()
-        
-        // console.log(setRoof)
-        
-      });
+      }, 200));
       // const startGyro = () => {
       //   let gyroscope = new Gyroscope({frequency: 60});
       //   gyroscope.addEventListener('reading', e => {
