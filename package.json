@@ -16,6 +16,7 @@
     "@nuxtjs/style-resources": "^1.2.1",
     "animate.css": "^4.1.1",
     "core-js": "^3.19.3",
+    "debounce": "^1.2.1",
     "fullpage-nuxt": "0.0.3",
     "fullpage-vue": "^2.1.1",
     "matter-js": "^0.18.0",
