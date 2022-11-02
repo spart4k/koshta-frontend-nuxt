@@ -7,10 +7,14 @@ let boxBodies = (canvas,centerOptions) => {
     }
   });
   var wallLeft = Bodies.rectangle(-30, canvas.clientHeight / 2, 60, canvas.clientHeight * 6, {
-    isStatic: true, label: "Wall Left", density: 0,
+    isStatic: true, label: "Wall Left", density: 0, render: {
+      fillStyle: 'white'
+    }
   });
   var wallRight = Bodies.rectangle(canvas.clientWidth + 30, canvas.clientHeight / 2, 60, canvas.clientHeight * 6, {
-    isStatic: true, label: "Wall Right", density: 0,
+    isStatic: true, label: "Wall Right", density: 0, render: {
+      fillStyle: 'white'
+    }
   });
   var textBlock = Bodies.rectangle( canvas.clientWidth / 2,canvas.clientHeight / 2,canvas.clientWidth/1.8, centerOptions?.height,{
     isStatic: true, label: "Center", density: 0, render: {
