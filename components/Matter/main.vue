@@ -175,16 +175,21 @@ export default {
       }
       addBounces()
       addBodies()
-      
-      // var constraint = Constraint.create({
-      //   stiffness: 0.5
-      // })
       var setRoof
+      setRoof = setTimeout(() => {
+        console.log('add roof')
+        var { roof } = setWalls(canvas, props.centerOptions)
+        Matter.Composite.add(engine.world, [
+          roof
+        ])
+        
+        loaded = true
+        setRoof = undefined
+      }, 4000)
       window.addEventListener("resize", function () {
         render.options.pixelRatio = window.devicePixelRatio
         console.log('resize')
         loaded = false
-        // var { roof } = setWalls(canvas, props.centerOptions)
         setWidth(canvas, container)
         canvas.style.width = container.offsetWidth + 'px'
         canvas.style.height = container.offsetHeight + 'px'
