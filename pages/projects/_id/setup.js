@@ -129,8 +129,6 @@ export default defineComponent ({
       }
     })
     onMounted(() => {
-      console.log('mount')
-      console.log()
       iNoBounce.disable()
     })
     useMeta(() => ({ 

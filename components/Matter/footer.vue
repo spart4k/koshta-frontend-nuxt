@@ -91,7 +91,6 @@ export default {
           const imageUrl = getImage(item.path)
           const image = new Image()
           image.onload = () => {
-            console.log(bounceOptionsFooter(canvas, container, index))
             const {x, y, width} = bounceOptionsFooter(canvas, container, index)
             const scaleWidth = width/image.width
             const scaleHeight = width/image.height

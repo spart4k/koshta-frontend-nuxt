@@ -69,7 +69,6 @@ export default defineComponent({
         }
       ]
     }))
-    console.log(slider.value)
     const flickityOptions = ref({
       initialIndex: 3,
       prevNextButtons: true,

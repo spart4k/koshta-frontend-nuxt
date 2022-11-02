@@ -28,7 +28,6 @@ let bounseOptions = (canvas,container, index) => {
     }
   }
   
-  console.log(optBounce.x)
   return {
     ...optBounce
   }

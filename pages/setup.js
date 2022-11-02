@@ -132,7 +132,6 @@ export default defineComponent({
       }
     }
     const startMainVideo = () => {
-      console.log(mainVideo.value)
       if (mainVideoUrls.value.desktop && mainVideoUrls.value.mobile) mainVideo.value.playVideo() 
     }
     const stopMainVideo = () => {

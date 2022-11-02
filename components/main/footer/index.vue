@@ -51,10 +51,8 @@
         const callback = (entries) => {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
-              console.log('showProvide')
               store.commit('layout/showInterfaceProvide') 
             } else {
-              console.log('hideProvide')
               store.commit('layout/hideInterfaceProvide') 
             }
           });

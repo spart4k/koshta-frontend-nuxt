@@ -59,6 +59,7 @@ export default {
       }
       // create renderer
       var render = RenderCreate(container, canvas, engine)
+      console.log(render)
       setWidth(canvas, container)
       Render.run(render);
   
@@ -104,6 +105,7 @@ export default {
       
       // add bodies for box 
       const addBodies = () => {
+        setWidth(canvas, container)
         var { ground, wallLeft, wallRight, textBlock, roof } = setWalls(canvas, props.centerOptions)
         Matter.Composite.add(engine.world, [
           ground,wallLeft, wallRight
@@ -173,23 +175,13 @@ export default {
       }
       addBounces()
       addBodies()
-      const drawRoof = () => {
-        var setRoof = setTimeout(() => {
-          console.log('add roof')
-          var { roof } = setWalls(canvas, props.centerOptions)
-          Matter.Composite.add(engine.world, [
-            roof
-          ])
-          
-          loaded = true
-        }, 4000)
-      }
-      drawRoof()
+      
       // var constraint = Constraint.create({
       //   stiffness: 0.5
       // })
-      
-      window.addEventListener("resize", function (setRoof) {
+      var setRoof
+      window.addEventListener("resize", function () {
+        render.options.pixelRatio = window.devicePixelRatio
         console.log('resize')
         loaded = false
         // var { roof } = setWalls(canvas, props.centerOptions)
@@ -197,11 +189,21 @@ export default {
         canvas.style.width = container.offsetWidth + 'px'
         canvas.style.height = container.offsetHeight + 'px'
         Matter.Composite.clear(engine.world);
-        console.log(setRoof)
         if (setRoof) clearTimeout(setRoof)
+        console.log(setRoof)
+        setRoof = setTimeout(() => {
+          console.log('add roof')
+          var { roof } = setWalls(canvas, props.centerOptions)
+          Matter.Composite.add(engine.world, [
+            roof
+          ])
+          
+          loaded = true
+          setRoof = undefined
+        }, 4000)
         addBounces()
         addBodies()
-        drawRoof()
+        
         // console.log(setRoof)
         
       });

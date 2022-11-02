@@ -12,7 +12,7 @@
         </button>
         <transition name="expand">
           <div v-if="isOpenProjectsDrop" :class="[$style.projectsDrop]">
-            <nuxt-link v-for="(item, index) in sections" :to="`/sections/${item.id}`" @click.native="openSection(item.id)">{{ item.attributes.name }}</nuxt-link>
+            <nuxt-link v-for="(item, index) in sections" :key="index" :to="`/sections/${item.id}`" @click.native="openSection(item.id)">{{ item.attributes.name }}</nuxt-link>
           </div>
         </transition>
       </div>
