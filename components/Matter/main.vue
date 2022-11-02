@@ -252,9 +252,11 @@ export default {
           loaded = true
           setRoof = undefined
         }, 4000)
-        addBounces()
-        addBodies()
-      }, 200));
+        setTimeout(() => {
+          addBounces()
+          addBodies()
+        }, 0);
+      }, 1000));
       // const startGyro = () => {
       //   let gyroscope = new Gyroscope({frequency: 60});
       //   gyroscope.addEventListener('reading', e => {
