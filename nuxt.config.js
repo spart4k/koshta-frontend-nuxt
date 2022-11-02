@@ -17,7 +17,8 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
-      { src: '/libs/inobounce.min.js' }
+      { src: '/libs/inobounce.min.js' },
+      { src: '/libs/mobile-detect.min.js' }
     ]
   },
   loading: false,
