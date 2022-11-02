@@ -17,7 +17,7 @@ import bounceOptions from './utils/bounceOptions.js';
 // import createBody from './utils/bounceCreate.js';
 import startGyroScope from './utils/startGyroscope.js'
 import { onMounted, ref, computed, useContext } from '@nuxtjs/composition-api'
-
+var decomp = require('poly-decomp');
 export default {
   name: "start-matter",
   components: {},
@@ -50,8 +50,10 @@ export default {
           Mouse = Matter.Mouse,
           World = Matter.World,
           Bodies = Matter.Bodies,
+          Common = Matter.Common,
           Constraint = Matter.Constraint
       // create engine
+      // Matter.Common.setDecomp(decomp)
       var engine = EngineCreate(),
           { world } = engine;
       world.gravity.y = 1.8;
@@ -71,36 +73,47 @@ export default {
       const sprites = [
         {
           path: 'path40.webp',
+          type: 'star'
         },
         {
           path: 'path50.webp',
+          type: 'default'
         },
         {
           path: 'path22.webp',
+          type: 'default'
         },
         {
           path: 'path20.webp',
+          type: 'default'
         },
         {
           path: 'path64.webp',
+          type: 'star'
         },
         {
           path: 'path38.webp',
+          type: 'default'
         },
         {
           path: 'Group 7.webp',
+          type: 'default'
         },
         {
           path: '6.webp',
+          type: 'star'
         },
         {
           path: '16.webp',
+          type: 'default'
         },
         {
           path: '28.webp',
+          type: 'default'
         },
         {
           path: '32.webp',
+          type: 'star'
         }
       ]
       
@@ -139,25 +152,57 @@ export default {
           // const targetWidth = scaleOptions(container)
           const imageUrl = getImage(item.path)
           const image = new Image()
+          const getVertices = () => {
+            [
+              {x: width/5, y: 0},{x: 0, y: width/5},{x: width/5, y: width/2},{x: 0, y: 80},
+              {x: width/5, y: width}, {x: width/5, y: 80}, {x: 80, y: width}, {x: width, y: 80}, {x: 80, y: width/2}, {x: 100, y: width/5}, {x: 80, y: 0}, {x: width/2, y: width/5}, {x: width/5, y: 0} 
+            ]
+          }
           image.onload = () => {
             const {x, y, width} = bounceOptions(canvas, container, index)
             const scaleWidth = width/image.width
             const scaleHeight = width/image.height
-            var bounce = Bodies.circle(x, y, width/2, {
-              label: `bounce_${index}`,
-              density: .2,
-              mass: 5,
-              restitution: .6,
-              // stiffness: 0.1,
-              inverseMass: 1/5,
-              render: {
-                sprite: {
-                    texture: imageUrl,
-                    xScale: scaleWidth,
-                    yScale: scaleWidth
-                }
-              }}
-            )
+            // var bounce = Bodies.fromVertices(x, y, [
+            //   {x: 20, y: 0},{x: 0, y: 20},{x: 15, y: 50},{x: 0, y: 80},
+            //   {x: 20, y: 100}, {x: 50, y: 80}, {x: 80, y: 100}, {x: 100, y: 80}, {x: 80, y: 50}, {x: 100, y: 20}, {x: 80, y: 0}, {x: 50, y: 20}, {x: 20, y: 0} ], {
+              if (item.type !== 'star') {
+                var bounce = Bodies.circle(x, y, width/2, {
+                  label: `bounce_${index}`,
+                  density: .2,
+                  mass: 5,
+                  restitution: .6,
+                  // stiffness: 0.1,
+                  inverseMass: 1/5,
+                  render: {
+                    strokeStyle: '#000000',
+                    lineWidth: 5,
+                    sprite: {
+                        texture: imageUrl,
+                        xScale: scaleWidth,
+                        yScale: scaleWidth
+                    }
+                  }}
+                )
+              } else {
+                var bounce = Bodies.circle(x, y, (width/2) * 1.05, {
+                  label: `bounce_${index}`,
+                  density: .2,
+                  mass: 5,
+                  restitution: .6,
+                  // stiffness: 0.1,
+                  inverseMass: 1/5,
+                  render: {
+                    strokeStyle: '#000000',
+                    lineWidth: 5,
+                    sprite: {
+                        texture: imageUrl,
+                        xScale: scaleWidth * 0.95,
+                        yScale: scaleWidth * 0.95
+                    }
+                  }}
+                )
+              }
+            
             // var constraint = Constraint.create({
             //   bodyB: body,
             //   stiffness: 0.001
