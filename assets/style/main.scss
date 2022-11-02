@@ -138,10 +138,18 @@ h1,h2,h3,h4,h5,h6,p {
 .page {
   background-color: #fff;
 }
+.flickity-block {
+  &.pagination-off {
+    .flickity-prev-next-button {
+      display: none;
+    }
+  }
+}
 .flickity-slider {
   img {
     // max-height: 40rem;
     max-width: 100%;
+    width: 100%;
   }
 }
 .flickity-page-dots {

@@ -15,8 +15,10 @@
   margin: 0 auto;
   @include text;
   margin-bottom: 3rem;
+  line-height: 1.25;
   @media (max-width: $mobileWidth) {
     width: 100%;
+    
   }
 }
 .otherProjects {

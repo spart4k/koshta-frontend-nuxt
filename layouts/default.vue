@@ -1,26 +1,24 @@
 <template>
   <div>
     <!-- <HeaderDefault/> -->
-    <header>
-      <transition name="fade">
-        <Logotype
-        v-if="isShowInterface"
-        @click="openIndex"
-        :style="{
-          'pointer-events': noClickedMatter ? 'none' : 'unset'
-        }"
-        :class="$style.logotype"
-        />
-      </transition>
-      <transition name="fade">
-        <LayoutHeaderNav
-        :class="$style.nav"
-        :style="{
-          'pointer-events': noClickedMatter ? 'none' : 'unset'
-        }"
-        />
-      </transition>
-    </header>
+    <transition name="fade">
+      <Logotype
+      v-if="isShowInterface"
+      @click="openIndex"
+      :style="{
+        'pointer-events': noClickedMatter ? 'none' : 'unset'
+      }"
+      :class="$style.logotype"
+      />
+    </transition>
+    <transition name="fade">
+      <LayoutHeaderNav
+      :class="$style.nav"
+      :style="{
+        'pointer-events': noClickedMatter ? 'none' : 'unset'
+      }"
+      />
+    </transition>
     <transition name="fade">
       <LayoutFooterProvided
       v-if="isShowProvide"
@@ -47,7 +45,6 @@
     left: 4rem;
     top: 2rem;
     z-index: $zIndexHeader;
-    z-index: 10;
     @media (max-width: $mobileWidth) {
       top: 2rem;
       left: 50%;

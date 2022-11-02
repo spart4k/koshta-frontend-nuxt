@@ -44,8 +44,12 @@
         </VueSlickCarousel> -->
         <flickity :style="{
           'order': orderList ? orderList.slider : 3
-        }" v-if="slider" :class="$style.slider" ref="flickity" :options="flickityOptions" :src="url">
-        <nuxt-img loading="lazy" v-for="(url, index) in slider" :src="url" />
+        }" v-if="slider" :class="[
+          $style.slider,
+          slider.length > 1 ? 'pagination' : 'pagination-off',
+          'flickity-block'
+          ]" ref="flickity" :options="flickityOptions" :src="url">
+          <nuxt-img loading="lazy" v-for="(url, index) in slider" :src="url" />
         </flickity>
       </div>
       <ui-container v-if="allCaseList" :class="$style.otherProjects" class="noPaddingTop">

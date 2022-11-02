@@ -1,15 +1,18 @@
 const startGyroScope = (world) => {
   function handler() {
     console.log('gyro start')
-    console.log(typeof DeviceMotionEvent.requestPermission)
-    if (typeof DeviceMotionEvent.requestPermission === 'function') {
-      window.addEventListener('devicemotion', handleOrientationIos);
-    } else if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-      window.addEventListener('devicemotion', handleOrientationIos);
-    } else {
-      // Handle regular non iOS 13+ devices.
-      window.addEventListener('devicemotion', handleOrientationAndroid);
+    if (DeviceMotionEvent) {
+      console.log(typeof DeviceMotionEvent.requestPermission)
+      if (typeof DeviceMotionEvent.requestPermission === 'function') {
+        window.addEventListener('devicemotion', handleOrientationIos);
+      } else if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        window.addEventListener('devicemotion', handleOrientationIos);
+      } else {
+        // Handle regular non iOS 13+ devices.
+        window.addEventListener('devicemotion', handleOrientationAndroid);
+      }
     }
+    
   }
   function handleOrientationIos(e) {
     console.log(e)

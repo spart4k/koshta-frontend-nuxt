@@ -99,9 +99,6 @@ export default {
         },
         {
           path: '32.webp',
-        },
-        {
-          path: '33.webp',
         }
       ]
       
@@ -170,34 +167,43 @@ export default {
               Matter.Body.setVelocity(bounce, { x: 0, y: 0 })
             }
             Matter.Engine.update(engine)
-            setTimeout(() => {
-              if (container.offsetWidth <= 768 ) {
-                var { roof } = setWalls(canvas, props.centerOptions)
-                Matter.Composite.add(engine.world, [
-                  roof
-                ])
-              }
-              
-              loaded = true
-            }, 4000)
           }
           image.src = imageUrl
         })
       }
       addBounces()
       addBodies()
+      const drawRoof = () => {
+        var setRoof = setTimeout(() => {
+          console.log('add roof')
+          var { roof } = setWalls(canvas, props.centerOptions)
+          Matter.Composite.add(engine.world, [
+            roof
+          ])
+          
+          loaded = true
+        }, 4000)
+      }
+      drawRoof()
       // var constraint = Constraint.create({
       //   stiffness: 0.5
       // })
-      window.addEventListener("resize", function () {
+      
+      window.addEventListener("resize", function (setRoof) {
+        console.log('resize')
         loaded = false
         // var { roof } = setWalls(canvas, props.centerOptions)
         setWidth(canvas, container)
         canvas.style.width = container.offsetWidth + 'px'
         canvas.style.height = container.offsetHeight + 'px'
         Matter.Composite.clear(engine.world);
+        console.log(setRoof)
+        if (setRoof) clearTimeout(setRoof)
         addBounces()
         addBodies()
+        drawRoof()
+        // console.log(setRoof)
+        
       });
       // const startGyro = () => {
       //   let gyroscope = new Gyroscope({frequency: 60});

@@ -14,8 +14,8 @@
     z-index: 1;
     @include title-h1;
     @media (max-width: $mobileWidth) {
-      top: 10.4rem;
-      transform: translate3d(-50%,0%, 0);
+      top: 50%;
+      transform: translate3d(-50%,-50%, 0);
       width: calc(39rem - 12rem);
       padding: 0;
     }

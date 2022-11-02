@@ -1,12 +1,9 @@
 import { useAsync, ref, useContext, useMeta, defineComponent, useFetch, computed, onMounted } from '@nuxtjs/composition-api'
-import VueSlickCarousel from 'vue-slick-carousel'
-import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
-import Flickity from 'vue-flickity';
 export default defineComponent({
   name: 'contacts-page',
   props: {
   },
-  components: { VueSlickCarousel, Flickity },
+  components: { },
   head: {},
   setup(props,_) {
     const { store, $axios } = useContext()
@@ -20,14 +17,6 @@ export default defineComponent({
     //   }
     // })
     // fetch()
-    const flickityOptions = ref({
-      initialIndex: 3,
-      prevNextButtons: true,
-      pageDots: true,
-      wrapAround: true,
-      draggable: true
-      // adaptiveHeight: true
-    })
     const slider = computed(() => {
       let array = []
       const photos = contactsInfo?.value?.attributes?.photos?.data
@@ -80,6 +69,15 @@ export default defineComponent({
         }
       ]
     }))
+    console.log(slider.value)
+    const flickityOptions = ref({
+      initialIndex: 3,
+      prevNextButtons: true,
+      pageDots: true,
+      wrapAround: true
+      // draggable: true
+      // adaptiveHeight: true
+    })
 
     onMounted(() => {
       iNoBounce.disable()

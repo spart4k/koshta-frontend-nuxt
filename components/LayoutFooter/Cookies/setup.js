@@ -8,7 +8,7 @@ export default {
     const close = () => {
       transition.value = 'expand' 
       isShow.value = false
-      if (isMobile) {
+      if (isMobile.value) {
         handler()
       }
     }
@@ -21,12 +21,16 @@ export default {
       }
     })
     const handler = () => {
-      if (typeof DeviceMotionEvent.requestPermission === 'function') {
-        // Handle iOS 13+ devices.
-        DeviceMotionEvent.requestPermission()
-      } else if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        // Handle iOS 13+ devices.
-        DeviceOrientationEvent.requestPermission()
+      if (DeviceMotionEvent) {
+        if (typeof DeviceMotionEvent.requestPermission === 'function') {
+          // Handle iOS 13+ devices.
+          DeviceMotionEvent.requestPermission()
+        } else if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+          // Handle iOS 13+ devices.
+          DeviceOrientationEvent.requestPermission()
+        } else {
+          return
+        }
       }
     }
     return {

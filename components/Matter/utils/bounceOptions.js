@@ -2,9 +2,9 @@ let bounseOptions = (canvas,container, index) => {
   const square = canvas.width * canvas.height
   let widthBody = null
   if (container.offsetWidth >= 768) {
-    widthBody = 5
+    widthBody = 6
   } else {
-    widthBody = 6.2
+    widthBody = 7
   }
   const targetWidth = (Math.sqrt(square)/widthBody)/window.devicePixelRatio
   let optBounce = {
