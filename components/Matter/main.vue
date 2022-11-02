@@ -230,9 +230,11 @@ export default {
       //   }, 4000)
       // }
       // startGyro()
-      setTimeout(() => {
-        startGyroScope(world)
-      }, 4000)
+      if (container.offsetWidth <= 768) {
+        setTimeout(() => {
+          startGyroScope(world)
+        }, 4000)
+      }
     }
     return {
       centerOptions,
