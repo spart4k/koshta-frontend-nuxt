@@ -10,6 +10,7 @@ import Matter from "matter-js";
 import EngineCreate from './utils/engineCreate.js';
 import RenderCreate from './utils/renderCreate.js';
 import setWidth from './utils/setWidth.js';
+import { debounce } from "debounce";
 import scaleOptions from './utils/scaleOptions.js';
 import setWalls from './utils/setWalls.js';
 import mouseConstraint from './utils/mouseConstraint.js'
@@ -40,6 +41,7 @@ export default {
 
     })
     const initMatter = () => {
+      var loaded = false
       const container = document.getElementById('footer-matter')
       var canvas = document.getElementById('wrap-footer')
       var pixelsRatio = window.devicePixelRatio
@@ -70,15 +72,19 @@ export default {
       const sprites = [
         {
           path: '6.webp',
+          type: 'star'
         },
         {
           path: 'path64.webp',
+          type: 'star'
         },
         {
           path: 'path38.webp',
+          type: 'default'
         },
         {
           path: '28.webp',
+          type: 'default'
         }
       ]
       const addBounces = () => {
@@ -94,23 +100,45 @@ export default {
             const {x, y, width} = bounceOptionsFooter(canvas, container, index)
             const scaleWidth = width/image.width
             const scaleHeight = width/image.height
-            var bounce = Bodies.circle(x, y, width/2, {
-              label: `bounce_${index}`,
-              density: 4,
-              isStatic: container.offsetWidth <= 768 ? false : true,
-              mass: 10,
-              // force: { x: 3, y: 3 },
-              restitution: .5,
-              inverseMass: 1/10,
-              render: {
-                sprite: {
-                    // texture: require('@/assets/images/Group 3.png'),
-                    texture: imageUrl,
-                    xScale: scaleWidth,
-                    yScale: scaleWidth
-                }
-              }}
-            )
+            if (item.type !== 'star') {
+                var bounce = Bodies.circle(x, y, width/2, {
+                  label: `bounce_${index}`,
+                  density: .2,
+                  mass: 5,
+                  isStatic: container.offsetWidth <= 768 ? false : true,
+                  restitution: .6,
+                  // stiffness: 0.1,
+                  inverseMass: 1/5,
+                  render: {
+                    strokeStyle: '#000000',
+                    lineWidth: 5,
+                    sprite: {
+                        texture: imageUrl,
+                        xScale: scaleWidth,
+                        yScale: scaleWidth
+                    }
+                  }}
+                )
+              } else {
+                var bounce = Bodies.circle(x, y, (width/2) * 1.05, {
+                  label: `bounce_${index}`,
+                  density: .2,
+                  mass: 5,
+                  isStatic: container.offsetWidth <= 768 ? false : true,
+                  restitution: .6,
+                  // stiffness: 0.1,
+                  inverseMass: 1/5,
+                  render: {
+                    strokeStyle: '#000000',
+                    lineWidth: 5,
+                    sprite: {
+                        texture: imageUrl,
+                        xScale: scaleWidth * 0.95,
+                        yScale: scaleWidth * 0.95
+                    }
+                  }}
+                )
+              }
             // bounes.push(bounce)
             Matter.Composite.add(engine.world, bounce)
             // Matter.Body.setVelocity(bounce, { x: 0, y: 5 })
@@ -189,14 +217,40 @@ export default {
       
       addBounces()
       addBodies()
-      window.addEventListener("resize", function () {
-        setWidth(canvas, container, pixelsRatio)
+      var setRoof
+      setRoof = setTimeout(() => {
+        console.log('add roof')
+        var { roof } = setWalls(canvas, props.centerOptions)
+        Matter.Composite.add(engine.world, [
+          roof
+        ])
+        
+        loaded = true
+        setRoof = undefined
+      }, 4000)
+      window.addEventListener("resize", debounce(function () {
+        render.options.pixelRatio = window.devicePixelRatio
+        console.log('resize')
+        loaded = false
+        setWidth(canvas, container)
         canvas.style.width = container.offsetWidth + 'px'
         canvas.style.height = container.offsetHeight + 'px'
         Matter.Composite.clear(engine.world);
+        if (setRoof) clearTimeout(setRoof)
+        console.log(setRoof)
+        setRoof = setTimeout(() => {
+          console.log('add roof')
+          var { roof } = setWalls(canvas, props.centerOptions)
+          Matter.Composite.add(engine.world, [
+            roof
+          ])
+          
+          loaded = true
+          setRoof = undefined
+        }, 4000)
         addBounces()
         addBodies()
-      });
+      }, 200));
       startGyroScope(world)
       const shakeBodies = () => {
         bounes.forEach((item) => {
