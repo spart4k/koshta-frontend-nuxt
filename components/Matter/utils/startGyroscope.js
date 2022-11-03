@@ -18,13 +18,13 @@ const startGyroScope = (world) => {
   }
   function handleOrientationIos(e) {
     console.log(e)
-    world.gravity.x = e.accelerationIncludingGravity.x * 2
-    world.gravity.y = -e.accelerationIncludingGravity.y * 2
+    world.gravity.x = e.accelerationIncludingGravity.x
+    world.gravity.y = -e.accelerationIncludingGravity.y
   }
   function handleOrientationAndroid(e) {
     console.log(e)
-    world.gravity.x = -e.accelerationIncludingGravity.x * 2
-    world.gravity.y = e.accelerationIncludingGravity.y * 2
+    world.gravity.x = -e.accelerationIncludingGravity.x
+    world.gravity.y = e.accelerationIncludingGravity.y
   }
   handler()
 }
