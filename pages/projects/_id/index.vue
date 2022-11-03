@@ -23,7 +23,7 @@
             $style.mainVideo,
             orderList.video === 1 ? $style.fullWidth : ''
             ]">
-            <video ref="mainVideo" controls loop playsinline webkit-playinginline id="mainVideo">
+            <video ref="mainVideo" controls :poster="mainVideoPoster" loop playsinline webkit-playinginline id="mainVideo">
               <source poster="https://koshta.c.roky.rocks/uploads/mainposter_ba70b0b94a.png?updated_at=2022-10-19T17:58:47.272Z" :src="mainVideo" type="video/mp4">
             </video>
           </div>

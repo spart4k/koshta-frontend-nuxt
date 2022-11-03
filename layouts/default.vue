@@ -14,24 +14,15 @@
     <transition name="fade">
       <LayoutHeaderNav
       :class="$style.nav"
-      :style="{
-        'pointer-events': noClickedMatter ? 'none' : 'unset'
-      }"
       />
     </transition>
     <transition name="fade">
       <LayoutFooterProvided
       v-if="isShowProvide"
-      :style="{
-        'pointer-events': noClickedMatter ? 'none' : 'unset'
-      }"
       :class="$style.provided"
       />
     </transition>
     <LayoutFooterCookies
-    :style="{
-      'pointer-events': noClickedMatter ? 'none' : 'unset'
-    }"
     :class="$style.cookies"
     />
     <Nuxt />

@@ -17,7 +17,7 @@
         const footer = document.querySelector('.main-footer')
         let options = {
             // root: document.querySelector('#main-logotype'),
-            threshold: 0.5
+            threshold: 0.95
         }
         const callback = (entries) => {
           entries.forEach(function (entry) {
