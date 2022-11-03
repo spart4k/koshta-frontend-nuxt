@@ -16,7 +16,7 @@ import setWalls from './utils/setWalls.js';
 import mouseConstraint from './utils/mouseConstraint.js'
 import bounceOptionsFooter from './utils/bounceOptionsFooter.js';
 import startGyroScope from './utils/startGyroscope.js'
-import { onMounted, computed, useContext } from '@nuxtjs/composition-api'
+import { onMounted, computed, useContext, onUnmounted } from '@nuxtjs/composition-api'
 
 export default {
   name: "start-matter",
@@ -219,7 +219,6 @@ export default {
       addBodies()
       var setRoof
       setRoof = setTimeout(() => {
-        console.log('add roof')
         var { roof } = setWalls(canvas, props.centerOptions)
         Matter.Composite.add(engine.world, [
           roof
@@ -230,16 +229,13 @@ export default {
       }, 4000)
       window.addEventListener("resize", debounce(function () {
         render.options.pixelRatio = window.devicePixelRatio
-        console.log('resize')
         loaded = false
         setWidth(canvas, container)
         canvas.style.width = container.offsetWidth + 'px'
         canvas.style.height = container.offsetHeight + 'px'
         Matter.Composite.clear(engine.world);
         if (setRoof) clearTimeout(setRoof)
-        console.log(setRoof)
         setRoof = setTimeout(() => {
-          console.log('add roof')
           var { roof } = setWalls(canvas, props.centerOptions)
           Matter.Composite.add(engine.world, [
             roof
@@ -269,7 +265,9 @@ export default {
       canvas.addEventListener("wheel", (e) => {
       })
     }
-    
+    onUnmounted(() => {
+      window.removeEventListener("resize")
+    })
     return {
       centerOptions
     }

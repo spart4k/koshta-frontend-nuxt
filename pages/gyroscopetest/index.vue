@@ -1,3 +1,0 @@
-<template>
-  <FooterGyro></FooterGyro>
-</template>

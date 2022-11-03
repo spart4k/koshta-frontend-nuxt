@@ -52,11 +52,9 @@ export default defineComponent({
         }
         if (nextIndex === 1) {
           showButtonNext.value = false
-          console.log('play')
           startMainVideo()
         }
         if (currenIndex === 1) {
-          console.log('play')
           stopMainVideo()
           fullpageOptions.value.disabled = true
         }
@@ -74,7 +72,6 @@ export default defineComponent({
           isTouchDisabled.value = true
         }
         if (currentIndex === 1) {
-          console.log('1')
         }
         if (currentIndex === 2) {
           setOverflowBlock()
