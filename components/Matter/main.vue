@@ -273,7 +273,7 @@ export default {
       }
     }
     onUnmounted(() => {
-      window.removeEventListener("resize")
+      // window.removeEventListener("resize", false)
     })
     return {
       centerOptions,

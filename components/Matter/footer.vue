@@ -266,7 +266,10 @@ export default {
       })
     }
     onUnmounted(() => {
-      window.removeEventListener("resize")
+      console.log('1')
+      // window.removeEventListener("resize", () => {
+        
+      // })
     })
     return {
       centerOptions
