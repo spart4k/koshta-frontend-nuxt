@@ -50,6 +50,9 @@
       width: calc(100% - 3rem);
       margin: 0rem auto 6.5rem auto;
       top: unset;
+      @media screen and (orientation:landscape) {
+        margin: 0rem auto 2.5rem auto;
+      }
     }
   }
   .center {

@@ -17,7 +17,6 @@ import bounceOptions from './utils/bounceOptions.js';
 // import createBody from './utils/bounceCreate.js';
 import startGyroScope from './utils/startGyroscope.js'
 import { onMounted, ref, computed, useContext } from '@nuxtjs/composition-api'
-var decomp = require('poly-decomp');
 export default {
   name: "start-matter",
   components: {},
@@ -49,11 +48,8 @@ export default {
           Runner = Matter.Runner,
           Mouse = Matter.Mouse,
           World = Matter.World,
-          Bodies = Matter.Bodies,
-          Common = Matter.Common,
-          Constraint = Matter.Constraint
+          Bodies = Matter.Bodies
       // create engine
-      // Matter.Common.setDecomp(decomp)
       var engine = EngineCreate(),
           { world } = engine;
       world.gravity.y = 1.8;

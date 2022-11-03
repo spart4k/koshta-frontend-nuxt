@@ -19,6 +19,7 @@ export default {
       }
     })
     const playVideo = () => {
+      console.log('play')
       mainVideo.value.play()
     }
     const stopVideo = () => {

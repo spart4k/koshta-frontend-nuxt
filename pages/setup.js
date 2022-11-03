@@ -15,23 +15,22 @@ export default defineComponent({
     // const cases = ref([])
     // const mainInfo = ref([])
     const loading = ref(true)
+    const mainInfoFetch = ref([])
     const mainInfo = useAsync(async() => await store.dispatch('mainpage/getMainPageInfo'))
     const cases = useAsync(async () => await store.dispatch('cases/getAllCases'))
     // const fetchData = async () => {
-    //   const cases  = await store.dispatch('cases/getAllCases')
-    //   const mainInfo = await store.dispatch('mainpage/getMainPageInfo')
-    //   loading.value = true
+    //   const mainInfoFetch = await store.dispatch('mainpage/getMainPageInfo')
+    //   loading.value = false
     //   return {
     //     cases,
-    //     mainInfo
+    //     mainInfoFetch
     //   }
     // }
 
     // const { fetch, fetchState } = useFetch(async () => {
     //   try {
     //     const response = await fetchData()
-    //     cases.value = response.cases
-    //     mainInfo.value = response.mainInfo
+    //     mainInfoFetch.value = response.mainInfoFetch
     //   } catch (e) {
     //     console.log(e)
     //   }
@@ -53,9 +52,11 @@ export default defineComponent({
         }
         if (nextIndex === 1) {
           showButtonNext.value = false
+          console.log('play')
           startMainVideo()
         }
         if (currenIndex === 1) {
+          console.log('play')
           stopMainVideo()
           fullpageOptions.value.disabled = true
         }
@@ -71,6 +72,9 @@ export default defineComponent({
       afterChange: function (currentSlideEl, currentIndex) {
         if (currentIndex === 0 || currentIndex === 1) {
           isTouchDisabled.value = true
+        }
+        if (currentIndex === 1) {
+          console.log('1')
         }
         if (currentIndex === 2) {
           setOverflowBlock()
@@ -198,6 +202,7 @@ export default defineComponent({
       loading,
       showButtonNext,
       isTouchDisabled,
+      mainInfoFetch
       // fetchState
     }
   },
