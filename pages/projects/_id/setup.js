@@ -113,6 +113,13 @@ export default defineComponent ({
         return url
       }
     })
+    const mainVideoPoster = computed(() => {
+      const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.video')
+      if (component) {
+        const url = $axios.defaults.baseURL + component.poster?.data?.attributes?.url
+        return url
+      }
+    })
     const orderList = computed(() => {
       const component = caseInfo?.value?.slider_or_text
       if (component) {
@@ -188,7 +195,8 @@ export default defineComponent ({
       caseInfoMeta,
       allCaseList,
       mainVideo,
-      flickityOptions
+      flickityOptions,
+      mainVideoPoster
     }
   }
 })
