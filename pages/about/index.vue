@@ -11,7 +11,7 @@
         <img v-for="(url, index) in slider" :src="url" alt="">
       </VueSlickCarousel> -->
       <client-only>
-        <flickity v-if="slider" :class="[
+        <flickity :items="1" :loop="false" :autoHeight="true" :dots="true" v-if="slider" :class="[
           $style.slider,
           slider.length > 1 ? 'pagination' : 'pagination-off',
           'flickity-block'

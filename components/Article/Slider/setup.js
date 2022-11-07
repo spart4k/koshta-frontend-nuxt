@@ -1,4 +1,4 @@
-import { useContext, ref, useFetch, computed } from '@nuxtjs/composition-api'
+import { useContext, reactive, ref, useFetch, computed } from '@nuxtjs/composition-api'
   export default {
     name: 'article-slider',
     props: {
@@ -17,12 +17,13 @@ import { useContext, ref, useFetch, computed } from '@nuxtjs/composition-api'
     },
     setup(props) {
       const { store, $axios } = useContext()
-      const flickityOptions = ref({
+      const flickityOptions = reactive({
+        imagesLoaded: false,
         prevNextButtons: true,
         pageDots: true,
-        wrapArround: true,
-        // adaptiveHeight: true,
-        imagesLoaded: true
+        wrapAround: true,
+        adaptiveHeight: true,
+        dots: true
         
       })
       const slider = computed(() => {
@@ -30,7 +31,7 @@ import { useContext, ref, useFetch, computed } from '@nuxtjs/composition-api'
         props?.options?.imageOrVideo.data.forEach(element => {
           let url = $axios.defaults.baseURL + element.attributes.url
           let item = {
-            type: element.attributes.ext === '.mp4' || element.attributes.ext === '.webm' ? 'video' : 'image',
+            type: element.attributes.ext === '.mp4' || element.attributes.ext === '.webm' || element.attributes.ext === '.MP4' || element.attributes.ext === '.WEBM' ? 'video' : 'image',
             url
           }
           array.push(item)

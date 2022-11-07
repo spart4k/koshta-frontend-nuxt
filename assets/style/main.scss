@@ -302,3 +302,63 @@ img {
 .flickity-viewport {
   transition: height 0.2s;
 }
+.owl-theme .owl {
+  &-nav {
+    margin-top: 0 !important;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    height: 5rem;
+    transform: translate(0, -50%);
+  }
+  &-prev, &-next {
+    position: absolute;
+    font-size: 0 !important;
+    transition: .3s;
+    width: 5rem;
+    height: 5rem;
+    z-index: 10;
+    background-image: url('@/assets/images/icons/arrow.svg') !important;
+    background-size: contain !important;
+    backdrop-filter: blur(50px) !important;
+    -webkit-backdrop-filter: blur(50px) !important;
+    border-radius: 50% !important;
+    @media (max-width: $mobileWidth) {
+      display: none !important; 
+    }
+  }
+  &-prev {
+    left: 4rem;
+  }
+  &-next {
+    right: 4rem;
+    transform: rotateY(180deg);
+  }
+  &-dots {
+    display: none;
+    margin-top: 1rem;
+    @media (max-width: $mobileWidth) {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      button {
+        background-color: $fontColorDefault !important;
+        opacity: .3;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 100%;
+        margin: 0 .5rem;
+        transition: .2s;
+        &.active {
+          opacity: 1;
+        }
+        span {
+          display: none !important;
+        }
+      }
+    }
+  }
+}
