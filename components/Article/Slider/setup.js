@@ -38,9 +38,20 @@ import { useContext, reactive, ref, useFetch, computed } from '@nuxtjs/compositi
         })
         return array
       })
+      const changed = () => {
+        console.log('change')
+        const slider = document.querySelector('.carousel')
+        const slides = slider.querySelectorAll('.carousel-videl')
+        if (slides.length) {
+          slides.forEach((item) => {
+            item.pause()
+          }) 
+        }
+      }
       return {
         slider,
-        flickityOptions
+        flickityOptions,
+        changed
       }
     }
   }
