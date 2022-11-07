@@ -1,0 +1,17 @@
+.mainVideo {
+  width: 65%;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  &.fullWidth {
+    width: 100%;
+  }
+  @media (max-width: $mobileWidth) {
+    width: 100%;
+  }
+}

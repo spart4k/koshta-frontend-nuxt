@@ -10,13 +10,15 @@
       <!-- <VueSlickCarousel v-if="slider" lazyLoad="ondemand" :adaptiveHeight="false" :speed='250' :class="$style.slider" :arrows="true" :dots="true">
         <img v-for="(url, index) in slider" :src="url" alt="">
       </VueSlickCarousel> -->
-      <flickity v-if="slider" :class="[
-        $style.slider,
-        slider.length > 1 ? 'pagination' : 'pagination-off',
-        'flickity-block'
-        ]" ref="flickity" :options="flickityOptions" :src="url">
-        <nuxt-img loading="lazy" v-for="(url, index) in slider" :key="index" :src="url" />
-      </flickity>
+      <client-only>
+        <flickity v-if="slider" :class="[
+          $style.slider,
+          slider.length > 1 ? 'pagination' : 'pagination-off',
+          'flickity-block'
+          ]" ref="flickity" :options="flickityOptions" :src="url">
+          <nuxt-img loading="lazy" v-for="(url, index) in slider" :key="index" :src="url" />
+        </flickity>
+      </client-only>
       <main-footer/>
     </div>
   </div>

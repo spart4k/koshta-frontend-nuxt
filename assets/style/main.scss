@@ -15,10 +15,10 @@
 }
 
 video {
-  width: 100vw;
-  height: 100vh;
-  max-height: 100%;
-  object-fit: cover;
+  // width: 100vw;
+  // height: 100vh;
+  // max-height: 100%;
+  // object-fit: cover;
 }
 .logoTop {
   position: fixed;
@@ -298,4 +298,7 @@ img {
 }
 .fullpage-container {
   min-height: -webkit-fill-available !important;
+}
+.flickity-viewport {
+  transition: height 0.2s;
 }

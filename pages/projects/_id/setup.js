@@ -81,45 +81,45 @@ export default defineComponent ({
     const wrap = computed(() => {
       return $axios.defaults.baseURL + caseInfo.value?.wrap?.data?.attributes?.url
     })
-    const slider = computed(() => {
-      const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.slider')
-      let array = []
-      if (component) {
-        component.images.data.forEach(element => {
-          let url = $axios.defaults.baseURL + element.attributes.url
-          array.push(url)
-        })
-        return array
-      }
-    })
-    const richText = computed(() => {
-      const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.text')
-      if (component) {
-        const text = JSON.parse(component.text)
-        return text.blocks
-      }
-    })
-    const mainImage = computed(() => {
-      const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.image')
-      if (component) {
-        const url = $axios.defaults.baseURL + component.image?.data?.attributes?.url
-        return url
-      }
-    })
-    const mainVideo = computed(() => {
-      const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.video')
-      if (component) {
-        const url = $axios.defaults.baseURL + component.video?.data?.attributes?.url
-        return url
-      }
-    })
-    const mainVideoPoster = computed(() => {
-      const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.video')
-      if (component) {
-        const url = $axios.defaults.baseURL + component.poster?.data?.attributes?.url
-        return url
-      }
-    })
+    // const slider = computed(() => {
+    //   const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.slider')
+    //   let array = []
+    //   if (component) {
+    //     component.images.data.forEach(element => {
+    //       let url = $axios.defaults.baseURL + element.attributes.url
+    //       array.push(url)
+    //     })
+    //     return array
+    //   }
+    // })
+    // const richText = computed(() => {
+    //   const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.text')
+    //   if (component) {
+    //     const text = JSON.parse(component.text)
+    //     return text.blocks
+    //   }
+    // })
+    // const mainImage = computed(() => {
+    //   const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.image')
+    //   if (component) {
+    //     const url = $axios.defaults.baseURL + component.image?.data?.attributes?.url
+    //     return url
+    //   }
+    // })
+    // const mainVideo = computed(() => {
+    //   const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.video')
+    //   if (component) {
+    //     const url = $axios.defaults.baseURL + component.video?.data?.attributes?.url
+    //     return url
+    //   }
+    // })
+    // const mainVideoPoster = computed(() => {
+    //   const component = caseInfo?.value?.slider_or_text?.find((element) => element.__component === 'article.video')
+    //   if (component) {
+    //     const url = $axios.defaults.baseURL + component.poster?.data?.attributes?.url
+    //     return url
+    //   }
+    // })
     const orderList = computed(() => {
       const component = caseInfo?.value?.slider_or_text
       if (component) {
@@ -135,6 +135,24 @@ export default defineComponent ({
         }
       }
     })
+    const getComponentName = (name) => {
+      let result = ''
+      switch (name) {
+        case 'article.image':
+          result = 'article-image'
+          break;
+        case 'article.video':
+          result = 'article-video'
+          break;
+        case 'article.slider':
+          result = 'article-slider'
+          break;
+        case 'article.text':
+          result = 'article-text'
+          break;
+      }
+      return result
+    }
     onMounted(() => {
       iNoBounce.disable()
     })
@@ -186,17 +204,18 @@ export default defineComponent ({
       caseData,
       loading,
       wrap,
-      slider,
-      richText,
-      mainImage,
+      // slider,
+      // richText,
+      // mainImage,
       orderList,
       cases,
       fetchState,
       caseInfoMeta,
       allCaseList,
-      mainVideo,
+      // mainVideo,
       flickityOptions,
-      mainVideoPoster
+      // mainVideoPoster,
+      getComponentName
     }
   }
 })
