@@ -95,20 +95,20 @@ export default {
           type: 'default'
         },
         {
-          path: '6.webp',
+          path: 'new1.webp',
           type: 'star'
         },
         {
-          path: '16.webp',
-          type: 'default'
-        },
-        {
-          path: '28.webp',
-          type: 'default'
+          path: 'new2.webp',
+          type: 'star'
         },
         {
           path: '32.webp',
           type: 'star'
+        },
+        {
+          path: '22.webp',
+          type: 'default'
         }
       ]
       

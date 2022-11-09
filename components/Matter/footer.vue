@@ -71,7 +71,7 @@ export default {
 
       const sprites = [
         {
-          path: '6.webp',
+          path: 'new1.webp',
           type: 'star'
         },
         {
@@ -83,7 +83,7 @@ export default {
           type: 'default'
         },
         {
-          path: '28.webp',
+          path: 'new2.webp',
           type: 'default'
         }
       ]
@@ -266,7 +266,6 @@ export default {
       })
     }
     onUnmounted(() => {
-      console.log('1')
       // window.removeEventListener("resize", () => {
         
       // })

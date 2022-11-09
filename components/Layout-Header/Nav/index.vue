@@ -3,8 +3,8 @@
     'mix-blend-mode': isShowWrap && layoutShowWrap? 'unset' : 'difference'
   }">
     <div :class="$style.desktop">
-      <div :class="[$style.button, $style.projects, $style.desktop, isOpenProjectsDrop ? $style.opened : '']">
-        <button @click.prevent="openProjectsDrop">
+      <div @mouseover="openProjectsDrop" @mouseleave="hideProjectsDrop" :class="[$style.button, $style.projects, $style.desktop, isOpenProjectsDrop ? $style.opened : '']">
+        <button>
           <span>
             projects
           </span>

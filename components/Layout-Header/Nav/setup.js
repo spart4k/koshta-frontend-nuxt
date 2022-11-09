@@ -9,7 +9,10 @@ export default defineComponent({
     const isShowWrap = ref(false)
     const sections = ref([])
     const openProjectsDrop = () => {
-      isOpenProjectsDrop.value = !isOpenProjectsDrop.value
+      isOpenProjectsDrop.value = true
+    }
+    const hideProjectsDrop = () => {
+      isOpenProjectsDrop.value = false
     }
     const openSection = (id) => {
 
@@ -91,6 +94,7 @@ export default defineComponent({
     return {
       isOpenProjectsDrop,
       openProjectsDrop,
+      hideProjectsDrop,
       openSection,
       openNav,
       closeNav,
