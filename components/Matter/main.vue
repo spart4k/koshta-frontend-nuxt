@@ -107,6 +107,10 @@ export default {
           type: 'star'
         },
         {
+          path: '27.webp',
+          type: 'star'
+        },
+        {
           path: '22.webp',
           type: 'default'
         }
