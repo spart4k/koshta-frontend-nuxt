@@ -318,16 +318,22 @@ img {
     position: absolute;
     font-size: 0 !important;
     transition: .3s;
+    padding: 0 !important;
+    margin: 0 !important;
     width: 5rem;
     height: 5rem;
     z-index: 10;
-    background-image: url('@/assets/images/icons/arrow.svg') !important;
+    background: url('@/assets/images/icons/arrow.svg') rgba(255, 255, 255, 0.3) !important;
+    // background-color: rgba(255, 255, 255, 0.3);
     background-size: contain !important;
     backdrop-filter: blur(50px) !important;
     -webkit-backdrop-filter: blur(50px) !important;
     border-radius: 50% !important;
     @media (max-width: $mobileWidth) {
       display: none !important; 
+    }
+    &:hover {
+      opacity: .6;
     }
   }
   &-prev {

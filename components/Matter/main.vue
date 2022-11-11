@@ -229,7 +229,7 @@ export default {
         
         loaded = true
         setRoof = undefined
-      }, 4000)
+      }, 9000)
       window.addEventListener("resize", debounce(function () {
         render.options.pixelRatio = window.devicePixelRatio
         loaded = false
@@ -246,7 +246,7 @@ export default {
           
           loaded = true
           setRoof = undefined
-        }, 4000)
+        }, 200)
         setTimeout(() => {
           addBounces()
           addBodies()
