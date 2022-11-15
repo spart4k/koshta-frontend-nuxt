@@ -33,7 +33,7 @@
   $zIndexHeader: 100;
   .logotype {
     // position: fixed;
-    left: 19rem;
+    left: 10rem;
     top: 2rem;
     z-index: $zIndexHeader;
     @media (max-width: $mobileWidth) {
@@ -44,7 +44,7 @@
   }
   .nav {
     position: fixed;
-    right: 19rem;
+    right: 10rem;
     top: 3.4rem;
     z-index: $zIndexHeader;
     z-index: 10;
@@ -52,7 +52,7 @@
   .provided {
     position: fixed;
     bottom: 4rem;
-    left: 19rem;
+    left: 10rem;
     z-index: $zIndexHeader;
     @media (max-width: $mobileWidth) {
       display: none;
@@ -61,7 +61,7 @@
   .cookies {
     position: fixed;
     bottom: 4rem;
-    right: 19rem;
+    right: 10rem;
     z-index: $zIndexHeader;
     @media (max-width: $mobileWidth) {
       left: 50%;
