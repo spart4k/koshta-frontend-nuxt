@@ -19,6 +19,7 @@
   }
   .date {
     display: flex;
+    color: $fontColorDefault;
     p {
       &:last-child {
         margin-left: 3rem;

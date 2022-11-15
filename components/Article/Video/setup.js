@@ -17,12 +17,15 @@ import { useContext, ref, useFetch, computed } from '@nuxtjs/composition-api'
     },
     setup(props) {
       const { store, $axios } = useContext()
+      const hasVideo = computed(() => {
+        return props?.options?.video?.data?.attributes?.url
+      })
       const mainVideo = computed(() => {
         const url = $axios.defaults.baseURL + props?.options?.video?.data?.attributes?.url
         return url
       })
       const hasPoster = computed(() => {
-        if (props?.options?.poster?.data) {
+        if (props?.options?.poster?.data?.attributes?.url) {
           return true
         } else {
           return false
@@ -35,7 +38,8 @@ import { useContext, ref, useFetch, computed } from '@nuxtjs/composition-api'
       return {
         mainVideo,
         mainVideoPoster,
-        hasPoster
+        hasPoster,
+        hasVideo
       }
     }
   }

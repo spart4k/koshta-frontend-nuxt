@@ -30,6 +30,7 @@
 .orderList {
   display: flex;
   flex-direction: column;
+  margin-bottom: 6rem;
 }
 .mainVideo {
   width: 65%;
@@ -50,6 +51,8 @@
 }
 .otherHeader {
   margin-bottom: 8.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid $fontColorDefault;
   @media (max-width: $mobileWidth) {
     margin-bottom: 3rem;
   }
