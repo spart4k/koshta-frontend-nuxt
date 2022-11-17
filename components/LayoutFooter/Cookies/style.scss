@@ -17,7 +17,7 @@
       position: absolute;
       width: 0%;
       height: 1px;
-      left: 0;
+      right: 0;
       bottom: -.4rem;
       background-color: #000000;
       background-blend-mode: difference;
@@ -27,6 +27,7 @@
       cursor: pointer;
       &:after {
         width: 100%;
+        left: 0;
       }
     }
   }
