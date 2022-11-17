@@ -146,7 +146,8 @@ export default {
         setWidth(canvas, container)
         sprites.forEach((item, index) => {
           const getImage = (path) => {
-            return require(`@/assets/images/${path}`)
+            const requreImage = require(`@/assets/images/${path}`)
+            return requreImage
           }
           // const targetWidth = scaleOptions(container)
           const imageUrl = getImage(item.path)
