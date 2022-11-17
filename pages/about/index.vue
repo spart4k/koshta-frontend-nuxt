@@ -4,7 +4,7 @@
     <div class="">
       <ui-container>
         <div :class="$style.description">
-          Koshta is a collective of art-directors, media artists, designers, producers and curators. We truly believe in boundless imagination and realize our works beyond the limits of conventional reality.
+          Koshta.collective is an association of art directors, designers, producers, curators and media artists. Together we create visual content for brands, media and cultural institutions. Our works are not limited to certain genres — media artists come up with ideas based on their own creativity styles and methods.
         </div>
       </ui-container>
       <!-- <VueSlickCarousel v-if="slider" lazyLoad="ondemand" :adaptiveHeight="false" :speed='250' :class="$style.slider" :arrows="true" :dots="true">
