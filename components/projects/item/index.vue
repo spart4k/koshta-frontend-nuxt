@@ -15,9 +15,9 @@
       <!-- <img :src="wrap" alt=""> -->
       <nuxt-img loading="lazy" :src="wrap" />
     </div>
-    <div :class="$style.date" class="">
+    <!-- <div :class="$style.date" class="">
       {{ date }}
-    </div>
+    </div> -->
   </div>
 </template>
 <script src="./setup.js"></script>

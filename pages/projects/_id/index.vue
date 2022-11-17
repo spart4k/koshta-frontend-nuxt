@@ -5,9 +5,11 @@
       <ui-container>
         <ui-page-title-project :options="headerInfo"></ui-page-title-project>
       </ui-container>
-      <div v-for="(item, index) in caseInfo.slider_or_text" :class="$style.orderList">
-        <component :options="item" :order="index" :is="getComponentName(item.__component)"/>
-      </div>
+      <ui-container class="noPaddingTop">
+        <div v-for="(item, index) in caseInfo.slider_or_text" :class="$style.orderList">
+          <component :options="item" :order="index" :is="getComponentName(item.__component)"/>
+        </div>
+      </ui-container>
       <ui-container v-if="allCaseList" :class="$style.otherProjects" class="noPaddingTop">
         <div>
           <ui-page-title-default :class="$style.otherHeader" :options="otherProjectsHeader"></ui-page-title-default>
