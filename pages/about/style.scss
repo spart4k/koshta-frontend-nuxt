@@ -3,6 +3,9 @@
 }
 .slider {
   margin-bottom: 6rem;
+  @media (max-width: $mobileWidth) {
+    margin-bottom: 0;
+  }
 }
 .description {
   margin: calc(50vh - 7.8rem - 5.75rem) 0 8.5rem calc(50vw - 10rem);
@@ -14,10 +17,26 @@
   @include title-h1;
   font-weight: 400;
   padding: 1rem;
+  &.first {
+    margin: calc(50vh - 7.8rem - 5.75rem) 0 0rem calc(50vw - 10rem);
+    transform: translate(-50%, -30%);
+  }
+  &.second {
+    margin: 8rem 0 0rem calc(50vw - 10rem);
+    transform: translate(-50%, 0%);
+  }
   @media (max-width: $mobileWidth) {
     margin: 0rem auto 8.5rem auto;
-    transform: translate(0%, 0%);
+    transform: translate(-50%, 0%);
     width: calc(100% - 9rem);
     padding: 0;
+    &.first {
+      margin: 0 auto 4rem auto;
+      transform: translate(0%, 0%);
+    }
+    &.second {
+      margin: 4rem auto 3rem auto;
+      transform: translate(0%, 0%);
+    }
   }
 }
