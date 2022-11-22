@@ -10,7 +10,7 @@
         <source :src="item ? item.url : ''" type="video/mp4">
       </video>
     </flickity> -->
-    <flickity @changed="changed" :items="1" class="carousel" :loop="false" :autoHeight="true" :dots="true">
+    <flickity @changed="changed" :items="1" :mouseDrag="false" class="carousel" :loop="false" :autoHeight="true" :dots="true">
       <img v-if="item.type === 'image'" loading="lazy" v-for="(item, index) in slider" :src="item ? item.url : ''" />
       <!-- <video  loading="lazy" v-for="(item, index) in slider" :src="item.url" /> -->
       <video v-if="item.type === 'video'" v-for="(item, index) in slider" controls loop playsinline webkit-playinginline class="carousel-videl">
