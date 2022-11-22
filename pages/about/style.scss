@@ -22,7 +22,7 @@
     transform: translate(-50%, -30%);
   }
   &.second {
-    margin: 8rem 0 0rem calc(50vw - 10rem);
+    margin: 8rem 0 8.5rem calc(50vw - 10rem);
     transform: translate(-50%, 0%);
   }
   @media (max-width: $mobileWidth) {
