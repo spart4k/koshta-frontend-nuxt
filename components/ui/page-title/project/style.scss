@@ -22,7 +22,6 @@
     color: $fontColorDefault;
     p {
       &:last-child {
-        margin-left: 3rem;
         @media (max-width: $mobileWidth) {
           margin-left: unset;
           margin-top: 1.5rem;
