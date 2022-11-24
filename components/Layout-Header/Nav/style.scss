@@ -36,14 +36,15 @@
             bottom: -.4rem;
             background-color: #ffffff;
             background-blend-mode: difference;
-            transition: .2s;
+            transition: transform .2s, transform-origin 0s;
             transform: scaleX(0);
-            transform-origin: left;
+            transform-origin: right;
           }
           &:hover {
             cursor: pointer;
             &:after {
               transform: scaleX(1);
+              transform-origin: left;
             }
           }
         }
@@ -71,9 +72,9 @@
           bottom: -.4rem;
           background-color: #ffffff;
           background-blend-mode: difference;
-          transition: .2s;
+          transition: transform .2s, transform-origin 0s;
           transform: scaleX(0);
-          transform-origin: left;
+          transform-origin: right;
         }
       }
       svg {
@@ -88,9 +89,8 @@
         cursor: pointer;
         span {
           &:after {
-            // width: 100%;
             transform: scaleX(1);
-            // left: 0;
+            transform-origin: left;
           }
         }
       }
@@ -207,14 +207,15 @@
               bottom: -.4rem;
               background-color: #ffffff;
               background-blend-mode: difference;
-              transition: .2s;
+              transition: transform .2s, transform-origin 0s;
               transform: scaleX(0);
-              transform-origin: left;
+              transform-origin: right;
             }
             &:hover {
               cursor: pointer;
               &:after {
                 transform: scaleX(1);
+                transform-origin: left;
               }
             }
           }
