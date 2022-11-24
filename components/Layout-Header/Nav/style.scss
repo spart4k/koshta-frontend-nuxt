@@ -15,6 +15,7 @@
         flex-direction: column;
         align-items: flex-start;
         margin-top: 1rem;
+        padding-bottom: 1rem;
         button,a {
           text-transform: none;
           display: inline-flex;
@@ -29,19 +30,20 @@
           &:after {
             content: '';
             position: absolute;
-            width: 0%;
+            width: 100%;
             height: 1px;
             right: 0;
             bottom: -.4rem;
             background-color: #ffffff;
             background-blend-mode: difference;
             transition: .2s;
+            transform: scaleX(0);
+            transform-origin: left;
           }
           &:hover {
             cursor: pointer;
             &:after {
-              width: 100%;
-              left: 0;
+              transform: scaleX(1);
             }
           }
         }
@@ -63,13 +65,15 @@
         &:after {
           content: '';
           position: absolute;
-          width: 0%;
+          width: 100%;
           height: 1px;
           right: 0;
           bottom: -.4rem;
           background-color: #ffffff;
           background-blend-mode: difference;
           transition: .2s;
+          transform: scaleX(0);
+          transform-origin: left;
         }
       }
       svg {
@@ -84,8 +88,9 @@
         cursor: pointer;
         span {
           &:after {
-            width: 100%;
-            left: 0;
+            // width: 100%;
+            transform: scaleX(1);
+            // left: 0;
           }
         }
       }
@@ -196,19 +201,20 @@
             &:after {
               content: '';
               position: absolute;
-              width: 0%;
+              width: 100%;
               height: 1px;
               right: 0;
               bottom: -.4rem;
               background-color: #ffffff;
               background-blend-mode: difference;
               transition: .2s;
+              transform: scaleX(0);
+              transform-origin: left;
             }
             &:hover {
               cursor: pointer;
               &:after {
-                width: 100%;
-                left: 0;
+                transform: scaleX(1);
               }
             }
           }
