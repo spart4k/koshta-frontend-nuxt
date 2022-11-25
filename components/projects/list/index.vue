@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.projects">
-    <projects-item v-for="(item, index) in $props.cases" 
+    <projects-item v-for="(item, index) in formatetCases" 
     :key="item.id" 
     :case="item"/>
   </div>

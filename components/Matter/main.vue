@@ -247,7 +247,7 @@ export default {
           
           loaded = true
           setRoof = undefined
-        }, 200)
+        }, 9000)
         setTimeout(() => {
           addBounces()
           addBodies()
