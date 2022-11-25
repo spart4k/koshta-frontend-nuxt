@@ -42,6 +42,7 @@
   .wrap {
     width: 48rem;
     height: 30rem;
+    margin-left: auto;
     // margin-right: 2rem;
     @media (max-width: $mobileWidth) {
       width: 100%;
