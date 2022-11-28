@@ -1,12 +1,16 @@
 .project {
   display: flex;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   &:hover {
     cursor: pointer;
   }
+  &:first-child {
+    border-top: 1px solid $fontColorDefault;
+    padding-top: 2rem;
+  }
   &:not(:last-child) {
     border-bottom: 1px solid $fontColorDefault;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
   .section {
     font-size: 1.2rem;

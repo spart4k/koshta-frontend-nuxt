@@ -1,10 +1,12 @@
 .title {
   @include title;
+  font-size: 6.1rem;
   margin-bottom: .5rem;
 }
 
 .subtitle {
   max-width: 50rem;
   @include subtitle;
+  font-size: 6.1rem;
   @include garamond-narrow;
 }

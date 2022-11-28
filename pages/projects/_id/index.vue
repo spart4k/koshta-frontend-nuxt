@@ -12,7 +12,7 @@
       </ui-container>
       <ui-container v-if="allCaseList" :class="$style.otherProjects" class="noPaddingTop">
         <div>
-          <ui-page-title-default :class="$style.otherHeader" :options="otherProjectsHeader"></ui-page-title-default>
+          <ui-page-title-default class="otherProjects-title" :class="$style.otherHeader" :options="otherProjectsHeader"></ui-page-title-default>
           <projects-list :cases="allCaseList"/>
         </div>
       </ui-container>

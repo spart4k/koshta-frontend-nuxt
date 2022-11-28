@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.provided">
-    <p>PROVIDED BY OUR <span>DREAMS</span></p>
+    <p>PROVIDED BY OUR DREAMS</p> 
     <p>©2022</p>
   </div>
 </template>

@@ -37,7 +37,7 @@
     left: 50%;
     transform: translate3d(-50%,0%, 0);
     display: block;
-    margin: 4.7rem auto 0 auto;
+    margin: 0rem auto 0 auto;
     text-align: center;
     width: calc(100%/2);
     color: $fontColorDefault;
@@ -48,7 +48,7 @@
       left: unset;
       transform: translate3d(0,0, 0);
       width: calc(100% - 3rem);
-      margin: 0rem auto 6.5rem auto;
+      margin: 0rem auto 2rem auto;
       top: unset;
       @media screen and (orientation:landscape) {
         margin: 0rem auto 2.5rem auto;
@@ -61,9 +61,10 @@
     z-index: 10;
     left: 50%;
     transform: translate3d(-50%,-50%, 0);
-    width: calc(100%/1.8);
+    width: calc(100%/1.5);
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     // margin-bottom: 6rem;
     @media (max-width: $mobileWidth) {
       // top: 23.9rem;
@@ -74,16 +75,55 @@
       transform: translate3d(0,0, 0);
     }
   }
+  .linkeds {
+    position: absolute;
+    bottom: -40%;
+    left: 50%;
+    transform: translate3d(-50%,0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    a {
+      position: relative;
+      font-size: 2.7rem;
+      display: inline-block;
+      margin-bottom: .5rem;
+      @media (max-width: $mobileWidth) {
+        font-size: 1.4rem;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 1px;
+        right: 0;
+        bottom: -.1rem;
+        background-color: #000000;
+        transition: .2s;
+      }
+      &:hover {
+        &:after {
+          width: 100%;
+          left: 0;
+        }
+      }
+    }
+    @media (max-width: $mobileWidth) {
+      position: unset;
+      transform: translate3d(0,0, 0);
+    }
+  }
   .contacts {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 6rem;
     // margin-bottom: 6rem;
     .office {
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 1.6rem;
+      font-size: 2.7rem;
       @media (max-width: $mobileWidth) {
         font-size: 1.4rem;
       }
@@ -122,6 +162,7 @@
       flex-direction: column;
       // justify-content: center;
       align-items: center;
+      margin-bottom: 1rem;
     }
     
     button {

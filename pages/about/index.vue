@@ -5,7 +5,12 @@
       <ui-container>
         <div :class="[$style.description, $style.first]">
           Koshta.collective is an association of art directors, designers, producers, curators and media artists. Together we create visual content for brands, media and cultural institutions. Our works are not limited to certain genres — media artists come up with ideas based on their own creativity styles and methods.
+          <br><br>
+          Koshta.collective operates in a new paradigm where the boundaries of the analog and digital worlds become blurred, and content itself becomes art. We believe in boundless imagination and create our works well beyond the ordinary reality.
         </div>
+        <!-- <div :class="[$style.description, $style.second]">
+          Koshta.collective operates in a new paradigm where the boundaries of the analog and digital worlds become blurred, and content itself becomes art. We believe in boundless imagination and create our works well beyond the ordinary reality.
+        </div> -->
       </ui-container>
       <!-- <VueSlickCarousel v-if="slider" lazyLoad="ondemand" :adaptiveHeight="false" :speed='250' :class="$style.slider" :arrows="true" :dots="true">
         <img v-for="(url, index) in slider" :src="url" alt="">
@@ -19,11 +24,6 @@
           <nuxt-img loading="lazy" v-for="(url, index) in slider" :key="index" :src="url" />
         </flickity>
       </client-only>
-      <ui-container class="noPaddingTop">
-        <div :class="[$style.description, $style.second]">
-          Koshta.collective operates in a new paradigm where the boundaries of the analog and digital worlds become blurred, and content itself becomes art. We believe in boundless imagination and create our works well beyond the ordinary reality.
-        </div>
-      </ui-container>
       <main-footer/>
     </div>
   </div>

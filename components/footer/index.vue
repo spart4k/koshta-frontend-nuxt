@@ -7,7 +7,9 @@
         'pointer-events': noClickedMatter ? 'none' : 'unset'
       }"
       >
-        We collaborate with ambitious brands and people. Are you with us?
+        We collaborate with ambitious brands and people. 
+        <br><br>
+        Are you with us?
       </div>
       <div 
       :class="$style.center"
@@ -53,6 +55,10 @@
             <a href="mailto:CAREERS@KOSHTA.STUDIOS">{{ footerInfo.join_us_email }}</a>
           </button>
         </div> -->
+        <div :class="$style.linkeds">
+          <a href="https://www.instagram.com/koshta.collective/">Instagram: @koshta.collective</a>
+          <a href="#">LinkedIn: Koshta.Collective</a>
+        </div>
       </div>
       <div :class="$style.bottom">
         <!-- <p 

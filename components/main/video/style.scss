@@ -13,6 +13,7 @@
     mix-blend-mode: difference;
     z-index: 1;
     @include title;
+    font-size: 6.1rem;
     @media (max-width: $mobileWidth) {
       width: calc(39rem - 4rem);
     }
