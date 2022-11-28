@@ -29,6 +29,7 @@ export default {
       { src: '/libs/mobile-detect.min.js' }
     ]
   },
+  target: 'static',
   loading: false,
   server: {
     port: process.env.PORT || 3080, // default: 3000
