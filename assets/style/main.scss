@@ -138,6 +138,7 @@ h1,h2,h3,h4,h5,h6,p {
 }
 .page {
   background-color: #fff;
+  transform: translate3d(0,0,0);
 }
 .flickity-block {
   &.pagination-off {
@@ -367,5 +368,10 @@ img {
         }
       }
     }
+  }
+}
+.fullpage-wp {
+  &.anim {
+    will-change: transform;
   }
 }

@@ -17,7 +17,7 @@
       >
         <div :class="$style.contacts">
           <!-- <p :class="$style.subtitle">Headquarters</p> -->
-          <div :class="$style.office" v-for="(item, index) in officeses">
+          <div :class="$style.office" v-if="footerInfo.Office" v-for="(item, index) in footerInfo.Office">
             <p v-if="item.address"> {{ item.address }} </p>
             <p v-if="item.City"> {{ item.City }} </p>
             <p v-if="item.Country"> {{ item.Country }} </p>
