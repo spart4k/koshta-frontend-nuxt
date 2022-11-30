@@ -7,9 +7,8 @@
         'pointer-events': noClickedMatter ? 'none' : 'unset'
       }"
       >
-        We collaborate with ambitious brands and people. 
-        <br><br>
-        Are you with us?
+        <p> We collaborate with ambitious brands and people. </p>
+        <p>Are you with us?</p> 
       </div>
       <div 
       :class="$style.center"

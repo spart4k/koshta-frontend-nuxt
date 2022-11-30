@@ -2,7 +2,7 @@
   <div :class="$style.contacts">
     <!-- <UiPreloaderPage v-if="fetchState.pending"></UiPreloaderPage> -->
     <div class="">
-      <ui-container>
+      <ui-container :class="$style.container">
         <div :class="[$style.description, $style.first]">
           Koshta.collective is an association of art directors, designers, producers, curators and media artists. Together we create visual content for brands, media and cultural institutions. Our works are not limited to certain genres — media artists come up with ideas based on their own creativity styles and methods.
           <br><br>
@@ -16,15 +16,17 @@
         <img v-for="(url, index) in slider" :src="url" alt="">
       </VueSlickCarousel> -->
       <client-only>
-        <flickity :items="1" :loop="false" :mouseDrag="false" :autoHeight="true" :dots="true" v-if="slider" :class="[
-          $style.slider,
-          slider.length > 1 ? 'pagination' : 'pagination-off',
-          'flickity-block'
-          ]" ref="flickity" :options="flickityOptions" :src="url">
-          <nuxt-img loading="lazy" v-for="(url, index) in slider" :key="index" :src="url" />
-        </flickity>
+        <ui-container class="noPaddingTop">
+          <flickity :items="1" :loop="false" :mouseDrag="false" :autoHeight="true" :dots="true" v-if="slider" :class="[
+            $style.slider,
+            slider.length > 1 ? 'pagination' : 'pagination-off',
+            'flickity-block'
+            ]" ref="flickity" :options="flickityOptions" :src="url">
+            <nuxt-img loading="lazy" v-for="(url, index) in slider" :key="index" :src="url" />
+          </flickity>
+        </ui-container>
       </client-only>
-      <main-footer/>
+      <main-footer :class="$style.footer"/>
     </div>
   </div>
 </template>

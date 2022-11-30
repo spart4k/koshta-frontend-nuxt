@@ -35,7 +35,7 @@
       @include title;
     }
     .author {
-      @include subtitle;
+      @include title;
       @include garamond-narrow;
       margin-top: 1rem;
       @media (max-width: $mobileWidth) {

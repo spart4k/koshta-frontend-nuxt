@@ -8,7 +8,7 @@
         {{ caseInfo.title }}
       </div>
       <div :class="$style.author">
-        – {{ caseInfo.subtitle }}
+        {{ caseInfo.subtitle }}
       </div>
     </div>
     <div :class="$style.wrap">

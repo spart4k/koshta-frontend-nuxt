@@ -36,6 +36,7 @@ video {
 
 html {
   font-size: 10px;
+  height: -webkit-fill-available;
   // height: -webkit-fill-available;
   @media (max-width: $desktopWidth) {
     font-size: calc((10 / 1440) * 100vw);

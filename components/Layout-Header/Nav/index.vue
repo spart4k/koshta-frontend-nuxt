@@ -42,7 +42,7 @@
           </nuxt-link>
           <p 
           :class="$style.provide"
-          >PROVIDED BY OUR <span>DREAMS</span> ©2022</p>
+          >PROVIDED BY OUR DREAMS ©2022</p>
         </div>
         
       </div>

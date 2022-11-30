@@ -6,7 +6,7 @@
 
 .subtitle {
   // max-width: 50rem;
-  @include subtitle;
+  @include title;
   font-size: 6.1rem;
   @include garamond-narrow;
 }

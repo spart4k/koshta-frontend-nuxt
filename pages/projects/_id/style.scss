@@ -31,13 +31,12 @@
 .orderList {
   display: flex;
   flex-direction: column;
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
 }
 .mainVideo {
   width: 65%;
   display: block;
   margin: 0 auto;
-  margin-bottom: 3rem;
   video {
     width: 100%;
     height: auto;
@@ -57,5 +56,10 @@
   // border-bottom: 1px solid $fontColorDefault;
   @media (max-width: $mobileWidth) {
     // margin-bottom: 3rem;
+  }
+}
+.footer {
+  @media (max-width: $mobileWidth) {
+    min-height: 100vh;
   }
 }
