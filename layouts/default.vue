@@ -16,12 +16,12 @@
       :class="$style.nav"
       />
     </transition>
-    <transition name="fade">
+    <!-- <transition name="fade">
       <LayoutFooterProvided
       v-if="isShowProvide"
       :class="$style.provided"
       />
-    </transition>
+    </transition> -->
     <LayoutFooterCookies
     :class="$style.cookies"
     />

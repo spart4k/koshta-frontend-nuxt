@@ -60,18 +60,9 @@
         </div>
       </div>
       <div :class="$style.bottom">
-        <!-- <p 
-        :class="$style.name"
-        :style="{
-          'pointer-events': noClickedMatter ? 'none' : 'unset'
-        }"
-        >KOSHTA ©2022</p> -->
-        <!-- <p 
-        :class="$style.provide"
-        :style="{
-          'pointer-events': noClickedMatter ? 'none' : 'unset'
-        }"
-        >PROVIDED BY OUR <span>DREAMS</span></p> -->
+        <LayoutFooterProvided
+        :class="$style.provided"
+        />
         <p 
         :class="$style.policy"
         :style="{

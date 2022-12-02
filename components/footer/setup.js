@@ -24,6 +24,9 @@ import { useContext, ref, useFetch, computed } from '@nuxtjs/composition-api'
         }
       })
       fetch()
+      const isShowProvide = computed(() => {
+        return store.state?.layout?.isShowProvide
+      })
       const officeses = computed(() => {
         // return footerInfo?.value?.Office
       })
@@ -33,7 +36,8 @@ import { useContext, ref, useFetch, computed } from '@nuxtjs/composition-api'
       return {
         noClickedMatter,
         footerInfo,
-        officeses
+        officeses,
+        isShowProvide
       }
     }
   }
