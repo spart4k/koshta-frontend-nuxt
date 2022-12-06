@@ -13,17 +13,23 @@ export default {
   },
   setup () {
     const mainVideo = ref(null)
+    const loading = ref(true)
     const isMobile = computed(() => {
       if (process.client) {
         return window.innerWidth < 768
       }
     })
     const playVideo = () => {
+
       mainVideo.value.play()
     }
     const stopVideo = () => {
       mainVideo.value.pause()
     }
+    const stateVideo = computed(() => {
+      console.log(mainVideo?.value?.readyState)
+      return mainVideo?.value?.readyState
+    })
     // const videos = ref([])
     // const fetchData = async () => {
     //   const data  = await store.dispatch('contacts/getContats')
@@ -40,12 +46,25 @@ export default {
     // })
     // fetch()
     onMounted(() => {
+      mainVideo.value.addEventListener('loadeddata', (e) => {
+        //Video should now be loaded but we can add a second check
+        console.log('load')
+        console.log()
+        if(mainVideo.value.readyState >= 3){
+            //your code goes here
+            loading.value = false
+            console.log('loaded')
+        }
+     
+     });
     })
     return {
       isMobile,
       mainVideo,
       playVideo,
-      stopVideo
+      stopVideo,
+      stateVideo,
+      loading
     }
   }
 }
