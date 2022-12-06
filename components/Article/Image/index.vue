@@ -2,7 +2,7 @@
   <div class="">
     <div :class="$style.mainImage">
       <!-- <img :src="mainImage" alt=""> -->
-      <nuxt-img loading="lazy" v-if="mainImage" :src="mainImage" />
+      <img v-if="mainImage" :src="mainImage" />
     </div>
   </div>
 </template> 

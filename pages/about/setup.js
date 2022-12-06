@@ -36,8 +36,10 @@ export default defineComponent({
       const photos = contactsInfo?.value?.attributes?.photos?.data
       if (photos) {
         photos.forEach(element => {
+          console.log(element?.attributes?.url)
           let url = $axios.defaults.baseURL + element?.attributes?.url
           array.push(url)
+          console.log(url)
         })
         return array
       }

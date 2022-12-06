@@ -16,12 +16,19 @@
     </VueSlickCarousel> -->
     <client-only>
       <ui-container class="noPaddingTop">
-        <RFlickity :items="1" :loop="false" :mouseDrag="false" :autoHeight="true" :dots="true" v-if="slider" :class="[
+        <!-- <RFlickity :items="1" :loop="false" :mouseDrag="false" :autoHeight="true" :dots="true" v-if="slider" :class="[
           $style.slider,
           slider.length > 1 ? 'pagination' : 'pagination-off',
           'flickity-block'
           ]" ref="flickity" :options="flickityOptions" :src="url">
           <nuxt-img loading="lazy" v-for="(url, index) in slider" :key="index" :src="url" />
+        </RFlickity> -->
+        <RFlickity :class="$style.slider" v-if="slider" ref="flickity" :options="optionsSlider">
+          <img v-for="(url, index) in slider" :key="index" :src="url" />
+          <!-- <video  loading="lazy" v-for="(item, index) in slider" :src="item.url" /> -->
+          <!-- <video v-if="item.type === 'video'" v-for="(item, index) in slider" controls loop playsinline webkit-playinginline class="carousel-videl">
+            <source :src="item ? item.url : ''" type="video/mp4">
+          </video> -->
         </RFlickity>
       </ui-container>
     </client-only>

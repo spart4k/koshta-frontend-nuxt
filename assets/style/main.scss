@@ -390,15 +390,23 @@ img {
 }
 .flickity-viewport {
   min-height: 20rem !important;
+  @media (min-width: 768px) {
+    min-height: 55rem !important;
+  }
+  @media (min-width: 1000px) {
+    min-height: 65rem !important;
+  }
   @media (min-width: 1400px) {
     min-height: 75rem !important;
   }
   @media (min-width: 1650px) {
     min-height: 85rem !important;
   }
-  @media (min-width: 768x) {
-    min-height: 55rem !important;
-  }
+
+}
+.gallery-cell {
+  height: 100%;
+  width: 100%;
 }
 .flickity-page-dots {
   position: relative !important;

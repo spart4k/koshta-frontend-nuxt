@@ -17,17 +17,18 @@ import { useContext, reactive, ref, useFetch, computed } from '@nuxtjs/compositi
     },
     setup(props) {
       const { store, $axios } = useContext()
-      const flickityOptions = reactive({
-        imagesLoaded: false,
-        prevNextButtons: true,
-        pageDots: true,
-        wrapAround: true,
-        adaptiveHeight: true,
-        dots: true
+      // const flickityOptions = reactive({
+      //   imagesLoaded: true,
+      //   prevNextButtons: true,
+      //   pageDots: true,
+      //   wrapAround: true,
+      //   adaptiveHeight: true,
+      //   dots: true
         
-      })
+      // })
       const optionsSlider = {
         adaptiveHeight: true,
+        setGallerySize: false,
         imagesLoaded: true,
         pageDots: true,
         selectedAttraction: 0.3,
@@ -65,7 +66,7 @@ import { useContext, reactive, ref, useFetch, computed } from '@nuxtjs/compositi
       }
       return {
         slider,
-        flickityOptions,
+        // flickityOptions,
         changed,
         optionsSlider
       }
