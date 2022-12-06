@@ -19,7 +19,7 @@ export default defineComponent({
     // fetch()
     const optionsSlider = {
       adaptiveHeight: true,
-      imagesLoaded: true,
+      // imagesLoaded: true,
       pageDots: true,
       selectedAttraction: 0.3,
       friction: 0.8,

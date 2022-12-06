@@ -388,6 +388,15 @@ img {
 }
 .flickity-viewport {
   min-height: 20rem !important;
+  @media (min-width: 1400px) {
+    min-height: 75rem !important;
+  }
+  @media (min-width: 1650px) {
+    min-height: 85rem !important;
+  }
+  @media (min-width: 768x) {
+    min-height: 55rem !important;
+  }
 }
 .flickity-page-dots {
   position: relative !important;
