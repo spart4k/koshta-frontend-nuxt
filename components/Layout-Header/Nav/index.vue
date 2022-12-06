@@ -30,7 +30,7 @@
         <IconsClose v-else @click="closeNavWrap" class="icon"></IconsClose>
       </div>
       <div v-if="isShowWrap && layoutShowWrap" :class="$style.wrap">
-        <div :class="$style.mobileWrap">
+        <div class="mobileWrap" :class="$style.mobileWrap">
           <div :class="$style.projects">
             <p :class="$style.subtitle">Projects</p>
             <div :class="$style.list">
