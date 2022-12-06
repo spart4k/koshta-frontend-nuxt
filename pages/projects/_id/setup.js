@@ -37,9 +37,17 @@ export default defineComponent ({
 
     const { fetch, fetchState } = useFetch(async () => {
       try {
-        const response = await fetchData()
-        caseInfo.value = response.case
-        cases.value = response.allCase
+        const id = route.value.params.id
+        const { data } = await store.dispatch('cases/getCase', id)
+        const allCase = await store.dispatch('cases/getAllCases')
+        // return {
+        //   case: data.attributes,
+        //   allCase: allCase
+        // }
+        
+        // const response = await fetchData()
+        caseInfo.value = data.attributes
+        cases.value = allCase
         const dateSplit = caseInfo.value?.date?.split('-')
         let newDate = ''
         if (dateSplit) {

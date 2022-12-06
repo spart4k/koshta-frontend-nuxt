@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="layout-default">
     <!-- <HeaderDefault/> -->
     <transition name="fade">
       <Logotype
@@ -103,7 +103,13 @@
         })
       }
       onMounted(() => {
-
+        const documentHeight = () => {
+          const doc = document.documentElement
+          doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
+          console.log(doc)
+        }
+        window.addEventListener('resize', documentHeight)
+        documentHeight()
       })
       return {
         noClickedMatter,

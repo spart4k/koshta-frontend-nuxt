@@ -37,9 +37,9 @@
     .author {
       @include title;
       @include garamond-narrow;
-      margin-top: 1rem;
+      // margin-top: 1rem;
       @media (max-width: $mobileWidth) {
-        margin-top: .5rem;
+        // margin-top: .5rem;
       } 
     }
   }

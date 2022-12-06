@@ -283,7 +283,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #929292;
-  min-height: 100%;
+  height: 100%;
   line-height: 0;
   width: 100%;
 }

@@ -6,7 +6,7 @@
         <ui-page-title-project :options="headerInfo"></ui-page-title-project>
       </ui-container>
       <ui-container class="noPaddingTop">
-        <div v-for="(item, index) in caseInfo.slider_or_text" :class="$style.orderList">
+        <div v-for="(item, index) in caseInfo.slider_or_text" v-if="caseInfo.slider_or_text" :class="$style.orderList">
           <component :options="item" :order="index" :is="getComponentName(item.__component)"/>
         </div>
       </ui-container>
