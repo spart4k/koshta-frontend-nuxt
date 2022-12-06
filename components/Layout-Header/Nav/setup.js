@@ -34,7 +34,15 @@ export default defineComponent({
       }
       store.commit('layout/setBodyOverflow', false)
       store.commit('layout/showWrap', true)
+      
       isShowWrap.value = true
+      // let wrap = document.querySelector('.mobile-wrap')
+      // console.log(wrap)
+      // wrap.addEventListener('pointermove', preventDefault);
+      // console.log(wrap)
+      // function preventDefault(e) {
+      //   e.preventDefault();
+      // }
     }
     const logoIsShow = computed(() => {
       return store?.state?.layout?.isShow
@@ -45,7 +53,8 @@ export default defineComponent({
         store.commit('layout/showWrap', false)
         isShowWrap.value = false
       }, 200)
-      
+      // let wrap = document.querySelector('.mobile-wrap')
+      // wrap.removeEventListener('pointermove', preventDefault);
     }
     const closeNavWrap = () => {
       if (!logoIsShowObs.value) {

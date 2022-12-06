@@ -29,7 +29,7 @@
         <IconsNavOpen v-if="!layoutShowWrap" @click="openNav" class="icon"></IconsNavOpen>
         <IconsClose v-else @click="closeNavWrap" class="icon"></IconsClose>
       </div>
-      <div v-if="isShowWrap && layoutShowWrap" :class="$style.wrap">
+      <div class="mobile-wrap" v-if="isShowWrap && layoutShowWrap" :class="$style.wrap">
         <div class="mobileWrap" :class="$style.mobileWrap">
           <div :class="$style.projects">
             <p :class="$style.subtitle">Projects</p>

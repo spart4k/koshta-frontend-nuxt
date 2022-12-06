@@ -27,8 +27,10 @@ export const mutations = {
   },
   setBodyOverflow(state, param) {
     if (param) {
+      document.documentElement.classList.remove('no-overflow')
       document.body.classList.remove('no-overflow')
     } else {
+      document.documentElement.classList.add('no-overflow')
       document.body.classList.add('no-overflow')
     }
     state.bodyOverflow = param

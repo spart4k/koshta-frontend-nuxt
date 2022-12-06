@@ -50,6 +50,9 @@ html {
       font-size: calc((10 / 768) * 100vw);
     }
   }
+  &.no-overflow {
+    overflow: hidden;
+  }
   // @media (max-width: $mobileWidth) {
   //   font-size: calc((10 / 390) * 100vw);
   // }
@@ -68,7 +71,6 @@ body {
   // line-height: 0;
   &.no-overflow {
     overflow: hidden;
-    height: calc(var(--doc-height) - 1px);
   }
 }
 button

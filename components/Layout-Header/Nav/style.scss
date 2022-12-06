@@ -146,11 +146,13 @@
       z-index: 10;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
       .mobileWrap {
         position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
+        overflow: hidden;
         height: 100%;
         flex: 1;
       }
