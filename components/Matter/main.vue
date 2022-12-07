@@ -223,7 +223,7 @@ export default {
       addBodies()
       var timeoutRoof = null
       if (container.offsetWidth <= 768) {
-        timeoutRoof = 6000
+        timeoutRoof = 4500
       } else {
         timeoutRoof = 9000
       }
@@ -280,7 +280,7 @@ export default {
       if (container.offsetWidth <= 768) {
         setTimeout(() => {
           startGyroScope(world)
-        }, 6000)
+        }, 4500)
       }
     }
     onUnmounted(() => {
