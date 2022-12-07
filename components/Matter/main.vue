@@ -223,7 +223,7 @@ export default {
       addBodies()
       var timeoutRoof = null
       if (container.offsetWidth <= 768) {
-        timeoutRoof = 4500
+        timeoutRoof = 4000
       } else {
         timeoutRoof = 9000
       }
