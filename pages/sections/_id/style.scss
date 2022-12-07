@@ -1,5 +1,16 @@
 .section {
   background-color: #fff;
+  min-height: -webkit-fill-available !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  .wrapPage {
+    overflow: auto;
+    height: 100%;
+  }
 }
 .header {
   margin-bottom: 8.5rem;
@@ -9,6 +20,6 @@
 }
 .footer {
   @media (max-width: $mobileWidth) {
-    min-height: 100vh;
+    min-height: var(--doc-height);
   }
 }
