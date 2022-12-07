@@ -71,6 +71,6 @@
 }
 .footer {
   @media (max-width: $mobileWidth) {
-    min-height: 100vh;
+    min-height: var(--doc-height);
   }
 }
