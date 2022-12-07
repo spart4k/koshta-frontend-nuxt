@@ -221,6 +221,12 @@ export default {
       }
       addBounces()
       addBodies()
+      var timeoutRoof = null
+      if (container.offsetWidth <= 768) {
+        timeoutRoof = 6000
+      } else {
+        timeoutRoof = 9000
+      }
       var setRoof
       setRoof = setTimeout(() => {
         var { roof } = setWalls(canvas, props.centerOptions)
@@ -230,7 +236,7 @@ export default {
         
         loaded = true
         setRoof = undefined
-      }, 9000)
+      }, timeoutRoof)
       window.addEventListener("resize", debounce(function () {
         render.options.pixelRatio = window.devicePixelRatio
         loaded = false
@@ -247,7 +253,7 @@ export default {
           
           loaded = true
           setRoof = undefined
-        }, 9000)
+        }, timeoutRoof)
         setTimeout(() => {
           addBounces()
           addBodies()
@@ -274,7 +280,7 @@ export default {
       if (container.offsetWidth <= 768) {
         setTimeout(() => {
           startGyroScope(world)
-        }, 4000)
+        }, 6000)
       }
     }
     onUnmounted(() => {
