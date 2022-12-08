@@ -161,6 +161,9 @@
       }
       .subtitle {
         font-size: 2.4rem;
+        @media (max-width: $mobileWidth) {
+          font-size: 3.1rem;
+        }
       }
       .contacts {
         position: relative;
@@ -201,6 +204,9 @@
             white-space: nowrap;
             mix-blend-mode: difference;
             color: #fff;
+            @media (max-width: $mobileWidth) {
+              font-size: 2.1rem;
+            }
             &:not(:last-child) {
               margin-bottom: 1rem;
             }
@@ -230,6 +236,9 @@
       .provide {
         position: absolute;
         bottom: 2rem;
+        @media (max-width: $mobileWidth) {
+          font-size: 1.7rem;
+        }
         span {
           @include garamond-narrow;
           @include uppercase;
