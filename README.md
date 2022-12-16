@@ -6,6 +6,9 @@
 # install dependencies
 $ npm install
 
+# fix slider package translate
+$ node fix
+
 # serve with hot reload at localhost:3000
 $ npm run dev
 
