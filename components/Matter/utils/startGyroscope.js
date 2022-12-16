@@ -2,9 +2,7 @@ const startGyroScope = (world) => {
   function handler() {
     const md = new MobileDetect(window.navigator.userAgent);
     if (!md.mobile()) return false;
-    console.log('gyro start')
     if (DeviceMotionEvent) {
-      console.log(typeof DeviceMotionEvent.requestPermission)
       if (typeof DeviceMotionEvent.requestPermission === 'function') {
         window.addEventListener('devicemotion', handleOrientationIos);
       } else if (typeof DeviceOrientationEvent.requestPermission === 'function') {

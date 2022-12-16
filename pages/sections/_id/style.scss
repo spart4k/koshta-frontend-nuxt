@@ -11,6 +11,9 @@
     overflow: auto;
     height: 100%;
   }
+  @media (max-width: $mobileWidth) {
+    overflow: hidden;
+  }
 }
 .header {
   margin-bottom: 8.5rem;

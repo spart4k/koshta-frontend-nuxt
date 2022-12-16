@@ -27,7 +27,7 @@ export default {
       mainVideo.value.pause()
     }
     const stateVideo = computed(() => {
-      console.log(mainVideo?.value?.readyState)
+      // console.log(mainVideo?.value?.readyState)
       return mainVideo?.value?.readyState
     })
     // const videos = ref([])
@@ -48,12 +48,12 @@ export default {
     onMounted(() => {
       mainVideo.value.addEventListener('loadeddata', (e) => {
         //Video should now be loaded but we can add a second check
-        console.log('load')
+        // console.log('load')
         console.log()
         if(mainVideo.value.readyState >= 3){
             //your code goes here
             loading.value = false
-            console.log('loaded')
+            // console.log('loaded')
         }
      
      });

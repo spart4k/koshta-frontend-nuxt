@@ -25,7 +25,7 @@ export default defineComponent({
       friction: 0.8,
       on : {
         change: function( index ) {
-          console.log( 'Slide changed to' + index );
+          // console.log( 'Slide changed to' + index );
           changed()
         }
       },
@@ -36,10 +36,8 @@ export default defineComponent({
       const photos = contactsInfo?.value?.attributes?.photos?.data
       if (photos) {
         photos.forEach(element => {
-          console.log(element?.attributes?.url)
           let url = $axios.defaults.baseURL + element?.attributes?.url
           array.push(url)
-          console.log(url)
         })
         return array
       }

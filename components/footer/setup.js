@@ -20,7 +20,7 @@ import { useContext, ref, useFetch, computed } from '@nuxtjs/composition-api'
           const response = await fetchData()
           footerInfo.value = response.attributes
         } catch (e) {
-          console.log(e)
+          // console.log(e)
         }
       })
       fetch()

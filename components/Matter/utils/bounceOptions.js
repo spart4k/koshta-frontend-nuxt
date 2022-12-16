@@ -18,7 +18,6 @@ let bounseOptions = (canvas,container, index) => {
       y:  -300 - index * targetWidth,
       width: targetWidth
     }
-    console.log(targetWidth)
     
   }
   else {

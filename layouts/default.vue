@@ -106,7 +106,6 @@
         const documentHeight = () => {
           const doc = document.documentElement
           doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
-          console.log(doc)
         }
         window.addEventListener('resize', documentHeight)
         documentHeight()

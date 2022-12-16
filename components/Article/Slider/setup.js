@@ -35,7 +35,7 @@ import { useContext, reactive, ref, useFetch, computed } from '@nuxtjs/compositi
         friction: 0.8,
         on : {
           change: function( index ) {
-            console.log( 'Slide changed to' + index );
+            // console.log( 'Slide changed to' + index );
             changed()
           }
         },
@@ -56,9 +56,9 @@ import { useContext, reactive, ref, useFetch, computed } from '@nuxtjs/compositi
       const changed = () => {
         const slider = document.querySelector('.flickity-slider')
         const slides = slider.querySelectorAll('video')
-        console.log(slider)
+        // console.log(slider)
         if (slides.length) {
-          console.log(slides)
+          // console.log(slides)
           slides.forEach((item) => {
             item.pause()
           }) 
